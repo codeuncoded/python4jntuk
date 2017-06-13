@@ -13,10 +13,11 @@ knitr::opts_chunk$set(echo = TRUE)
 Python has 5 data types-Numbers, Strings, Lists, Tuple, Dictionary. In this chapter, we will discuss Numbers and Strings. We will see the other 3 in the next chapter.
 
 ##Numbers
-Numbers are further divided into 4-int, long, float, complex.
+Numbers are further divided into 4:int, long, float, complex. int and long are used to represent whole numbers. float is used for numbers that have a decimal part. Languages like C have double type for really big floating point numbers. But python only has float. 
 ```{python}
 a = 12
 print type(a)
+#type is a built-in function that returns the type of a variable
 b = 12.3
 print type(b)
 c = 2323231211142342424
@@ -25,6 +26,7 @@ d = complex(2,3)
 print d
 print type(d)
 ```
+The data type complex represent mathematical complex numbers that have a real and an imaginary part.
 
 ##Strings
 Python doesn't differete between single quotes and double quotes. Unlike in C, the is not difference between char ans string-both are same.
@@ -32,24 +34,116 @@ Python doesn't differete between single quotes and double quotes. Unlike in C, t
 name = "sreekanth"
 occupation = 'software engineer'
 print type(name)
-qoute = "I'am good" #observe that a single can be used within doubles
+qoute = "I'am good" #observe that a single qoute can be used within double quotes
 print "qoute:" + qoute
 qoute = "qoute:" + 'He said "I am not going" to her'
 print qoute
 ```
 
 ```{python, eval=FALSE}
-qoute = "He said "I am not going" to her"
-#this will not work.
+qoute = "He said "I am not going" to her" #this will not work.
+```
+## Booleans
+Boolean variables can be assigned either `True` or `False`
+```{python}
+flag = True
+print flag
+flag = False
+print flag
+```
+
+## Operators
+Variables are assigned values using the `=` operator. Variables are written when they are first assigned a value.
+```{python}
+number = 10
+```
+The variable `number` is assigned 10. Note that the type of variable `number` is not declared. This is not required because of the python type inference. Based on the operations we do on a variable, the python will automatic guess its type.
+```{python}
+#multiple assignments can be done in the same statement simultaneously.
+a, b = 10,20
+#a is assigned 10 and b is assigned 20.
+print a,b
+a,b = b,a
+#a is assigned the value in b and b is assigned the value in a simultaneously. 
+#this is a popular way of swapping numbers in python.
+print a,b
+```
+
+### Logical Operators
+
+There are three logical operators: not, or, and. Also, >, >=, <, <=, ==, !=
+```{python}
+condition = True
+print (not condition)
+print (condition or False)
+print (condition and False)
+```
+`not a` evaluates to the opposite of what `a` is. `a and b` evaluates to True only if both a, b are True. a or b evaluates to False if both a,b are False. They behave like !, ||, && operators in C.
+
+|     a   | not a       |
+----------|--------------
+|     True   | False       |
+|     False  | True       |
+
+|     a   | b      | a and b
+----------|--------------|-----
+|     True   | True       | True
+|     True  | False       | False
+|     False   | True       | False
+|     False  | False       | False
+
+|     a   | b      | a or b
+----------|--------------|-----
+|     True   | True       | True
+|     True  | False       | True
+|     False   | True       | True
+|     False  | False       | False
+
+###Membership Operator
+The `in` operator is used to determine variable consists of other.
+```{python}
+isPresent = "sree" in "sreekanth"
+print isPresent
+```
+We will discuss this operator in more detail in unit-3 once we complete lists.
+```{python}
+fruits = ["apple", "banana", "orange"]
+print "apple" in fruits
+#the 'in' operator can be used with the 'not' operator 
+#to find out if a variable is not present in another
+print "banana" not in fruits
 ```
 
 
+### Control flow
+```{python}
+a,b = 3,2
+if(a > b):
+  print "a is greater than b" #Notice this print stmt is indented 
+  #this means that the print stmt is within the if block
+```
+Python seperates blocks based on there indentation. Notice the priNotice unlike other langauges, python doesn't use curly brackets{} to block. 
 
+```{python}
+a,b = 3,2
+if(a > b):
+  print "this statement is within the if block"
+  print "this statement aswell"
+else:
+  print "this statement is in the else block"
+  print "this statement is also in the else block"
+print "this statement is not in the if block. it's in the global block and will always print"
+```
+##Loops
+### The for loop
+```{python}
+numbers = range(1,10)
+for number in numbers:
+  print number
 
-
-
-
-
+for aphlabet in "sreekanth":
+  print aphlabet
+```
 
 
 
@@ -68,6 +162,9 @@ fruitsandnumbers =  ['apple', 'mango', 'pineapple', 10, 20, 30, True]
 print fruitsandnumbers
 print len(numbers)
 #len is a built-in function used to find the length of lists.
+integers = range(1,10)
+print integers
+#range(start,last) is built-in function that creates a list [start, start+1, ..., last-1] 
 ```
 
 ## Slicing
@@ -119,9 +216,38 @@ presentees = {1,5,6, 7, 10, 1, 6, 6, 5}
 print presentees
 presentees.add(10)
 print presentees
-
+presentees.pop()
+print presentees
 ```
 
+Common mathematical set operations like union, intersection can be easily done.
+```{python}
+setA = {1,2,3,4,5}
+setB = {4,5,6,7,8}
+print setA.union(setB)
+print setA.intersection(setB)
+```
+
+# Dictionaries
+Dictionaries(commmonly shortened to dict) are {key,value} pair data structures. Each element in a dict is a pair of key and value. Keys have to be uquine. Keys can be thought as indices with names. Dicts are similar to java maps.
+```{python}
+wordFrequency = {'a':1, 'b':5, 'c':10, 'e':15}
+#Here all the strings('a', 'b', 'c', 'e' are keys)
+#all the numbers are values(1,5,10,15)
+#each key has a associated value.
+#For example, wordFrequency can be used to store frequency of alphabets in a string
+print wordFrequency['a']
+#key can be used like an index of a list.
+
+```
+Accessing the key that isn't present in the dict can result in an exception. This can be avoided by checking if that key is present before accessing it.
+```{python}
+wordFrequency = {'a':1, 'b':5, 'c':10, 'e':15}
+if('d' in wordFrequency):
+  print wordFrequency['d']
+else:
+  print "not present"
+```
 
 
 ## Strings as lists
@@ -132,25 +258,6 @@ print name[0]
 print name[1:5] #slicing
 print name + "kolamala" # concatination
 #
-
-```
-
-```{python}
-a = 12
-def add(a,b):
-  return a + b
-print add(2,3)
-```
-
-```{java}
-System.out.println("hi");
-int a = 10;
-int hex = 0x7FFFFFFF; //the max int
-```
-
-```{javascript}
-var a = 10;
-console.log(a)
 ```
 
 
