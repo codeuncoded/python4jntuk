@@ -68,6 +68,16 @@ a,b = b,a
 #this is a popular way of swapping numbers in python.
 print a,b
 ```
+### Arithmetic Operators
++,-,\*,/,%,\*\*
+| operator       | example | result
+--------------|---------|------
+|    +  |  2 + 3       |5
+|     -  | 2.3 - 3.5      | -1.2
+| \*  | 2\*1.5 | 3
+| / | 5/2 | 2
+| % | 5%2 | 1
+| \*\* | 5\*\*3 | 125
 
 ### Logical Operators
 
@@ -112,6 +122,15 @@ print "apple" in fruits
 #the 'in' operator can be used with the 'not' operator 
 #to find out if a variable is not present in another
 print "banana" not in fruits
+```
+
+## Terary operator
+
+> a if condition else b
+
+```{python}
+number = 24
+print "even" if number % 2 else "odd"
 ```
 
 
@@ -250,6 +269,10 @@ numbers.sort()  #sorts list
 print numbers
 ```
 
+## Comprehensions
+```{python}
+S = [x**2 for x in range(10)]
+```
 
 # Sets
 Sets are like lists but duplicates are not allowed.
@@ -284,6 +307,7 @@ print wordFrequency['a']
 del wordFrequency['a']
 #deleting is similar to list.
 print wordFrequency
+print 'd' in wordFrequency  #find out if a key exists in dict using the 'in' keyword
 ```
 Accessing the key that isn't present in the dict can result in an exception. This can be avoided by checking if that key is present before accessing it.
 ```{python}
