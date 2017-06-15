@@ -329,7 +329,60 @@ print name + "kolamala" # concatination
 #
 ```
 
+# Lab programs
 
+##Exercise 2 - Operations
+
+a) Write a program to compute distance between two points taking input from the user
+(Pythagorean Theorem)
+```{python, eval=FALSE}
+import math
+x1 = int(raw_input("enter x1:"))
+y1 = int(raw_input("enter y1:"))
+x2 = int(raw_input("enter x2:"))
+y2 = int(raw_input("enter y2:"))
+distance = math.sqrt(math.pow(x2-x1, 2) + math.pow(y2-y1, 2))
+print distance
+```
+
+b) Write a program add.py that takes 2 numbers as command line arguments and prints its sum.
+
+
+##Exercise 8 - Functions
+
+a) Write a function ball_collide that takes two balls as parameters and computes if they are
+colliding. Your function should return a Boolean representing whether or not the balls are
+colliding.
+Hint: Represent a ball on a plane as a tuple of (x, y, r), r being the radius
+If (distance between two balls centers) <= (sum of their radii) then (they are colliding)
+
+b) Find mean, median, mode for the given set of numbers in a list.
+
+```{python, eval=FALSE}
+def mean(numbers):
+    return float(sum(numbers)) / max(len(numbers), 1)
+
+def median(numbers):
+    if not numbers:
+        return 0
+    sortedNumbers = sorted(numbers)
+    length = len(sortedNumbers)
+    return (sortedNumbers[length/2] + sortedNumbers[(length-1)/2])/2.0
+
+#if you are going to sort numbers, there is simpler way to find mode
+def mode(numbers):
+    frequencies = countWordFrequency(numbers)
+    maximum = None
+    result = None
+    for number, frequency in frequencies.items():
+        if maximum < frequency:
+            maximum = frequency
+            result = number
+    return result
+
+numbers = [2,3,5,2,10,25]
+print mean(numbers), median(numbers), mode(numbers)
+```
 
 
 
@@ -357,7 +410,7 @@ summary(cars)
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
+```{r pressure, echo=FALSE, eval=FALSE}
 plot(pressure)
 ```
 
