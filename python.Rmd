@@ -1,7 +1,7 @@
 ---
 title: "Python for JNTUK Students"
 author: "Sreekanth Kolamala"
-date: "M.tech Computer Science, IIT, Kanpur"
+date: "M.tech Computer Science, IIT Kanpur"
 output: pdf_document
 ---
 
@@ -69,15 +69,31 @@ a,b = b,a
 print a,b
 ```
 ### Arithmetic Operators
-+,-,\*,/,%,\*\*
+They are + - \* / % \*\*.
+`a%b` is gives the reminder of when a is divided by b. `a**b` gives a to power of b.
+
 | operator       | example | result
 --------------|---------|------
 |    +  |  2 + 3       |5
 |     -  | 2.3 - 3.5      | -1.2
-| \*  | 2\*1.5 | 3
+| `*`  | 2\*1.5 | 3
 | / | 5/2 | 2
 | % | 5%2 | 1
-| \*\* | 5\*\*3 | 125
+| `**` | 5\*\*2 | 25
+### Logical Operators
+
+| operator       | example | result
+--------------|---------|------
+| > | 20 > 40 | False
+|| 20 > 20 | False
+| `>=` | 20 >= 20 | True
+| < | 20 < 40 | True
+|| 20 < 20 | False
+| <= | 20 <= 20 | True
+| == | 20 == 20 | True
+||  20 == 40  | False
+| != | 20 != 20 | False
+||  20 != 40  | True
 
 ### Logical Operators
 
@@ -88,7 +104,7 @@ print (not condition)
 print (condition or False)
 print (condition and False)
 ```
-`not a` evaluates to the opposite of what `a` is. `a and b` evaluates to True only if both a, b are True. a or b evaluates to False if both a,b are False. They behave like !, ||, && operators in C.
+`not a` evaluates to the opposite of what `a` is. `a and b` evaluates to True only if both a, b are True. a or b evaluates to False if both a,b are False. They behave exactly like !, ||, && operators in C.
 
 |     a   | not a       |
 ----------|--------------
@@ -270,19 +286,29 @@ print numbers
 ```
 
 ## Comprehensions
+
+```{python, eval=FALSE}
+[expression(x) for x in some_list if condition]
+```
+expression(x) is the formula used for creating the elements. The elements of some_list is are used in expression(x). The `if condition` is also optional used for filtering. Some examples will solidify these concepts.
+
 ```{python}
-S = [x**2 for x in range(10)]
+squares = [x**2 for x in range(10)]
+print squares
+#squares of even numbers:
+squares = [x**2 for x in range(10) if x % 2 == 0]
+print squares
+squares = [x**2 for x in range(10) if not x % 2]
+print squares
 ```
 
 # Sets
 Sets are like lists but duplicates are not allowed.
 
 ```{python}
-presentees = {1,5,6, 7, 10, 1, 6, 6, 5}
+presentees = {1,5,6,7,10,1,6,6,5}
 print presentees
 presentees.add(10)
-print presentees
-presentees.pop()
 print presentees
 ```
 
@@ -317,6 +343,77 @@ if('d' in wordFrequency):
 else:
   print "not present"
 ```
+
+# Functions
+Functions are small pieces of code that we can reuse by calling them instead of writing code multiple times. Their syntax:
+```{python, eval=FALSE}
+def function_name(parameters):
+  stmt
+  stmt
+  stmt
+```
+Few examples as usual will make things clear:
+```{python, cache=TRUE}
+#function defination
+def add(a,b):
+  c = a + b
+  print c
+```
+We define a function by using the keyword `def`. Notice that all the stmts after the first statement are indented. This is python's way to say that these statements are part of the function defination and not in the global context. Not indenting would throw an error. We can call this function like this:
+```{python, eval=FALSE}
+#function calling
+add(2,3)
+add(2.3, 4.5)
+add(a=2.3, b=4.5) #we can explicitly use the names of the parameter 
+                  #as defined in function defination
+add(b=4.5, a=2.3) #we can also change the order of parameters.
+```
+
+```{python, echo=FALSE}
+def add(a,b):
+  c = a + b
+  print c
+add(2,3)
+add(2.3, 4.5)
+add(a=2.3, b=4.5) #we can explicitly use the names of the parameter as defined in function defination
+add(b=4.5, a=2.3) # we can also change the order of parameters.
+```
+Also notice that we were able to use the same add() function to add both ints and floats. Something we can't do in languages like C or Java.
+
+### Default parameters
+We could give default values to function parameters. In which case, if the function is called without the parameter, the default value is used. If an actual parameter is given then the default one is ignored.
+```{python}
+def print_series(n=10):
+  for i in range(n):
+    print i
+print_series(5) #this will print till 5 #mental note: write this into 2 programs and eval, echo blocks
+print_series()  #since no parameter is given, the default value 10 is assigned to n
+                #and 0 till n are printed.
+```
+
+### Fruitful Functions
+Instead of printing, a function can also return a value. 
+```{python}
+#function that returns the square of its parameter
+def square(number):
+  return number**2
+#function calling
+a = square(4) #the value returned by the function can be assigned to a variable.
+print a
+```
+
+```{python}
+def square(number):
+  return number**2
+print map(square, range(10))
+```
+Instead of defining a function, we can use anonymous function. Anonymous function are like regular functions except they don't have a name. They defined using the keyword, `lambda`. 
+```{python}
+print map(lambda x: x**2, range(10))
+```
+
+
+
 
 
 ## Strings as lists
@@ -385,7 +482,7 @@ print mean(numbers), median(numbers), mode(numbers)
 ```
 
 
-
+\fbox{My text!}
 
 
 ## R Markdown
