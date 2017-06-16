@@ -284,6 +284,15 @@ numbers = [30,20,40,10,50]
 numbers.sort()  #sorts list
 print numbers
 ```
+## Strings as lists
+In python, strings are lists. So, all the list operations can be done on strings.
+```{python}
+name = "sreekanth"
+print name[0]
+print name[1:5] #slicing
+print name + "kolamala" # concatination
+#
+```
 
 ## Comprehensions
 
@@ -407,24 +416,68 @@ def square(number):
   return number**2
 print map(square, range(10))
 ```
-Instead of defining a function, we can use anonymous function. Anonymous function are like regular functions except they don't have a name. They defined using the keyword, `lambda`. 
+Instead of defining a function, we can use **anonymous function**. Anonymous function are like regular functions except they don't have a name. They defined using the keyword, `lambda`. 
 ```{python}
 print map(lambda x: x**2, range(10))
 ```
-
-
-
-
-
-## Strings as lists
-In python, strings are lists. So, all the list operations can be done on strings.
+### Variable-length arguments
 ```{python}
-name = "sreekanth"
-print name[0]
-print name[1:5] #slicing
-print name + "kolamala" # concatination
-#
+# program to take variable number of parameters
+def max(*numbers):
+  result = None
+  for number in numbers:
+    if number > result:
+      result = number
+  print result
+#you can call max() with any number of parameters
+max(30,20)
+max(20,30,60,70,40,50)
+max(20)
+max()
 ```
+you can also mix normal parameters with variable number of parameters
+```{python, error=TRUE}
+def max(first, *numbers):
+  result = first
+  for number in numbers:
+    if number > result:
+      result = number
+  print result
+#you can call max() with atleast one parameter
+max(30,20)
+max(20,30,60,70,40,50)
+max(20)
+max() #this will throw an error
+```
+
+## Import statements
+Often times, instead of writing code ourselves, we could you code written by others. This code is available in the form of libraries. We need to declare them before using them by writing an import statement. Its syntax:
+```{python, eval=FALSE}
+import library_name
+from library_name import class_or_function_name
+```
+Some examples:
+There is module called math that contains commonly used mathematical functions like square root{sqrt()} etc. To use them, we need to import the math module.
+```{python, error=TRUE}
+import math #you can call anything within math. 
+print math.sqrt(25) #the full name math.sqrt() is requeried. 
+print math.pi
+print sqrt(25)
+```
+
+```{python, error=TRUE}
+from math import sqrt #only importing sqrt and not the whole of math module.
+print sqrt(25)  #full name not required.
+print pi  #can't use anything else.
+```
+
+
+
+
+Some of these libraries are loaded along with python and hence need no import. Some examples:
+
+
+
 
 # Lab programs
 
@@ -481,36 +534,4 @@ numbers = [2,3,5,2,10,25]
 print mean(numbers), median(numbers), mode(numbers)
 ```
 
-
 \fbox{My text!}
-
-
-## R Markdown
-```{#numCode .R .numberLines}
-> print("hello world")
-```
-```{r results='asis', echo=FALSE}
-print("hello world")
-```
-
-
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE, eval=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-https://stackoverflow.com/questions/36808263/separate-columns-for-text-and-code-output-in-markdown?noredirect=1&lq=1

@@ -8,7 +8,9 @@ distance = math.sqrt(math.pow(x2-x1, 2) + math.pow(y2-y1, 2))
 print distance
 
 #Exercise 2b
-
+from sys import argv
+script, first, second = argv
+print int(first) + int(second)
 
 #Exercise 3a
 
@@ -85,6 +87,8 @@ day, month, year = date.split('/')
 print day, month, year
 newDate = "/".join([day, month, year])
 print newDate
+birthday = {'day': day, 'month': month, 'year': year}
+print birthday
 #6a
 
 #6a: not clear what 'these' lists mean
@@ -148,10 +152,27 @@ def mode(numbers):
             maximum = frequency
             result = number
     return result
-
+#mental note: try if we could use max() to reduce the above code.
 numbers = [2,3,5,2,10,25]
 print mean(numbers), median(numbers), mode(numbers)
 
+#8b alternate way
+
+def mode(numbers):
+    import collections
+    counter = collections.Counter(numbers)
+    [(elem, _)] = counter.most_common(1)
+    return elem
+
+#8b alternate way with exception handling for empty list
+
+def mode(numbers):
+    if not numbers:
+        raise Exception('No such element')
+    import collections
+    counter = collections.Counter(numbers)
+    [(elem, _)] = counter.most_common(1)
+    return elem
 #9a
 
 def nearlyEqual(a,b):
