@@ -2,11 +2,18 @@
 title: "Python for JNTUK Students"
 author: "Sreekanth Kolamala"
 date: "M.tech Computer Science, IIT Kanpur"
+header-includes:
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyhead[CO,CE]{This is fancy header}
+- \fancyfoot[CO,CE]{\copyright \ sreekanth.kolamala@gmail.com}
+- \fancyfoot[LE,RO]{\thepage}
 output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(engine = "python")
 ```
 
 #Types
@@ -69,7 +76,7 @@ a,b = b,a
 print a,b
 ```
 ### Arithmetic Operators
-They are + - \* / % \*\*.
+They are `+ - * / % **`.
 `a%b` is gives the reminder of when a is divided by b. `a**b` gives a to power of b.
 
 | operator       | example | result
@@ -80,7 +87,7 @@ They are + - \* / % \*\*.
 | / | 5/2 | 2
 | % | 5%2 | 1
 | `**` | 5\*\*2 | 25
-### Logical Operators
+### Relational Operators
 
 | operator       | example | result
 --------------|---------|------
@@ -240,7 +247,7 @@ print integers
 ## Slicing
 Slicing is a simple way of creating a new list from (part of) an old list.
 
->```newList = oldList[start:end]```
+\fbox{newList = oldList[start:end]}
 
 ```{python}
 numbers = [10, 20, 30, 40, 50, 60, 70]
@@ -470,14 +477,201 @@ from math import sqrt #only importing sqrt and not the whole of math module.
 print sqrt(25)  #full name not required.
 print pi  #can't use anything else.
 ```
-
-
-
-
 Some of these libraries are loaded along with python and hence need no import. Some examples:
 
+# Object Oriented Programming OOP in Python
+Classes are neat way to organize code. Consider we write code for a box. A box has 3 properties-height, width, bredth. We can use variable like box_height, box_width, box_bredth to represent them. But doing this makes 3 seperate variables that seem to have no relation. 
+```{python}
+class Box(object):
+  static_variable = 10
+  def set_height(self, h):
+    self.height = h
+  
+  def get_height(self):
+    return self.height
+
+  def __init__(self, h, w, b):
+    self.height = h
+    self.weight = w
+    self.bredth = b
+
+  def volume(self):
+    return self.height*self.weight*self.bredth
+  
+  def __len__(self):
+    return 10
+
+box = Box(2,3,4)
+print box.volume()
+print len(box)
+```
+I know that's a lot of code. Don't worry. Before we We are creating a class called Box that has variable height
 
 
+## Magic methods
+The beauty of python is in its magic methods. Lets us that we are defining a class to represent a family.
+```{python}
+class Family(object):
+  def __init__(self, mems):
+    self.members = mems
+family = Family(['ram', 'priya', 'ravi'])
+print family.members
+# We can use the len() functin to find out how many family members are there.
+print len(family.members)
+```
+But with magic methods, we could simplify this. 
+```{python}
+class Family(object):
+  def __init__(self, mems):
+    self.members = mems
+  def __len__(self):
+    return len(self.members)
+family = Family(['ram', 'priya', 'ravi'])
+print len(family) #notice the change
+```
+What we have achivied here is: Family is type we build just now. The python language didn't know about this before now. len is built-in function. we defined our class to work seemlessly with python's built-in functions. __len(self)__ is a magic method that gets called when len(family) is encountered. 
+```{python}
+class Family(object):
+  def __init__(self, mems):
+    self.members = mems
+  def __repr__(self):
+    return str(self.members)
+  def __getitem__(self, name):
+    return self.members[name]
+family = Family(['ram', 'priya', 'ravi'])
+print family    
+print family[1]
+```
+An excellent guide for magic methods(don't forget to check the table towards the end of the article): http://minhhh.github.io/posts/a-guide-to-pythons-magic-methods
+
+## Inheritance
+
+Let's create a special kind of family: south indian family
+
+```{python, eval=FALSE}
+class South_Indian_Family(Family):
+  pass
+
+southy = South_Indian_Family(['ram', 'priya', 'ravi'])
+print southy.members
+print southy
+```
+
+
+
+```{python, echo=FALSE}
+class Family(object):
+  def __init__(self, mems):
+    self.members = mems
+  def __repr__(self):
+    return str(self.members)
+  def __getitem__(self, name):
+    return self.members[name]
+class South_Indian_Family(Family):
+  pass
+
+southy = South_Indian_Family(['ram', 'priya', 'ravi'])
+print southy.members
+print southy
+```
+
+## Exception Handling
+Let's write a program to for a simple calculator. Our calculator repeatedly asks 2 numbers and  calculates their division. 
+
+```{python, eval=FALSE}
+while True:
+	a = int(raw_input("enter numerator:"))
+	b = int(raw_input("enter denominator:"))
+	print a/b
+```
+
+```{python, echo=FALSE}
+def divide(a,b):
+  print "enter numerator:" + str(a)
+  print "enter denominator:" + str(b)
+  print a/b
+divide(2.3, 4.5)
+divide(5,2)
+print "enter numerator:"
+```
+Looks good. This an never ending program(you can stop the program by pressing ctrl+z) lets see what happens when we give 0 for denominator
+```{python, echo=FALSE, error=TRUE}
+a,b=4,0
+print "enter numerator:" + str(a)
+print "enter denominator:" + str(b)
+print a/b
+```
+
+The program stops with an error message. ... we can avoid this by using a try-except block
+
+```{python, eval=FALSE}
+while True:
+	try:
+		a = int(raw_input("enter numerator:"))
+		b = int(raw_input("enter denominator:"))
+		print a/b
+	except ZeroDivisionError as e:
+		print 'denominator cannot be zero. Try again'
+```
+
+```{python, echo=FALSE}
+def divide(a,b):
+  try:
+    print "enter numerator:" + str(a)
+    print "enter denominator:" + str(b)
+    print a/b
+  except ZeroDivisionError as e:
+    print 'denominator cannot be zero. Try again'
+  
+divide(5,0)
+divide(42,5)
+print 'enter numerator:'
+```
+
+looks good. let's break this again. this time we will give invalid input.
+
+```{python, echo=FALSE, error=TRUE}
+a = 'e'
+print 'enter numerator:' + a
+int(a)
+```
+Giving a string instead of a number crashed the program. We can see from the error output, there was a ValueError error. Let's handle that.
+```{python, eval=FALSE}
+while True:
+	try:
+		a = int(raw_input("enter numerator:"))
+		b = int(raw_input("enter denominator:"))
+		print a/b
+	except ZeroDivisionError as e:
+		print 'denominator cannot be zero. Try again'
+	except ValueError as e:
+		print 'please enter numbers'
+```
+
+```{python, echo=FALSE}
+a,b = 'string', 3
+try:
+  print "enter numerator:" + str(a)
+  int(a)
+  print "enter denominator:" + str(b)
+  print a/b
+except ZeroDivisionError as e:
+  print 'denominator cannot be zero. Try again'
+except ValueError as e:
+	print 'please enter numbers'
+
+a,b = 3, 0
+try:
+  print "enter numerator:" + str(a)
+  print "enter denominator:" + str(b)
+  print a/b
+except ZeroDivisionError as e:
+  print 'denominator cannot be zero. Try again'
+except ValueError as e:
+	print 'please enter numbers'
+
+print 'enter numerator:'
+```
 
 # Lab programs
 
@@ -535,3 +729,8 @@ print mean(numbers), median(numbers), mode(numbers)
 ```
 
 \fbox{My text!}
+
+# Appendix
+
+
+https://powerfulpython.com/store/p/restful-api-server/
