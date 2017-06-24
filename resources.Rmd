@@ -8,6 +8,27 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+https://speakerdeck.com/pyconslides/transforming-code-into-beautiful-idiomatic-python-by-raymond-hettinger-1
+excellent short guide to beautiful python
+
+
+short course on building a restful-api-server
+https://powerfulpython.com/store/p/restful-api-server/
+
+Powerful Python-advanced python
+https://www.amazon.com/d/0692878971
+
+https://www.safaribooksonline.com/live-training/courses/python-the-next-level/0636920094203/#schedule
+https://www.safaribooksonline.com/live-training/courses/python-beyond-the-basics/0636920077398/#schedule
+https://www.safaribooksonline.com/learning-paths/learning-path-become/9781491987087
+
+https://www.safaribooksonline.com/library/view/python-beyond-the/9781771373609/video211117.html
+
+https://medium.com/@sinister/https-medium-com-sinister-why-using-a-context-manager-is-a-better-choice-55ccfcecddb8
+
+
+
+
 
 ## Magic methods
 |     Magic Method  | When it gets invoked (example)      |	Explanation

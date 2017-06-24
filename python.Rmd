@@ -298,7 +298,13 @@ name = "sreekanth"
 print name[0]
 print name[1:5] #slicing
 print name + "kolamala" # concatination
-#
+#personal note: concatination does a shallow copy, use should use copy.deepcopy
+a = range(10)
+import copy
+b = copy.deepcopy(a)
+b.append(3)
+print a
+print b
 ```
 
 ## Comprehensions
@@ -575,6 +581,25 @@ print southy.members
 print southy
 ```
 
+## Datahiding
+Languages like C++, Java have public or private class variables. Python has none of them. All class variables are public. However, python programmers follow a naming convention to differentiate between public and private variables. __All variables that start with an underscore are deemmed as private and should not be touched by outside code__.
+
+```{python}
+class Example(object):
+  def __init__(self):
+    self._private_variable = "don't touch me! I'm private"
+    self.public_variable = "I am public"
+    
+example = Example()
+print example.public_variable
+print example._private_variable #works, but never do this
+```
+
+
+
+
+
+
 ## Exception Handling
 Let's write a program to for a simple calculator. Our calculator repeatedly asks 2 numbers and  calculates their division. 
 
@@ -672,6 +697,70 @@ except ValueError as e:
 
 print 'enter numerator:'
 ```
+We can also combine both exceptions into a single block like this:
+```{python, eval=FALSE}
+  except (ZeroDivisionError, ValueError) as e:
+    print 'Bad input. Please try again'
+```
+
+ZeroDivisionError and ValueError are two types of Exceptions. Infact there are derived from the class called Exception. A lot of exceptions are predefined by the language and all of them are derived from the class Exception. So, instead of using these, we can use the super class Exception.
+```{python, eval=FALSE}
+while True:
+	try:
+		a = int(raw_input("enter numerator:"))
+		b = int(raw_input("enter denominator:"))
+		print a/b
+	except Exception as e:
+		print 'Bad input. Please try again'
+```
+However this is bad practice and should never be done. The reason being: this would mask exceptions which the programmer not intented to. Fyi, the above will run infinetely even if you press ctrl+z as that would also be caught as bad input.
+
+##Raising exceptions
+```{python, error=TRUE}
+class Queue(object):
+    def __init__(self):
+        self.elements = []
+
+    def enqueue(self, elem):
+        self.elements.append(elem)
+
+    def deque(self):
+        if not self.elements:
+          raise Exception('cannot deque: empty queue')
+        return self.elements.pop(0)
+
+queue = Queue()
+queue.enqueue(1)
+print queue.deque()
+print queue.deque()
+```
+Notice in the output, the message we coded was printed. We can also raise a more specific exception(like IndexError) instead of the generic superclass Exception. Or we could just create an exception. Let's create a exception called EmptyQueueError.
+
+
+```{python, error=TRUE}
+class EmptyQueueError(Exception): #notice instead of object, we are subclassing Exception
+  pass
+
+class Queue(object):
+    def __init__(self):
+        self.elements = []
+
+    def enqueue(self, elem):
+        self.elements.append(elem)
+
+    def deque(self):
+        if not self.elements:
+          raise EmptyQueueError('cannot deque: empty queue')
+        return self.elements.pop(0)
+
+queue = Queue()
+queue.enqueue(1)
+print queue.deque()
+print queue.deque()
+```
+
+notice instead of object, we are subclassing Exception instead of teh usaul object. This is because we the functionality of the Exception class.
+
 
 # Lab programs
 
