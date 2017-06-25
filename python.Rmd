@@ -8,6 +8,7 @@ header-includes:
 - \fancyhead[CO,CE]{This is fancy header}
 - \fancyfoot[CO,CE]{\copyright \ sreekanth.kolamala@gmail.com}
 - \fancyfoot[LE,RO]{\thepage}
+- \usepackage{marvosym}
 output: pdf_document
 ---
 
@@ -18,6 +19,9 @@ knitr::opts_chunk$set(engine = "python")
 
 #Types
 Python has 5 data types-Numbers, Strings, Lists, Tuple, Dictionary. In this chapter, we will discuss Numbers and Strings. We will see the other 3 in the next chapter.
+
+
+
 
 ##Numbers
 Numbers are further divided into 4:int, long, float, complex. int and long are used to represent whole numbers. float is used for numbers that have a decimal part. Languages like C have double type for really big floating point numbers. But python only has float. 
@@ -153,7 +157,7 @@ print "banana" not in fruits
 
 ```{python}
 number = 24
-print "even" if number % 2 else "odd"
+print "odd" if number % 2 else "even"
 ```
 
 
@@ -423,6 +427,14 @@ def square(number):
 a = square(4) #the value returned by the function can be assigned to a variable.
 print a
 ```
+Functions can return multiple values too.
+```{python}
+def mean_mode_median(numbers):
+  return 2,3,4
+  
+mean, mode, median = mean_mode_median(range(5))
+print mean, mode, median
+```
 
 ```{python}
 def square(number):
@@ -562,9 +574,6 @@ southy = South_Indian_Family(['ram', 'priya', 'ravi'])
 print southy.members
 print southy
 ```
-
-
-
 ```{python, echo=FALSE}
 class Family(object):
   def __init__(self, mems):
@@ -580,6 +589,74 @@ southy = South_Indian_Family(['ram', 'priya', 'ravi'])
 print southy.members
 print southy
 ```
+
+## Overriding
+Inheritance lets us use base class' methods in the derived class. That's very useful. However, sometimes, we might need a more specialized method instead of the default method.
+```{python, error=TRUE}
+class Animal(object):
+  def make_sound(self):
+    print 'animal sound'
+  def eat(self):
+    print 'animal eating'
+
+class Dog(Animal):
+  # this method is overriding the parent class' method
+  def make_sound(self):
+    print 'bow bow'
+  def attack_visitor(self):
+    print 'bak bak'
+
+animal = Animal()
+animal.make_sound()
+animal.eat()
+dog = Dog()
+dog.eat() #the Animal class' eat() will be called, as Dog has not overridden this method.
+dog.make_sound()  #the Dog class' make_sound() will be called. 
+dog.attack_visitor()
+animal.attack_visitor() #error: remember attack_visitor() is not defined in Animal.
+```
+
+## Polymorphism
+```{python}
+def heal(animal):
+  print animal.bp
+  animal.make_sound()
+```
+
+
+```{python, eval=FALSE}
+class Cat(Animal):
+  def make_sound(self):
+    print 'meow meow'
+```
+
+```{python, eval=FALSE}
+cat = Cat()
+heal(cat)
+```
+
+```{python, echo=FALSE}
+class Animal(object):
+  def __init__(self):
+    self.bp = 100
+  def make_sound(self):
+    print 'animal sound'
+  def eat(self):
+    print 'animal eating'
+
+class Cat(Animal):
+  def make_sound(self):
+    print 'meow meow'
+    
+def heal(animal):
+  print animal.bp
+  animal.make_sound()
+  
+cat = Cat()
+heal(cat)
+```
+
+
 
 ## Datahiding
 Languages like C++, Java have public or private class variables. Python has none of them. All class variables are public. However, python programmers follow a naming convention to differentiate between public and private variables. __All variables that start with an underscore are deemmed as private and should not be touched by outside code__.
