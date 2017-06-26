@@ -15,15 +15,95 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(engine = "python")
+knitr::opts_chunk$set(comment = "Out:")
 ```
 
-#Types
+# unit 1
+
+##REPL
+```{python}
+2 + 3
+45 + 21.1
+45/9
+```
+
+```{python, echo=FALSE}
+print 2 + 3
+print 45 + 21.1
+print 45/9
+```
+
+##Keywords
+Each langauge has a set of words that are reserved. They can't be used as variable names. The complete list is given here as referance. you don't need them by heart. This is just for your reference.
+
+| | | |
+------------|-------|-----------|------|----------
+| False 	| class | 	finally |	is | 	return 
+| None 	| continue | 	for |	lambda | 	try 
+| True 	| def | 	from |	nonlocal | 	while 
+| and 	| del | 	global |	not | 	with 
+| as 	| elif | 	 if  |	or | 	yield 
+| assert 	| else | 	 import | 	pass 	 
+| break 	| except | 	 in | 	 raise 
+
+You can also get the complete set of keywords using this program.
+```{python}
+import keyword
+print keyword.kwlist
+```
+
+## Input-output
+```{python}
+print 'some-string'
+print 23
+# to print multiple variables on the same line:
+print 'some-sting', 23, 45.5
+```
+
+```{python, eval=FALSE}
+# Input
+a = raw_input("enter a number:")
+```
+`raw_input()` always takes the input as string. Even if you type numbers, they would be taken as string. So, if you really want to input numbers, you need to convert them. We use the built-in python functions `int()` , `float()` for this.
+```{python, eval=FALSE}
+a = raw_input("enter a number:")
+print a
+print type(a)
+a = int(a)
+print type(a)
+```
+```{python, echo=FALSE}
+a = '23'
+print "enter a number:" + a
+print a
+print type(a)
+a = int(a)
+print type(a)
+```
+Python programmers combine the input and conversion into one line like this:
+```{python, eval=FALSE}
+age = int(raw_input('enter age'))
+height = float(raw_input('enter height'))
+```
+## Indentation
+covered in if section
+```{python, error=TRUE}
+print 'this line will be printed'
+  print 'this will cause indentation error'
+```
+
+We will talk about indentation more when we talk about if statements. But, for now remember to indent all the statements uniformly.
+
+
+
+# unit 2
+##Types
 Python has 5 data types-Numbers, Strings, Lists, Tuple, Dictionary. In this chapter, we will discuss Numbers and Strings. We will see the other 3 in the next chapter.
 
 
 
 
-##Numbers
+###Numbers
 Numbers are further divided into 4:int, long, float, complex. int and long are used to represent whole numbers. float is used for numbers that have a decimal part. Languages like C have double type for really big floating point numbers. But python only has float. 
 ```{python}
 a = 12
@@ -39,7 +119,7 @@ print type(d)
 ```
 The data type complex represent mathematical complex numbers that have a real and an imaginary part.
 
-##Strings
+###Strings
 Python doesn't differete between single quotes and double quotes. Unlike in C, the is not difference between char ans string-both are same.
 ```{python}
 name = "sreekanth"
@@ -54,7 +134,7 @@ print qoute
 ```{python, eval=FALSE}
 qoute = "He said "I am not going" to her" #this will not work.
 ```
-## Booleans
+###Booleans
 Boolean variables can be assigned either `True` or `False`
 ```{python}
 flag = True
@@ -151,7 +231,7 @@ print "apple" in fruits
 print "banana" not in fruits
 ```
 
-## Terary operator
+### Terary operator
 
 > a if condition else b
 
@@ -161,7 +241,7 @@ print "odd" if number % 2 else "even"
 ```
 
 
-### Control flow
+## Control flow
 ```{python}
 a,b = 3,2
 if(a > b):
@@ -229,7 +309,7 @@ print "program end"
 Notice that this program produces nothing. When `i=1`, the `if` condition is True, and break statement is hit. When a break statement is hit, the loop, the break statement is in, is immediately exited.  
 
 # Lists
-lists are similar to C arrays but more powerful. Lists store multiple values. unlike C arrays, elements in a python list don't have be of the same type. lists are indexed from 0.
+Lists are similar to C arrays but more powerful. Lists store multiple values. unlike C arrays, elements in a python list don't have be of the same type. lists are indexed from 0.
 ```{python}
 fruits = ['apple', 'mango', 'pineapple']
 numbers = [10, 20, 30, 40, 50]
@@ -460,7 +540,7 @@ max(20,30,60,70,40,50)
 max(20)
 max()
 ```
-you can also mix normal parameters with variable number of parameters
+You can also mix normal parameters with variable number of parameters
 ```{python, error=TRUE}
 def max(first, *numbers):
   result = first
@@ -495,6 +575,14 @@ from math import sqrt #only importing sqrt and not the whole of math module.
 print sqrt(25)  #full name not required.
 print pi  #can't use anything else.
 ```
+We can also give alias(shortcut name) to the imported module. This way, we could use the shortcut instead of the full module name.
+```{python}
+import math as m
+print m.sqrt(25)
+```
+
+
+
 Some of these libraries are loaded along with python and hence need no import. Some examples:
 
 # Object Oriented Programming OOP in Python
@@ -562,6 +650,8 @@ print family[1]
 ```
 An excellent guide for magic methods(don't forget to check the table towards the end of the article): http://minhhh.github.io/posts/a-guide-to-pythons-magic-methods
 
+self-note: discuss the keyword is
+
 ## Inheritance
 
 Let's create a special kind of family: south indian family
@@ -617,12 +707,15 @@ animal.attack_visitor() #error: remember attack_visitor() is not defined in Anim
 ```
 
 ## Polymorphism
+\indent Lets code up a class Doctor that heals the animal when it is sick. To keep this simple, lets assume htat the doctor checks for the animal's bp(blood pressure) and the sound that the animal makes.
 ```{python}
-def heal(animal):
-  print animal.bp
-  animal.make_sound()
+class Doctor(object):
+  def heal(self, animal):
+    print animal.bp
+    animal.make_sound()
 ```
-
+\setlength{\parindent}{5ex} This Doctor works great. All animal lovers are going to this doctor for medical help.
+Few years later, a cat is 
 
 ```{python, eval=FALSE}
 class Cat(Animal):
@@ -632,7 +725,8 @@ class Cat(Animal):
 
 ```{python, eval=FALSE}
 cat = Cat()
-heal(cat)
+doctor = Doctor()
+doctor.heal(cat)
 ```
 
 ```{python, echo=FALSE}
@@ -647,13 +741,15 @@ class Animal(object):
 class Cat(Animal):
   def make_sound(self):
     print 'meow meow'
+
+class Doctor(object):
+  def heal(self, animal):
+    print animal.bp
+    animal.make_sound()
     
-def heal(animal):
-  print animal.bp
-  animal.make_sound()
-  
 cat = Cat()
-heal(cat)
+doctor = Doctor()
+doctor.heal(cat)
 ```
 
 
@@ -730,7 +826,7 @@ divide(42,5)
 print 'enter numerator:'
 ```
 
-looks good. let's break this again. this time we will give invalid input.
+Looks good. let's break this again. this time we will give invalid input.
 
 ```{python, echo=FALSE, error=TRUE}
 a = 'e'
@@ -836,12 +932,13 @@ print queue.deque()
 print queue.deque()
 ```
 
-notice instead of object, we are subclassing Exception instead of teh usaul object. This is because we the functionality of the Exception class.
+Notice instead of object, we are subclassing Exception instead of teh usaul object. This is because we the functionality of the Exception class.
 
+\setlength{\parindent}{0ex}
 
 # Lab programs
 
-##Exercise 2 - Operations
+##Exercise 2 Operations
 
 a) Write a program to compute distance between two points taking input from the user
 (Pythagorean Theorem)
@@ -857,8 +954,66 @@ print distance
 
 b) Write a program add.py that takes 2 numbers as command line arguments and prints its sum.
 
+##Exercise 3 Control Flow
+a) Write a Program for checking whether the given number is a even number or not.
+```{python,eval=FALSE}
+number = int(raw_input("enter a number:"))
+print "odd" if number % 2 else "even"
+```
+```{python, echo=FALSE}
+number = 24
+print "enter a number:" + str(number)
+print "odd" if number % 2 else "even"
+```
 
-##Exercise 8 - Functions
+b) Using a for loop, write a program that prints out the decimal equivalents of 1/2, 1/3, 1/4, . . . ,
+1/10
+
+```{python}
+for i in range(2, 11):
+    print 1.0/i
+```
+
+c) Write a program using a for loop that loops over a sequence. What is sequence ?
+```{python}
+numbers = [2,3,4,5]
+for i in numbers:
+    print i
+```
+
+```{python}
+numbers = (2,3,4,5)
+for i in numbers:
+    print i
+```
+
+d) Write a program using a while loop that asks the user for a number, and prints a countdown
+from that number to zero.
+```{python, eval=FALSE}
+number = int(raw_input("enter any number:"))
+for i in range(number, -1, -1):
+    print i
+```
+```{python, echo=FALSE}
+number = 5
+print "enter any number:" + str(number)
+for i in range(number, -1, -1):
+    print i
+```
+
+Alternate method
+```{python, eval=FALSE}
+number = int(raw_input("enter any number:"))
+for i in reversed(range(number + 1)):
+    print i
+```
+```{python, echo=FALSE, eval=FALSE}
+number = 5
+print "enter any number:" + str(number)
+for i in reversed(range(number + 1)):
+    print i
+```
+##Exercise 8 Functions
 
 a) Write a function ball_collide that takes two balls as parameters and computes if they are
 colliding. Your function should return a Boolean representing whether or not the balls are
