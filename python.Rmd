@@ -9,6 +9,9 @@ header-includes:
 - \fancyfoot[CO,CE]{\copyright \ sreekanth.kolamala@gmail.com}
 - \fancyfoot[LE,RO]{\thepage}
 - \usepackage{marvosym}
+- \usepackage{multicol}
+- \newcommand{\btwocol}{\begin{multicols}{2}}
+- \newcommand{\etwocol}{\end{multicols}}
 output: pdf_document
 ---
 
@@ -159,6 +162,7 @@ a,b = b,a
 #this is a popular way of swapping numbers in python.
 print a,b
 ```
+
 ### Arithmetic Operators
 They are `+ - * / % **`.
 `a%b` is gives the reminder of when a is divided by b. `a**b` gives a to power of b.
@@ -217,6 +221,7 @@ print (condition and False)
 |     False  | False       | False
 
 ###Membership Operator
+
 The `in` operator is used to determine variable consists of other.
 ```{python}
 isPresent = "sree" in "sreekanth"
@@ -230,6 +235,7 @@ print "apple" in fruits
 #to find out if a variable is not present in another
 print "banana" not in fruits
 ```
+
 
 ### Terary operator
 
@@ -680,6 +686,20 @@ print southy.members
 print southy
 ```
 
+```{python}
+#multiple inheritance
+class A(object):
+  pass
+
+class B(object):
+  pass
+  
+class C(A,B):
+  pass
+
+```
+
+
 ## Overriding
 Inheritance lets us use base class' methods in the derived class. That's very useful. However, sometimes, we might need a more specialized method instead of the default method.
 ```{python, error=TRUE}
@@ -760,7 +780,7 @@ Languages like C++, Java have public or private class variables. Python has none
 ```{python}
 class Example(object):
   def __init__(self):
-    self._private_variable = "don't touch me! I'm private"
+    self._private_variable = "Don't touch me! I'm private"
     self.public_variable = "I am public"
     
 example = Example()
@@ -809,7 +829,7 @@ while True:
 		b = int(raw_input("enter denominator:"))
 		print a/b
 	except ZeroDivisionError as e:
-		print 'denominator cannot be zero. Try again'
+		print 'Denominator cannot be zero. Try again'
 ```
 
 ```{python, echo=FALSE}
@@ -841,9 +861,9 @@ while True:
 		b = int(raw_input("enter denominator:"))
 		print a/b
 	except ZeroDivisionError as e:
-		print 'denominator cannot be zero. Try again'
+		print 'Denominator cannot be zero. Try again'
 	except ValueError as e:
-		print 'please enter numbers'
+		print 'Please enter numbers'
 ```
 
 ```{python, echo=FALSE}
@@ -899,7 +919,7 @@ class Queue(object):
 
     def deque(self):
         if not self.elements:
-          raise Exception('cannot deque: empty queue')
+          raise Exception('Cannot deque: Empty queue')
         return self.elements.pop(0)
 
 queue = Queue()
@@ -1013,6 +1033,62 @@ print "enter any number:" + str(number)
 for i in reversed(range(number + 1)):
     print i
 ```
+##Exercise 5 DS
+
+a) Write a program to count the numbers of characters in the string and store them in a
+dictionary data structure
+```{python, eval=FALSE}
+name = raw_input("enter a string:")
+def countWordFrequency(name):
+    wordFrequency = {}
+    for char in name:
+        if char in wordFrequency:
+            wordFrequency[char] += 1
+        else:
+            wordFrequency[char] = 1
+    return wordFrequency
+print countWordFrequency(name)
+```
+```{python, echo=FALSE}
+name = 'sreekanth kolamala'
+print "enter a string:" + name
+def countWordFrequency(name):
+    wordFrequency = {}
+    for char in name:
+        if char in wordFrequency:
+            wordFrequency[char] += 1
+        else:
+            wordFrequency[char] = 1
+    return wordFrequency
+print countWordFrequency(name)
+```
+Alternate solution
+```{python}
+import collections
+def countFrequency(name):
+    wordFrequency = collections.defaultdict(int)
+    for char in name:
+        wordFrequency[char] += 1
+    return dict(wordFrequency)
+```
+Alternate solution
+```{python, eval=FALSE}
+import collections
+name = raw_input("enter a string:")
+print dict(collections.Counter(name))
+```
+```{python, echo=FALSE}
+import collections
+name = 'sreekanth kolamala'
+print "enter a string:" + name
+print dict(collections.Counter(name))
+```
+
+
+b) Write a program to use split and join methods in the string and trace a birthday with a
+dictionary data structure.
+
+
 ##Exercise 8 Functions
 
 a) Write a function ball_collide that takes two balls as parameters and computes if they are
@@ -1048,6 +1124,77 @@ def mode(numbers):
 numbers = [2,3,5,2,10,25]
 print mean(numbers), median(numbers), mode(numbers)
 ```
+
+## Exercise 15 Testing
+
+a) Write a test-case to check the function even-numbers which return True on passing a list of all even numbers
+```{python}
+from unittest import TestCase, main
+
+def even_numbers(numbers):
+    numbers = map(lambda x: not x % 2, numbers)
+    return all(numbers)
+
+class EvenTestCase(TestCase):
+	def test_even_numbers_empty_list(self):
+		self.assertEqual(True, even_numbers([]))
+
+	def test_even_numbers_all_even_numbers(self):
+		self.assertTrue(even_numbers(range(0,25,2)))
+
+	def test_even_numbers_all_one_odd_number(self):
+		self.assertFalse(even_numbers([2,4,7,2,10]))
+		
+main()
+```
+Ideally, actual code and test code shouldn't be written in the same file. The test code should be in a separate file. We will use this approach in the next exercise.
+
+b) Write a test-case to check the function reverse_sting which returns the reversed string
+
+```{python, eval=FALSE}
+#write this code in a file named rever.py
+def reverse_string(sentence):
+	return ''.join(reversed(sentence))
+```
+
+```{python, eval=FALSE}
+#write this code in a file named test_rever.py
+#and then run this file on the python interpreter: run test_rever.py
+from unittest import TestCase, main
+from rever import reverse_string
+
+class ReverseStringTestCase(TestCase):
+	def test_reverse_string_empty_string(self):
+		self.assertEqual('', reverse_string(''))
+
+	def test_reverse_string_random_string(self):
+		self.assertEqual('random', reverse_string('modnar'))
+
+	def test_reverse_string_random_string_not_equal(self):
+		self.assertNotEqual('ranmod', reverse_string('modnar'))
+
+if __name__ == '__main__':
+	main()
+```
+
+```{python, echo=FALSE}
+from unittest import TestCase, main
+def reverse_string(sentence):
+	return ''.join(reversed(sentence))
+	
+class ReverseStringTestCase(TestCase):
+	def test_reverse_string_empty_string(self):
+		self.assertEqual('', reverse_string(''))
+
+	def test_reverse_string_random_string(self):
+		self.assertEqual('random', reverse_string('modnar'))
+
+	def test_reverse_string_random_string_not_equal(self):
+		self.assertNotEqual('ranmod', reverse_string('modnar'))
+
+main()
+```
+
 
 \fbox{My text!}
 
