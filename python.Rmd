@@ -37,7 +37,7 @@ print 45/9
 ```
 
 ##Keywords
-Each langauge has a set of words that are reserved. They can't be used as variable names. The complete list is given here as referance. you don't need them by heart. This is just for your reference.
+Each langauge has a set of words that are reserved. They can't be used as variable names. The complete list is given here as referance. you don't need to know them by heart. This is just for your reference.
 
 | | | |
 ------------|-------|-----------|------|----------
@@ -954,9 +954,191 @@ print queue.deque()
 
 Notice instead of object, we are subclassing Exception instead of teh usaul object. This is because we the functionality of the Exception class.
 
+# Testing
+Consider the following program to print whether a number is even or not
+```{python}
+def even(num):
+  if num % 2 == 0:
+    print num + ' is even'
+  else:
+    print str(num) + ' is odd'
+```
+Now let's call with an odd number
+```{python,eval=FALSE}
+even(3)
+```
+```{python, echo=FALSE}
+def even(num):
+  if num % 2 == 0:
+    print num + ' is even'
+  else:
+    print str(num) + ' is odd'
+
+even(3)
+```
+Now, let's call this function with an even number.
+```{python,eval=FALSE}
+even(4)
+```
+```{python, error=TRUE, echo=FALSE}
+def even(num):
+  if num % 2 == 0:
+    print num + ' is even'
+  else:
+    print str(num) + ' is odd'
+
+even(4)
+```
+I purposefully placed an error on line 3 of the even() function. num is number and cannot be directly concatinated with a string. It should be converted into a string first. We did this on line 5. This is the reason that the program did not report error for the `even(3)`, because the program never hit line 3. The if condition failed and line 3 was never executed. Whereas `even(4)` was called, if condition passed and line 3 was hit. And then, the error came up. 
+
+In staticly typed langauages like C and java, this error would have been a compile time error. In python, it's a runtime error. Hence, we can't be sure that our code is error-free till we all the lines in our code are executed. This is where testing comes. No peice of software can be written in python without a through testing. 
+Luckily, Testing in python is easy.
+
+Let's say we want to test the function reverse_string(). 
+```{python}
+def reverse_string(sentence):
+	return ''.join(reversed(sentence))
+```
+What this function does is important but not how it does. This function reverses a string passed to it. We could have 3 test cases:
+
+1) a random non-zero length string as input
+
+2) a random non-zero length string with special symbols as input
+
+3) an empty string
+
+let's write the first test case and run it. We use the module unittest-a testing framework. We write test code seperate from our actual code. We create a class to hold all our test cases. you can name it everything but it should inherit from the TestCase class. Here, we name it `ReverseStringTestCase`.
+
+```{python, eval=FALSE}
+from unittest import TestCase, main
+
+class ReverseStringTestCase(TestCase):
+	def test_reverse_string_random_string(self):
+		self.assertEqual('random', reverse_string('modnar'))
+```
+
+
+Each test case is written as a method. `test_reverse_string_random_string()` will test the first test case. Remember our class inherited from the class TestCase. The cool thing about this class is it has few helper functions like `assertEqual(a,b)` that throws an error if a and b are not equal. 
+
+In our test case, we call `assertEqual('random', reverse_string('modnar'))`. If reverse_string() works correct, it should return 'random' which would be equal to the first argument of `assertEqual()`. Else, it throws an error and the test case will fail. 
+
+We run the test cases by calling `main()`. This is not a function we wrote, but is imported from unittest.
+```{python, eval=FALSE}
+main()
+```
+```{python, echo=FALSE}
+from unittest import TestCase, main
+def reverse_string(sentence):
+	return ''.join(reversed(sentence))
+	
+class ReverseStringTestCase(TestCase):
+	def test_reverse_string_empty_string(self):
+		self.assertEqual('', reverse_string(''))
+
+main()
+```
+The output says 'ran 1 test' and gives the status 'OK'. This means all the test cases were successful. Our code has no bugs. Let's add the other two test cases as two methods and run them.
+```{python, eval=FALSE}
+from unittest import TestCase, main
+
+class ReverseStringTestCase(TestCase):
+	def test_reverse_string_empty_string(self):
+		self.assertEqual('', reverse_string(''))
+
+	def test_reverse_string_random_string(self):
+		self.assertEqual('random', reverse_string('modnar'))
+
+	def test_reverse_string_random_string_not_equal(self):
+		self.assertNotEqual('ranmod', reverse_string('modnar'))
+
+main()
+```
+
+```{python, echo=FALSE}
+from unittest import TestCase, main
+def reverse_string(sentence):
+	return ''.join(reversed(sentence))
+	
+class ReverseStringTestCase(TestCase):
+	def test_reverse_string_empty_string(self):
+		self.assertEqual('', reverse_string(''))
+
+	def test_reverse_string_random_string(self):
+		self.assertEqual('random', reverse_string('modnar'))
+
+	def test_reverse_string_random_string_not_equal(self):
+		self.assertNotEqual('ranmod', reverse_string('modnar'))
+
+main()
+```
+
+We get an 'OK' status. All tests are passed. Now, Let's break things: Let's modify the reverse_string() method to give an incorrect result and see how the tests run.
+```{python}
+def reverse_string(sentence):
+	return ''
+```
+To run the tests we call `main()`:
+```{python, eval=FALSE}
+main()
+```
+
+```{python, error=TRUE, echo=FALSE}
+from unittest import TestCase, main
+def reverse_string(sentence):
+	return ''
+	
+class ReverseStringTestCase(TestCase):
+	def test_reverse_string_empty_string(self):
+		self.assertEqual('', reverse_string(''))
+
+	def test_reverse_string_random_string(self):
+		self.assertEqual('random', reverse_string('modnar'))
+
+	def test_reverse_string_random_string_not_equal(self):
+		self.assertNotEqual('ranmod', reverse_string('modnar'))
+
+main()
+```
+As expected, one of the test cases failed.
 \setlength{\parindent}{0ex}
 
 # Lab programs
+
+## Exercise 1 Basics
+
+a) Running instructions in Interactive interpreter and a Python Script
+```{python}
+2 + 3
+45 - 21.1
+45/9 + 2*1.2
+```
+
+```{python, echo=FALSE}
+print 2 + 3
+print 45 - 21.1
+print 45/9 + 2*1.2
+```
+Write the above lines in file named script.py and that file with the following command.
+```{python, eval=FALSE}
+run script.py
+# output omitted as it would be the same as above
+```
+
+b) Write a program to purposefully raise Indentation Error and Correct it
+```{python, error=TRUE}
+#with error
+print 42
+  print 'some-string'
+print True
+```
+
+```{python}
+#with correction
+print 42
+print 'some-string'
+print True
+```
+
 
 ##Exercise 2 Operations
 
@@ -1033,32 +1215,32 @@ print "enter any number:" + str(number)
 for i in reversed(range(number + 1)):
     print i
 ```
-##Exercise 4 - Control Flow - Continued
+##Exercise 4 Control Flow - Continued
 
 a) Find the sum of all the primes below two million.
 ```{python, eval=FALSE}
 def primes_till(limit):
-    numbers = {2}
-    numbers.update(set(range(3, limit, 2)))
+    primes = {2}
+    primes.update(set(range(3, limit, 2)))
     for i in range(3, limit/2):
-        numbers.difference_update(range(2*i, limit, i))
-    return numbers
+        primes.difference_update(range(2*i, limit, i))
+    return primes
+
 print sum(primes_till(2000000))
 ```
 Each new term in the Fibonacci sequence is generated by adding the previous two terms. By
 starting with 1 and 2, the first 10 terms will be:
 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
+
 b) By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 find the sum of the even-valued terms.
 ```{python, eval=FALSE}
 def fibonacci(limit):
-    numbers = []
-    one = 1
-    two = 2
+    series, one, two = [], 1, 2
     while one <= limit:
-        numbers.append(one)
+        series.append(one)
         one, two = two, one + two
-    return numbers
+    return series
 
 print sum(filter(lambda x: x % 2 == 0, fibonacci(4000000)))
 ```
@@ -1118,7 +1300,7 @@ print dict(collections.Counter(name))
 b) Write a program to use split and join methods in the string and trace a birthday with a
 dictionary data structure.
 
-##Exercise - 7 Files
+##Exercise 7 Files
 
 a) Write a program to print each line of a file in reverse order.
 ```{python}
@@ -1183,7 +1365,7 @@ def mode(numbers):
 numbers = [2,3,5,2,10,25]
 print mean(numbers), median(numbers), mode(numbers)
 ```
-##Exercise - 9 Functions - Continued
+##Exercise 9 Functions - Continued
 
 a) Write a function nearly_equal to test whether two strings are nearly equal. Two strings a and b are nearly equal when a can be generated by a single mutation on b.
 
@@ -1241,7 +1423,8 @@ print unique(numbers)
 
 
 ## Exercise 10 Functions - Problem Solving
-a\) Write a function cumulative_product to compute cumulative product of a list of numbers.
+
+###a\) Write a function cumulative_product to compute cumulative product of a list of numbers.
 ```{python}
 def cumulative_product(numbers):
     result = 1
@@ -1251,7 +1434,7 @@ def cumulative_product(numbers):
 
 print cumulative_product(range(1,5))
 ```
-### Alternate solution
+#### Alternate solution
 
 ```{python}
 def cumulative_product(numbers):
@@ -1261,7 +1444,7 @@ def cumulative_product(numbers):
 print cumulative_product(range(1,5))
 ```
 
-b) Write a function reverse to reverse a list. Without using the reverse function.
+###b\) Write a function reverse to reverse a list. Without using the reverse function.
 
 ```{python}
 def reverse(elements):
@@ -1273,7 +1456,7 @@ def reverse(elements):
     
 print reverse([1,2,3,4,5])
 ```
-###Alternate solution
+#### Alternate solution
 
 ```{python}
 def reverse(elements):
@@ -1298,7 +1481,7 @@ print lcm(3, 5)
 ```
 
 
-## Exercise 11 - Multi-D Lists
+## Exercise 11 Multi-D Lists
 
 a) Write a program that defines a matrix and prints
 ```{python}
@@ -1447,7 +1630,7 @@ class ReverseStringTestCase(TestCase):
 
 main()
 ```
-##Exercise - 16 - Advanced
+##Exercise 16 Advanced
 
 a) Build any one classical data
 
