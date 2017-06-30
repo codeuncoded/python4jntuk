@@ -22,8 +22,36 @@ knitr::opts_chunk$set(comment = "Out:")
 ```
 
 # unit 1
+## History of python
+Python was created by Guido van Rossum in 1991. 
+
+## Need of python programming
+C, C++ are powerful langauges. langauges that can be used to write a variaty of software. they give you control of the machine and the very minitue control the system. But, they are very low level. we need to specify very small detail. For example, we have to create and manage memory requirement, object destruction etc, when all we need to do is save a few objects. 
+
+C, C++ syntax makes writing code very lengthly. C, C++ focus on reducing memory, running programs fast etc. Python's focus is to reduce developer time-time taken by the programmer to create software. C's 20 line code would be 5 or less lines long.
+
+##Applications
+Python's concise code makes it real quick to write software. It's high level. Python's is used for the real software that we see often in our day-to-day life.
+
+####web development
+Django is popular python framework(a big libraby is called a framework) that simplifies build websites like amazon or flipkart. 
+
+####Data science and maching learning
+Data science is different from the general programming. In general programming, finding out the average of subjects marks is a typical programming. Data science trys to predict the answer to question 'when will you come to college tommorow?' It does it by observing previous data. Since you came on 8:30 everyday for the past 6 months, you will come tommorow at 8:30. This is simple problem but typical problems in this field are like 'what is chance of getting cancer if you have a family history?' 'what will the whether be today?' etc. Two langauges dominate this field - Python and R. Both of which are in your sylabus. 
+
+####Gaming and gui applications
+The famous game Civiliztion IV where you get build an empire was written in python.
+
+####Internet of Things(IoT)
+Our calculators are computers. Not as powerful as our laptops but still are computers. Iot is a technology where, small calculator sized but more powerful computers are attached everyday devices like TV, Fridge, AC to make them smart. The smart house where you can voice operate lights, doors, music is becuase of iot. And, python is the primary language of this field.
+
+####Natural language processing
+Did you try giving voice commands to your smart phone? Isn't it cool? the phone listens and finds out what you are talking out. It does this even if an acsent is present. This field of find out what humans are saying is called natural language processing. Python has cool librabies for this too.
 
 ##REPL
+Download python from here: https://www.python.org/downloads/. JNTUK does not specific which version to download. Python has two main versions. Python 2 and python 3. Download python 2. At the time of writing this book(July 2017), the latest verision was 2.7.13. Once you download the exe file, just double click and install. This should be very easily.
+
+
 ```{python}
 2 + 3
 45 + 21.1
@@ -49,8 +77,8 @@ Each langauge has a set of words that are reserved. They can't be used as variab
 | assert 	| else | 	 import | 	pass 	 
 | break 	| except | 	 in | 	 raise 
 
-You can also get the complete set of keywords using this program.
-```{python}
+<!-- You can also get the complete set of keywords using this program. -->
+```{python, eval=FALSE , echo=FALSE}
 import keyword
 print keyword.kwlist
 ```
