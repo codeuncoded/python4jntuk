@@ -23,7 +23,7 @@ knitr::opts_chunk$set(comment = "Out:")
 
 # unit 1
 ## History of python
-Python was created by Guido van Rossum in 1991. 
+Python was created by Guido van Rossum in 1991.
 
 ## Need of python programming
 C, C++ are powerful langauges. langauges that can be used to write a variaty of software. they give you control of the machine and the very minitue control the system. But, they are very low level. we need to specify very small detail. For example, we have to create and manage memory requirement, object destruction etc, when all we need to do is save a few objects. 
@@ -48,21 +48,80 @@ Our calculators are computers. Not as powerful as our laptops but still are comp
 ####Natural language processing
 Did you try giving voice commands to your smart phone? Isn't it cool? the phone listens and finds out what you are talking out. It does this even if an acsent is present. This field of find out what humans are saying is called natural language processing. Python has cool librabies for this too.
 
+##Setup
+Download python from here: https://www.python.org/downloads/. 
+
+JNTUK does not specific which version to download. Python has two main versions. Python 2 and python 3. Download python 2. At the time of writing this book(July 2017), the latest verision was 2.7.13. Once you download the exe file, just double click and install. This should be very easily.
+
+<!-- ![Install Python](./python download_LI.jpg) -->
+
+Click on windows start and find python. In windows 7 and above, you could just type in python and in the search results something like **python(command line)** will come up. Click on that, and a black screen will come. That is the **python interpreter**. That is where we will run all our python code. We will open this black screen each time we need to do some coding, so become comfortable opening up this application.
+
+
 ##REPL
-Download python from here: https://www.python.org/downloads/. JNTUK does not specific which version to download. Python has two main versions. Python 2 and python 3. Download python 2. At the time of writing this book(July 2017), the latest verision was 2.7.13. Once you download the exe file, just double click and install. This should be very easily.
-
-
-```{python}
-2 + 3
+Open the **python interpreter** and type in the following one line at a time:
+```{#numCode .python .numberLines}
+print 2 + 3
+print 'sreekanth'
 45 + 21.1
 45/9
 ```
-
 ```{python, echo=FALSE}
 print 2 + 3
 print 45 + 21.1
 print 45/9
 ```
+Each line you typed above is a command for the python interpreter. It reads your command, evaluates it and prints the result. when you typed 2 + 3, python took this command, calculated the sum and then printed it. Again the same steps of reading, evaluating, printing happened for the second command. This loop is called the **read-eval-print** loop. And the python interpreter is also called the **python repl**. The nice thing about python repl is it works as a calculator as seen above. 
+
+you can even type in a complex expression 
+```{python}
+print 'sree' in 'sreekanth'
+```
+Don't worry what this expression does. For now, just remember you can type **any** python expression.
+
+you can type any python expression
+
+##Running python scripts
+save the previous code listing into a file and name it script.py. run that file using the command 
+```{python, eval=FALSE}
+run script.py
+```
+
+All python files should end with '.py'. you can give then any name(following the rules of variable naming).
+
+##Variables and Assignment
+In programming, we often need to save some number, some information somewhere so that we can use it later. Variables are used to save such infomation.
+```{python}
+age = 32
+name = 'sreekanth'
+```
+Here, `age` is variable to which the infomation 32 is saved. `name` is another variable to which the infomation 'sreekanth' is saved. we can see what infomation a particular variable has simply by printing them(don't worry about the quotes, we will get to that when we learn about strings).
+```{python, eval=FALSE}
+print age
+print name
+```
+```{python, echo=FALSE}
+age = 32
+name = 'sreekanth'
+print age
+print name
+```
+We could also modify the infomation assigned to a variable.
+```{python, eval=FALSE}
+age = age + 10
+print age
+name = name + 'kolamala'
+print name
+```
+```{python, echo=FALSE}
+age = 32
+age = age + 10
+print age
+```
+Here, we are assigning the variable age, the previously saved age and a 10 more. So, now the variable age would have the infomation 42.
+
+If you are familar with C or java, you would noticed the is not variable declaration like `int age = 32;`. In python, you don't declare variables before assigning some infomation. you just use them. Also, the semicolon\(`;`\) is optional in python-you can use it but is not required. 
+
 
 ##Keywords
 Each langauge has a set of words that are reserved. They can't be used as variable names. The complete list is given here as referance. you don't need to know them by heart. This is just for your reference.
@@ -70,12 +129,12 @@ Each langauge has a set of words that are reserved. They can't be used as variab
 | | | |
 ------------|-------|-----------|------|----------
 | False 	| class | 	finally |	is | 	return 
-| None 	| continue | 	for |	lambda | 	try 
-| True 	| def | 	from |	nonlocal | 	while 
+|  in	| continue | 	for |	lambda | 	try 
+| True 	| def | 	from |	raise | 	while 
 | and 	| del | 	global |	not | 	with 
 | as 	| elif | 	 if  |	or | 	yield 
 | assert 	| else | 	 import | 	pass 	 
-| break 	| except | 	 in | 	 raise 
+| break 	| except 	  
 
 <!-- You can also get the complete set of keywords using this program. -->
 ```{python, eval=FALSE , echo=FALSE}
@@ -130,9 +189,6 @@ We will talk about indentation more when we talk about if statements. But, for n
 # unit 2
 ##Types
 Python has 5 data types-Numbers, Strings, Lists, Tuple, Dictionary. In this chapter, we will discuss Numbers and Strings. We will see the other 3 in the next chapter.
-
-
-
 
 ###Numbers
 Numbers are further divided into 4:int, long, float, complex. int and long are used to represent whole numbers. float is used for numbers that have a decimal part. Languages like C have double type for really big floating point numbers. But python only has float. 
@@ -588,6 +644,57 @@ max(20,30,60,70,40,50)
 max(20)
 max() #this will throw an error
 ```
+
+## Scope
+Variables declared(appear for the first time in code) in the function(known as local variables) are not accessable outside the function.
+```{python, error=TRUE}
+def some_function():
+  variable = 'this variable is available only inside the function some_function()'
+  print variable
+function()
+print variable
+```
+Vaariables declared outside the function(known as global variables) are available inside a function but can't be modified directly.
+```{python}
+variable = 'global_variable'
+def function():
+    print variable
+
+function()
+```
+If you try to modify, python will think that you are creating a new **local variable** that coincidentally has the same name as the global varaible.
+```{python}
+variable = 'global_variable'
+def function():
+    # this age is different from the one declared in the global context
+    variable = 'local_variable'
+    print variable
+print 'variable outside function before function call:', variable
+function()
+print 'age outside function after function call:', variable
+```
+To use and modify a global variable, you need to declare it as global first. we do that by using the keyword **global**.
+```{python}
+global_variable = 10
+def function():
+    global global_variable
+    global_variable = 20  #this change will be visiable in the global variable
+
+function()
+print global_variable
+```
+
+<!-- One last thing: the **nonlocal** keyword: is used to define scope that is inbetween global and local. 
+```{python, eval=FALSE}
+def outer_fun():
+  fun_var = 10
+  def inner_fun():
+    nonlocal fun_var
+    fun_var =  20
+  print fun_var
+```
+In the code example, a function is defined within other function. This is possible in python. The inner_fun() is said to be in the enclosing context of the outer_function(). The variable `fun_var` is not inner_fun() but is also not in the global context. It is in the outer_fun(). To use variables defined in the enclosing context, we use the keyword nonlocal.
+-->
 
 ## Import statements
 Often times, instead of writing code ourselves, we could you code written by others. This code is available in the form of libraries. We need to declare them before using them by writing an import statement. Its syntax:
@@ -1328,6 +1435,8 @@ print dict(collections.Counter(name))
 b) Write a program to use split and join methods in the string and trace a birthday with a
 dictionary data structure.
 
+I don't understand the question. Since can't give an answer. Sorry.
+
 ##Exercise 7 Files
 
 a) Write a program to print each line of a file in reverse order.
@@ -1393,6 +1502,7 @@ def mode(numbers):
 numbers = [2,3,5,2,10,25]
 print mean(numbers), median(numbers), mode(numbers)
 ```
+
 ##Exercise 9 Functions - Continued
 
 a) Write a function nearly_equal to test whether two strings are nearly equal. Two strings a and b are nearly equal when a can be generated by a single mutation on b.
@@ -1587,6 +1697,9 @@ matB = [[3,2,1],
 
 print multiply_matrix(matA, matB)
 ```
+Exercise - 14 GUI, Graphics
+1. Write a GUI for an Expression Calculator using tk
+2. Write a program to implement the following figures using turtle
 
 
 ## Exercise 15 Testing
@@ -1690,6 +1803,36 @@ print queue
 print 'queue has', len(queue), 'elements'
 ```
 b) Write a program to solve knapsack
+```{python}
+def knapsack(items, max_weight):
+    best_values = [[0] * (max_weight + 1)
+                  for _ in range(len(items) + 1)]
+
+    for i, (value, weight) in enumerate(items):
+        for capacity in range(max_weight + 1):
+            if weight > capacity:
+                best_values[i+1][capacity] = best_values[i][capacity]
+            else:
+                candidate1 = best_values[i][capacity]
+                candidate2 = best_values[i][capacity - weight] + value
+                best_values[i+1][capacity] = max(candidate1, candidate2)
+
+    reconstruction = []
+    j = max_weight
+    for i in range(len(items), 0, -1):
+        if best_values[i][j] != best_values[i - 1][j]:
+            reconstruction.append(items[i - 1])
+            j -= items[i - 1][1]
+
+    reconstruction.reverse()
+
+    return best_values[len(items)][max_weight], reconstruction
+    
+items = [(1,3), (3,5), (5,4), (8,3)]
+best_value, best_items = knapsack(items, 8)
+print 'best value is', best_value
+print 'best items are', best_items
+```
 
 \fbox{My text!}
 
