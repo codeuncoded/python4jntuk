@@ -188,6 +188,7 @@ We will talk about indentation more when we talk about if statements. But, for n
 
 # unit 2
 ##Types
+Varaibles based on what operations we can do on them are group into so called **data types**.
 Python has 5 data types-Numbers, Strings, Lists, Tuple, Dictionary. In this chapter, we will discuss Numbers and Strings. We will see the other 3 in the next chapter.
 
 ###Numbers
@@ -218,7 +219,7 @@ qoute = "qoute:" + 'He said "I am not going" to her'
 print qoute
 ```
 
-```{python, eval=FALSE}
+```{python, error=TRUE}
 qoute = "He said "I am not going" to her" #this will not work.
 ```
 ###Booleans
@@ -260,6 +261,7 @@ They are `+ - * / % **`.
 | % | 5%2 | 1
 | `**` | 5\*\*2 | 25
 ### Relational Operators
+Relational operators include `>, >=, <, <=, ==, !=`. They take 2 operands and return a boolean result(True or False). For example, the __greater than__ operator ( a > b ) returns True if a is bigger than b. Following table contains examples for other operators.
 
 | operator       | example | result
 --------------|---------|------
@@ -276,7 +278,7 @@ They are `+ - * / % **`.
 
 ### Logical Operators
 
-There are three logical operators: not, or, and. Also, >, >=, <, <=, ==, !=
+There are three logical operators: not, or, and. 
 ```{python}
 condition = True
 print (not condition)
@@ -322,12 +324,16 @@ print "banana" not in fruits
 
 
 ### Terary operator
-
-> a if condition else b
+*syntax:*
+ 
+```{python, eval=FALSE}
+expression-1 if condition else expression-2
+```
 
 ```{python}
 number = 24
-print "odd" if number % 2 else "even"
+result = "odd" if number % 2 else "even"
+print result
 ```
 
 
@@ -357,25 +363,106 @@ else:
   print "this statement is also in the else block"
 print "this statement is not in the if block. it's in the global block and will always print"
 ```
+**syntax**
+```{python, eval=FALSE}
+if condition_1:
+  stmts_1
+elif condition_2:
+  stmts_2
+else:
+  stmts_3
+```
+
+| condition_1       | condition_2 | stmt executed
+--------------|---------|------
+|    True  | _      | stmts_1
+|     False  | True      | stmts_2
+| False  | False | stmts_3
+
+
+```{python}
+if False:
+  print 'this will not print'
+elif True:
+  print 'this will be printed'
+else:
+  print 'this will not too'
+```
+
 ##Loops
+mental note: move this section after lists
+lets write a program to print numbers from 0 to 4.
+```{python}
+print 0
+print 1
+print 2
+print 3
+print 4
+```
+now, lets write a program to print numbers from 1 to 10
+```{python}
+print 0
+print 1
+print 2
+print 3
+print 4
+print 5
+print 6
+print 7
+print 8
+print 9
+```
+that is very repeatative and tedious. i can't write code like this. what if we need print a 100 numbers? 
+The solution to this is loops. they are types of them - for loop and while loop.
+
 ### The for loop
 ```{python}
-numbers = range(1,10)
+numbers = range(0,5) 
+#range is built-in function that returns a 
+#list of numbers within the specified range
+
 for number in numbers:
   print number
 ```
+the for loop executes the print a number of times. each time the variable number is assigned a value from numbers. An equivalent non-for code would be
+```{python}
+numbers = range(0,5)
+number = numbers[0]
+print number
+number = numbers[1]
+print number
+number = numbers[2]
+print number
+number = numbers[3]
+print number
+number = numbers[4]
+print number
+```
+you write loops not just with numbers but also with strings.
+
 ```{python}
 for aphlabet in "sreekanth":
   print aphlabet
 ```
 
+### The while loop
+Another way to execute code repeated is to write a while loop.
+
+*Syntax*
+```{python, eval=FALSE}
+while condition:
+  stmt
+  stmt
+  stmt
+```
+As with if block and for block, while block also uses the `:` and indentation. The statements within the while block will repeatedly executed till the condition evaluates to False.
+Following is code to print the contents of a list.
 ```{python}
 fruits = ["apple", "banana", "orange"]
 while len(fruits) != 0:
   print fruits.pop()
-print fruits
 ```
-
+The `continue` and `break` keywords are used only within loops.
 ```{python}
 numbers = range(0,10) #remember range() creates a list [0,1,2...,9]
 #program to print even numbers
@@ -386,7 +473,6 @@ for i in numbers:
 print "program end"
 ```
 Each time the keyword `continue` is hit, the remaining part of the for loop is not executed
-
 ```{python}
 numbers = range(0,10)
 for i in numbers:
@@ -395,8 +481,8 @@ for i in numbers:
   print i
 print "program end"
 ```
-
 Notice that this program produces nothing. When `i=1`, the `if` condition is True, and break statement is hit. When a break statement is hit, the loop, the break statement is in, is immediately exited.  
+In summary, when a `continue` is hit, only the rest of the for interation is skipped. Whereas, when a `break` is hit, the `for` loop is exited.
 
 # Lists
 Lists are similar to C arrays but more powerful. Lists store multiple values. unlike C arrays, elements in a python list don't have be of the same type. lists are indexed from 0.
@@ -420,8 +506,11 @@ print integers
 
 ## Slicing
 Slicing is a simple way of creating a new list from (part of) an old list.
-
+*syntax*
 \fbox{newList = oldList[start:end]}
+```{python, eval=FALSE}
+newList = oldList[start:end]
+```
 
 ```{python}
 numbers = [10, 20, 30, 40, 50, 60, 70]
@@ -435,6 +524,8 @@ print numbers[4:] #missing ending number is replaced with length of the list.
 #In which case, the length of the list is added
 print numbers[-2:7] 
 print numbers[:-1]  #this will print all elements except the last one.
+# you also can use a step
+print numbers[0:6:2]
 ```
 As shown in the example, sublist is a new list consisting of elements 1 to 3(remember, 'end' is not inclusive) in the numbers list. you can also specify negative numbers for indexes in which case, the length of list is automatically added. For example `numbers[-2:7]` is equivalent to `numbers[5:7]`. 
 
@@ -666,7 +757,7 @@ If you try to modify, python will think that you are creating a new **local vari
 ```{python}
 variable = 'global_variable'
 def function():
-    # this age is different from the one declared in the global context
+    # this variable is different from the one declared in the global context
     variable = 'local_variable'
     print variable
 print 'variable outside function before function call:', variable
