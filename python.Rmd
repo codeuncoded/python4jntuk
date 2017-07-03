@@ -33,13 +33,13 @@ C, C++ syntax makes writing code very lengthly. C, C++ focus on reducing memory,
 ##Applications
 Python's concise code makes it real quick to write software. It's high level. Python's is used for the real software that we see often in our day-to-day life.
 
-####web development
-Django is popular python framework(a big libraby is called a framework) that simplifies build websites like amazon or flipkart. 
+####Web development
+Django is popular python framework(a big library is called a framework) that simplifies build websites like amazon or flipkart. 
 
-####Data science and maching learning
+####Data Science and Maching Learning
 Data science is different from the general programming. In general programming, finding out the average of subjects marks is a typical programming. Data science trys to predict the answer to question 'when will you come to college tommorow?' It does it by observing previous data. Since you came on 8:30 everyday for the past 6 months, you will come tommorow at 8:30. This is simple problem but typical problems in this field are like 'what is chance of getting cancer if you have a family history?' 'what will the whether be today?' etc. Two langauges dominate this field - Python and R. Both of which are in your sylabus. 
 
-####Gaming and gui applications
+####Gaming and GUI applications
 The famous game Civiliztion IV where you get build an empire was written in python.
 
 ####Internet of Things(IoT)
@@ -73,16 +73,15 @@ print 45/9
 ```
 Each line you typed above is a command for the python interpreter. It reads your command, evaluates it and prints the result. when you typed 2 + 3, python took this command, calculated the sum and then printed it. Again the same steps of reading, evaluating, printing happened for the second command. This loop is called the **read-eval-print** loop. And the python interpreter is also called the **python repl**. The nice thing about python repl is it works as a calculator as seen above. 
 
-you can even type in a complex expression 
+You can even type in a complex expression like:
 ```{python}
 print 'sree' in 'sreekanth'
 ```
 Don't worry what this expression does. For now, just remember you can type **any** python expression.
 
-you can type any python expression
 
 ##Running python scripts
-save the previous code listing into a file and name it script.py. run that file using the command 
+Save the previous code listing into a file and name it script.py. run that file using the command 
 ```{python, eval=FALSE}
 run script.py
 ```
@@ -120,7 +119,7 @@ print age
 ```
 Here, we are assigning the variable age, the previously saved age and a 10 more. So, now the variable age would have the infomation 42.
 
-If you are familar with C or java, you would noticed the is not variable declaration like `int age = 32;`. In python, you don't declare variables before assigning some infomation. you just use them. Also, the semicolon\(`;`\) is optional in python-you can use it but is not required. 
+If you are familar with C or java, you would noticed that there is not variable declaration like `int age = 32;`. In python, you don't declare variables before assigning some infomation. you just use them. Also, the semicolon `;` is optional in python. 
 
 
 ##Keywords
@@ -133,8 +132,8 @@ Each langauge has a set of words that are reserved. They can't be used as variab
 | True 	| def | 	from |	raise | 	while 
 | and 	| del | 	global |	not | 	with 
 | as 	| elif | 	 if  |	or | 	yield 
-| assert 	| else | 	 import | 	pass 	 
-| break 	| except 	  
+| assert 	| else | 	 import | 	pass 	 | except
+| ||break| 	 	  
 
 <!-- You can also get the complete set of keywords using this program. -->
 ```{python, eval=FALSE , echo=FALSE}
@@ -159,6 +158,7 @@ a = raw_input("enter a number:")
 a = raw_input("enter a number:")
 print a
 print type(a)
+# type is built-in functon that tell the type of anything
 a = int(a)
 print type(a)
 ```
@@ -192,7 +192,9 @@ Varaibles based on what operations we can do on them are group into so called **
 Python has 5 data types-Numbers, Strings, Lists, Tuple, Dictionary. In this chapter, we will discuss Numbers and Strings. We will see the other 3 in the next chapter.
 
 ###Numbers
-Numbers are further divided into 4:int, long, float, complex. int and long are used to represent whole numbers. float is used for numbers that have a decimal part. Languages like C have double type for really big floating point numbers. But python only has float. 
+Numbers are further divided into 4 - `int, long, float, complex`. 
+
+`int` and `long` are used to represent whole numbers. `float` is used for numbers that have a decimal part. Languages like C have double type for really big floating point numbers. But, Python only has float. 
 ```{python}
 a = 12
 print type(a)
@@ -205,25 +207,25 @@ d = complex(2,3)
 print d
 print type(d)
 ```
-The data type complex represent mathematical complex numbers that have a real and an imaginary part.
+The data type `complex` represent mathematical complex numbers that have a real and an imaginary part.
 
 ###Strings
-Python doesn't differete between single quotes and double quotes. Unlike in C, the is not difference between char ans string-both are same.
+Strings are used for saving text like `'India'` or `'Cake'`.Strings can be surrounded with either single quotes or double quotes. Unlike in C, there is not difference between char and string-both are same.
 ```{python}
 name = "sreekanth"
 occupation = 'software engineer'
 print type(name)
-qoute = "I'am good" #observe that a single qoute can be used within double quotes
+qoute = "I'm good" #observe that a single qoute can be used within double quotes
 print "qoute:" + qoute
 qoute = "qoute:" + 'He said "I am not going" to her'
 print qoute
 ```
-
+You can have a 1 single quote within 2 double quotes or vice versa. But, you can not have a 1 single quote within 2 single quotes. Same with double quotes.
 ```{python, error=TRUE}
 qoute = "He said "I am not going" to her" #this will not work.
 ```
 ###Booleans
-Boolean variables can be assigned either `True` or `False`
+`int` variables can be assigned any whole number. `string` variables can be assigned any charecters. Boolean variables are special. They can be assigned only 2 values - `True` or `False`
 ```{python}
 flag = True
 print flag
@@ -236,7 +238,7 @@ Variables are assigned values using the `=` operator. Variables are written when
 ```{python}
 number = 10
 ```
-The variable `number` is assigned 10. Note that the type of variable `number` is not declared. This is not required because of the python type inference. Based on the operations we do on a variable, the python will automatic guess its type.
+The variable `number` is assigned 10. Note that the type of variable `number` is not declared. This is not required because of the python type inference. Based on the operations we do on the variable, python will automatic guess its type. Isn't that cool?
 ```{python}
 #multiple assignments can be done in the same statement simultaneously.
 a, b = 10,20
@@ -249,8 +251,9 @@ print a,b
 ```
 
 ### Arithmetic Operators
-They are `+ - * / % **`.
-`a%b` is gives the reminder of when a is divided by b. `a**b` gives a to power of b.
+Arithmetic operators are used for doing comman arithmetic operations like addition, substraction etc. They are `+ - * / % **`. For example, `2 / 3` is 2 divided by 3.
+
+`a%b` is gives the reminder of when a is divided by b. `a**b` gives a to power of b. Few examples for clarity are given in the table below.
 
 | operator       | example | result
 --------------|---------|------
@@ -261,7 +264,7 @@ They are `+ - * / % **`.
 | % | 5%2 | 1
 | `**` | 5\*\*2 | 25
 ### Relational Operators
-Relational operators include `>, >=, <, <=, ==, !=`. They take 2 operands and return a boolean result(True or False). For example, the __greater than__ operator ( a > b ) returns True if a is bigger than b. Following table contains examples for other operators.
+Relational operators include `>, >=, <, <=, ==, !=`. They take 2 operands and return a boolean result(True or False). For example, the __greater than__ operator ( a > b ) returns `True` if a is bigger than b. Following table contains examples for other operators.
 
 | operator       | example | result
 --------------|---------|------
@@ -285,7 +288,8 @@ print (not condition)
 print (condition or False)
 print (condition and False)
 ```
-`not a` evaluates to the opposite of what `a` is. `a and b` evaluates to True only if both a, b are True. a or b evaluates to False if both a,b are False. They behave exactly like !, ||, && operators in C.
+`'not a'` evaluates to the opposite of what `'a'` is. `'a and b'` evaluates to `True` only if both a, b are `True`.
+`'a or b'` evaluates to False if both a,b are `False`. They behave exactly like !, ||, && operators in C.
 
 |     a   | not a       |
 ----------|--------------
@@ -308,7 +312,7 @@ print (condition and False)
 
 ###Membership Operator
 
-The `in` operator is used to determine variable consists of other.
+The `in` operator is used to determine whether a variable consists of other.
 ```{python}
 isPresent = "sree" in "sreekanth"
 print isPresent
@@ -324,6 +328,7 @@ print "banana" not in fruits
 
 
 ### Terary operator
+Terary operator is a shorter form of an if-else statement.
 *syntax:*
  
 ```{python, eval=FALSE}
@@ -332,27 +337,34 @@ expression-1 if condition else expression-2
 
 ```{python}
 number = 24
-result = "odd" if number % 2 else "even"
+result = "odd" if number % 2 != 0 else "even"
 print result
 ```
 
 
 ## Control flow
-```{python}
+```{#numCode .python .numberLines}
 a,b = 3,2
-if(a > b):
+if a > b:
   print "a is greater than b" #Notice this print stmt is indented 
   #this means that the print stmt is within the if block
 ```
-Python seperates blocks based on there indentation. Notice the priNotice unlike other langauges, python doesn't use curly brackets{} to block. The above if statement can also be written as if-else statement.
-```{python}
+Python seperates blocks based on their indentation. Line 3,4 are within the if block and will only execute if the condition is True. Notice unlike other langauges, python doesn't use curly brackets{} for creating blocks.
+```{#numCode .python .numberLines}
 a,b = 10,20
 if a > b:
   print "a is greater than b"
 else:
   pass
 ```
-`pass` is a keyword that represents an empty statement. It's is like an empty ; in C.
+```{python,echo=FALSE}
+a,b = 10,20
+if a > b:
+  print "a is greater than b"
+else:
+  pass
+```
+`pass` is a keyword that represents an empty statement. It's is like an empty ; in C. Again, observe the indentation. Line 3 is inside the if block and line 5 is inside the else block.
 ```{python}
 a,b = 3,2
 if a > b:
@@ -391,7 +403,7 @@ else:
 
 ##Loops
 mental note: move this section after lists
-lets write a program to print numbers from 0 to 4.
+Let's write a program to print numbers from 0 to 4.
 ```{python}
 print 0
 print 1
@@ -399,7 +411,7 @@ print 2
 print 3
 print 4
 ```
-now, lets write a program to print numbers from 1 to 10
+Now, let's write a program to print numbers from 1 to 10.
 ```{python}
 print 0
 print 1
@@ -412,8 +424,8 @@ print 7
 print 8
 print 9
 ```
-that is very repeatative and tedious. i can't write code like this. what if we need print a 100 numbers? 
-The solution to this is loops. they are types of them - for loop and while loop.
+This is very repeatative and tedious. We can't write code like this. And what if we need print a 100 numbers? 
+The solution to this is loops. They are two types of loops - *for* loop and *while* loop.
 
 ### The for loop
 ```{python}
@@ -424,7 +436,7 @@ numbers = range(0,5)
 for number in numbers:
   print number
 ```
-the for loop executes the print a number of times. each time the variable number is assigned a value from numbers. An equivalent non-for code would be
+The `for` loop executes the print statement a number of times. Each time the variable `number` is assigned a value from `numbers`. An equivalent non-for code would be:
 ```{python}
 numbers = range(0,5)
 number = numbers[0]
@@ -438,8 +450,7 @@ print number
 number = numbers[4]
 print number
 ```
-you write loops not just with numbers but also with strings.
-
+We can write loops not just with numbers but also with strings.
 ```{python}
 for aphlabet in "sreekanth":
   print aphlabet
@@ -449,13 +460,13 @@ for aphlabet in "sreekanth":
 Another way to execute code repeated is to write a while loop.
 
 *Syntax*
-```{python, eval=FALSE}
+```{#numCode .python .numberLines}
 while condition:
   stmt
   stmt
   stmt
 ```
-As with if block and for block, while block also uses the `:` and indentation. The statements within the while block will repeatedly executed till the condition evaluates to False.
+As with if block and for block, while block also uses the `:` and indentation. Lines 2,3,4 are within the while block. They will be repeatedly executed till the condition evaluates to False.
 Following is code to print the contents of a list.
 ```{python}
 fruits = ["apple", "banana", "orange"]
@@ -832,6 +843,7 @@ class Box(object):
     self.height = h
     self.weight = w
     self.bredth = b
+    Box.static_variable += 10
 
   def volume(self):
     return self.height*self.weight*self.bredth
@@ -1566,8 +1578,20 @@ colliding.
 Hint: Represent a ball on a plane as a tuple of (x, y, r), r being the radius
 If (distance between two balls centers) <= (sum of their radii) then (they are colliding)
 
-b) Find mean, median, mode for the given set of numbers in a list.
+```{python}
+import math
+def ball_collide(ballA, ballB):
+    x1, y1, randius1 = ballA
+    x2, y2, randius2 = ballB
+    distance = math.sqrt((x2-x1)**2 + (y2-y1)**2)
+    return distance <= math.pi * (randius1*randius1 + randius2*randius2)
 
+a = (2,3,5)
+b = (1,2,3)
+print ball_collide(a, b)
+```
+
+b) Find mean, median, mode for the given set of numbers in a list.
 ```{python, eval=FALSE}
 def mean(numbers):
     return float(sum(numbers)) / max(len(numbers), 1)
@@ -1788,9 +1812,124 @@ matB = [[3,2,1],
 
 print multiply_matrix(matA, matB)
 ```
-Exercise - 14 GUI, Graphics
+## Exercise - 13 OOP
+```{python}
+class MyClass(object):
+  class_variable = 0
+  def __init__(self):
+    self.instance_variable = 0
+    MyClass.class_variable += 1
+
+a = MyClass()
+print a.instance_variable, a.class_variable
+a = MyClass()
+print a.instance_variable, a.class_variable
+a = MyClass()
+print a.instance_variable, a.class_variable
+```
+
+i) Robot
+```{python}
+class Robot(object):
+    def __init__(self):
+        self.location = (0, 0)
+        self.angle = 0
+    def move_forward(self, distance):
+        import math
+        x, y = self.location
+        self.location = (x + distance*math.cos(self.angle), y + distance*math.sin(self.angle))
+
+    def turn(self, turn_angle):
+        self.angle += turn_angle
+
+robot = Robot()
+print robot.location, robot.angle
+robot.move_forward(100)
+print robot.location, robot.angle
+robot.turn(10)
+print robot.location, robot.angle
+robot.move_forward(100)
+print robot.location, robot.angle
+```
+
+ii) ATM Machine
+```{python, eval=FALSE}
+class ATM(object):
+    def __init__(self):
+        self._users = {'sreekanth': (3240, 10000),
+                      'nikil': (1234, 5589),
+                      'ramya': (2020, 73290),
+                       }
+        self._current = None
+
+    def _login(self, username, pin):
+        if username not in self._users:
+            print 'username incorrect'
+        (actual_pin, _) = self._users[username]
+        if actual_pin != pin:
+            print 'pin incorrect'
+            return
+        self._current = username
+        self._menu()
+        self._current = username
+
+    def _menu(self):
+        print 'press 1 for balance query'
+        print 'press 2 for withdraw'
+        option = int(raw_input())
+        if option == 1:
+            self._get_balance()
+        elif option == 2:
+            amount = float(raw_input('enter amount'))
+            self._withdraw(amount)
+
+    def _withdraw(self, amount):
+        (pw, balance) = self._users[self._current]
+        if balance < amount:
+            print 'not enough in the amount'
+        else:
+            self._users[self._current] = (pw, balance - amount)
+            print 'take the money'
+
+    def _get_balance(self):
+        print 'your balance is', self._users[self._current][1]
+
+    def start_up(self):
+        while True:
+            username = raw_input('enter username:')
+            pin = int(raw_input('enter password:'))
+            self._login(username, pin)
+
+atm = ATM()
+atm.start_up()
+```
+
+
+##Exercise - 14 GUI, Graphics
 1. Write a GUI for an Expression Calculator using tk
 2. Write a program to implement the following figures using turtle
+```{python,eval=FALSE}
+import turtle
+turtle.width(2)
+for color in ['green', 'red', 'blue']:
+    turtle.color(color)
+    turtle.left(30)
+    for i in range(1, 5):
+        turtle.left(90)
+        turtle.circle(60)
+```
+
+```{python, eval=FALSE}
+import turtle
+def draw_square(side_length):
+    for _ in range(4):
+        turtle.forward(side_length)
+        turtle.left(90)
+turtle.width(2)
+for _ in range(36):
+    turtle.left(10)
+    draw_square(100)
+```
 
 
 ## Exercise 15 Testing
@@ -1841,8 +1980,7 @@ class ReverseStringTestCase(TestCase):
 	def test_reverse_string_random_string_not_equal(self):
 		self.assertNotEqual('ranmod', reverse_string('modnar'))
 
-if __name__ == '__main__':
-	main()
+main()
 ```
 
 ```{python, echo=FALSE}
