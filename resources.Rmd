@@ -77,7 +77,7 @@ Here is some text that also is in two column environment.
 
 #numCode .python .numberLines
 
-
+\fbox{My text!}
 
 
 

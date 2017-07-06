@@ -22,6 +22,7 @@ knitr::opts_chunk$set(comment = "Out:")
 ```
 
 # unit 1
+
 ## History of python
 Python was created by Guido van Rossum in 1991.
 
@@ -51,11 +52,30 @@ Did you try giving voice commands to your smart phone? Isn't it cool? the phone 
 ##Setup
 Download python from here: https://www.python.org/downloads/. 
 
-JNTUK does not specific which version to download. Python has two main versions. Python 2 and python 3. Download python 2. At the time of writing this book(July 2017), the latest verision was 2.7.13. Once you download the exe file, just double click and install. This should be very easily.
+JNTUK does not specific which version to download. Python has two main versions. Python 2 and python 3. Download python 2. At the time of writing this book(July 2017), the latest verision was 2.7.13. Once you download the exe file, just double click and install. Press next to keep the default folder as 'C:\\Python27\\'. On the 'Customize Python 2.7.13', select the feature, 'Add python.exe to Path'. Press next and the installation should be complete. This should be very easily.
 
 <!-- ![Install Python](./python download_LI.jpg) -->
 
-Click on windows start and find python. In windows 7 and above, you could just type in python and in the search results something like **python(command line)** will come up. Click on that, and a black screen will come. That is the **python interpreter**. That is where we will run all our python code. We will open this black screen each time we need to do some coding, so become comfortable opening up this application.
+##(Optional ipython installation)
+All python in this book can be done on the python interpreter we just installed. However, ipython is a better tool that the python interpreter. I highly recommend that you install ipython as well. If you do install it, use ipython whenever I say python interpreter.
+Installation steps:
+Ipthon requires visual c++. It can be downloaded at 'http://aka.ms/vcpython27'. Download and install this software. It is pretty easy and should cause any troubles.
+
+Open windows command line by pressing the windows key + r. Or search for an app called `run` from the start button. Type 'cmd' and press enter. you are now, in the windows command prompt.
+Now install ipython using pip. pip is utility command to install python modules.
+```{bash, eval=FALSE}
+pip install ipython
+```
+
+Using ipython:
+Open the windows command prompt like in the previous step(windows key  + r, type 'cmd', enter). Type
+```{bash, eval=FALSE}
+ipython
+```
+Congrats! you now have python installed on your machine.
+
+Click on windows start and find python. In windows 7 and above, you could just type in python and in the search results something like **python(command line)** will come up. Click on that, and a black screen will come. That is the **python interpreter**. 
+That is where we will run all our python code. We will open this black screen each time we need to do some coding, so become comfortable opening up this application.
 
 
 ##REPL
@@ -584,12 +604,19 @@ print b
 ```
 
 ## Comprehensions
-
+Comprehensions are quick way to create data. Often, data has a pattern like a series of integers, a series of squares etc. In other languages, such data is created using for loop. In python, comprehensions are used. 
 ```{python, eval=FALSE}
-[expression(x) for x in some_list if condition]
+new_list = [expression(x) for x in some_list if condition]
 ```
-expression(x) is the formula used for creating the elements. The elements of some_list is are used in expression(x). The `if condition` is also optional used for filtering. Some examples will solidify these concepts.
-
+expression(x) is the formula used for creating the elements. The elements of some_list is are used in expression(x). The `if condition` is optional used for filtering. Some examples will solidify these concepts.
+This code is equivalent to:
+```{python, eval=FALSE}
+new_list = []
+for x in some_list:
+  if condition:
+    new_list.append(expression(x))
+```
+Few examples will make things clear.
 ```{python}
 squares = [x**2 for x in range(10)]
 print squares
@@ -824,9 +851,40 @@ import math as m
 print m.sqrt(25)
 ```
 
-
-
 Some of these libraries are loaded along with python and hence need no import. Some examples:
+
+## Python packages and pip
+
+Python comes a rich libraby for doing pretty much anything under the sun. These libraries are available in the form of modules. Some of the modules are avaiable with python, but some are not. We can simpley import a module to check if a module is present or not. 
+```{python, error=TRUE}
+import flask
+```
+```{python, echo=FALSE}
+print 'Traceback (most recent call last):'
+print '  File "<stdin>", line 1, in <module>'
+print "NameError: name 'pip' is not defined"
+```
+
+As you see, the python interpreter says flask doesn't exist. Let's install it. Open windows command line by pressing the windows key + r. Or search for an app called `run` from the start button. Type 'cmd' and press enter. you are in the windows command prompt. Now install the module 'flask'
+
+```{python,eval=FALSE}
+pip install flask
+```
+
+Now try to import flask to check if it was successfully installed. This should be done on the python interpreter.
+```{python}
+import flask
+```
+
+If you get an error with pip command, it be that the path is not set. In this case, you could go to the folder that python was installed in. It normally is `C:\Python27\`. check your python folder is this. Now, navigate to this folder in the windows command prompt. 
+```{bash, eval=FALSE}
+cd C:\Python27\Scripts
+```
+Remember, the `C:\Python27\` part changes to whatever folder python is installed in your computer. Now install flask. 
+```{bash,eval=FALSE}
+pip install flask
+```
+There is another module installation in lab programs exercise 12. Do have a look.
 
 # Object Oriented Programming OOP in Python
 Classes are neat way to organize code. Consider we write code for a box. A box has 3 properties-height, width, bredth. We can use variable like box_height, box_width, box_bredth to represent them. But doing this makes 3 seperate variables that seem to have no relation. 
@@ -1459,6 +1517,8 @@ a) Find the sum of all the primes below two million.
 ```{python, eval=FALSE}
 def primes_till(limit):
     primes = {2}
+    #notice that primes is a set, not a list.
+    #a list would have been a lot slower.
     primes.update(set(range(3, limit, 2)))
     for i in range(3, limit/2):
         primes.difference_update(range(2*i, limit, i))
@@ -1538,7 +1598,13 @@ print dict(collections.Counter(name))
 b) Write a program to use split and join methods in the string and trace a birthday with a
 dictionary data structure.
 
-I don't understand the question. Since can't give an answer. Sorry.
+I don't understand the question. I don't understand what 'trace a birthday' means. So, I can't give an answer. Sorry. But here is some code to understand split and join methods.
+```{python}
+print 'split is string method that splits a string by the given pattern'.split(' ')
+print 'here i am giving, comma as ,the pattern'.split(',')
+print ','.join(['join', 'is', 'opposite', 'of', 'split'])
+print ' '.join(['it', 'joins', 'a', 'list', 'of', 'strings', 'to', 'form', 'one', 'string'])
+```
 
 ##Exercise 7 Files
 
@@ -1557,6 +1623,9 @@ with open('sample.txt', 'r') as text_file:
     while fileContent:
         print fileContent.pop()
 ```
+Explanation:
+`open()` is a standard python function for opening files. The first parameter is the name the file. The second is the mode. Modes can be 'r' for read, 'w' for write and 'a' for append. For 
+
 
 b) Write a program to compute the number of characters, words and lines in a file.
 ```{python}
@@ -1812,22 +1881,46 @@ matB = [[3,2,1],
 
 print multiply_matrix(matA, matB)
 ```
-## Exercise - 13 OOP
+## Exercise 12 Modules
+
+a) Install packages requests, flask and explore them. using (pip)
+```{python,eval=FALSE}
+pip install requests
+pip install flask
+```
+
+b) Write a script that imports requests and fetch content from the page. Eg. (Wiki)
+```{python}
+import requests
+r = requests.get('https://google.com')
+print r.ok
+print r.status_code
+#print r.text
+```
+
+c) Write a simple script that serves a simple HTTPResponse and a simple HTML Page
+
+
+## Exercise 13 OOP
 ```{python}
 class MyClass(object):
   class_variable = 0
   def __init__(self):
     self.instance_variable = 0
     MyClass.class_variable += 1
-
+  def check_self(self, obj):
+    return obj == self
+    
 a = MyClass()
+print a.check_self(a)
 print a.instance_variable, a.class_variable
 a = MyClass()
 print a.instance_variable, a.class_variable
 a = MyClass()
 print a.instance_variable, a.class_variable
 ```
-
+Explanation:
+`self` is a variable every object has that points to itself. In the above code, we are checking `obj == self` where a is passed as obj. Observe that it results in True. 
 i) Robot
 ```{python}
 class Robot(object):
@@ -1880,7 +1973,7 @@ class ATM(object):
         if option == 1:
             self._get_balance()
         elif option == 2:
-            amount = float(raw_input('enter amount'))
+            amount = float(raw_input('enter amount:'))
             self._withdraw(amount)
 
     def _withdraw(self, amount):
@@ -1903,9 +1996,30 @@ class ATM(object):
 atm = ATM()
 atm.start_up()
 ```
+```{python, echo=FALSE}
+print 'enter username:sreekanth'
+print 'enter password:3240'
+print 'press 1 for balance query'
+print 'press 2 for withdraw'
+print '1'
+print 'your balance is 10000'
+print 'enter username:sreekanth'
+print 'enter password:3240'
+print 'press 1 for balance query'
+print 'press 2 for withdraw'
+print '2'
+print 'enter amount:2345'
+print 'take the money'
+print 'enter username:sreekanth'
+print 'enter password:3240'
+print 'press 1 for balance query'
+print 'press 2 for withdraw'
+print '1'
+print 'your balance is 7655.0'
+print 'enter username:'
+```
 
-
-##Exercise - 14 GUI, Graphics
+##Exercise 14 GUI, Graphics
 1. Write a GUI for an Expression Calculator using tk
 2. Write a program to implement the following figures using turtle
 ```{python,eval=FALSE}
@@ -2063,9 +2177,6 @@ print 'best value is', best_value
 print 'best items are', best_items
 ```
 
-\fbox{My text!}
+
 
 # Appendix
-
-
-https://powerfulpython.com/store/p/restful-api-server/

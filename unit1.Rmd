@@ -1,0 +1,171 @@
+---
+title: "book"
+author: "Sreekanth"
+date: "July 4, 2017"
+output: pdf_document
+---
+
+# unit 1
+## History of python
+Python was created by Guido van Rossum in 1991.
+
+## Need of python programming
+C, C++ are powerful langauges. langauges that can be used to write a variaty of software. they give you control of the machine and the very minitue control the system. But, they are very low level. we need to specify very small detail. For example, we have to create and manage memory requirement, object destruction etc, when all we need to do is save a few objects. 
+
+C, C++ syntax makes writing code very lengthly. C, C++ focus on reducing memory, running programs fast etc. Python's focus is to reduce developer time-time taken by the programmer to create software. C's 20 line code would be 5 or less lines long.
+
+##Applications
+Python's concise code makes it real quick to write software. It's high level. Python's is used for the real software that we see often in our day-to-day life.
+
+####Web development
+Django is popular python framework(a big library is called a framework) that simplifies build websites like amazon or flipkart. 
+
+####Data Science and Maching Learning
+Data science is different from the general programming. In general programming, finding out the average of subjects marks is a typical programming. Data science trys to predict the answer to question 'when will you come to college tommorow?' It does it by observing previous data. Since you came on 8:30 everyday for the past 6 months, you will come tommorow at 8:30. This is simple problem but typical problems in this field are like 'what is chance of getting cancer if you have a family history?' 'what will the whether be today?' etc. Two langauges dominate this field - Python and R. Both of which are in your sylabus. 
+
+####Gaming and GUI applications
+The famous game Civiliztion IV where you get build an empire was written in python.
+
+####Internet of Things(IoT)
+Our calculators are computers. Not as powerful as our laptops but still are computers. Iot is a technology where, small calculator sized but more powerful computers are attached everyday devices like TV, Fridge, AC to make them smart. The smart house where you can voice operate lights, doors, music is becuase of iot. And, python is the primary language of this field.
+
+####Natural language processing
+Did you try giving voice commands to your smart phone? Isn't it cool? the phone listens and finds out what you are talking out. It does this even if an acsent is present. This field of find out what humans are saying is called natural language processing. Python has cool librabies for this too.
+
+##Setup
+Download python from here: https://www.python.org/downloads/. 
+
+JNTUK does not specific which version to download. Python has two main versions. Python 2 and python 3. Download python 2. At the time of writing this book(July 2017), the latest verision was 2.7.13. Once you download the exe file, just double click and install. This should be very easily.
+
+<!-- ![Install Python](./python download_LI.jpg) -->
+
+Click on windows start and find python. In windows 7 and above, you could just type in python and in the search results something like **python(command line)** will come up. Click on that, and a black screen will come. That is the **python interpreter**. That is where we will run all our python code. We will open this black screen each time we need to do some coding, so become comfortable opening up this application.
+
+
+##REPL
+Open the **python interpreter** and type in the following one line at a time:
+```{#numCode .python .numberLines}
+print 2 + 3
+print 'sreekanth'
+45 + 21.1
+45/9
+```
+```{python, echo=FALSE}
+print 2 + 3
+print 45 + 21.1
+print 45/9
+```
+Each line you typed above is a command for the python interpreter. It reads your command, evaluates it and prints the result. when you typed 2 + 3, python took this command, calculated the sum and then printed it. Again the same steps of reading, evaluating, printing happened for the second command. This loop is called the **read-eval-print** loop. And the python interpreter is also called the **python repl**. The nice thing about python repl is it works as a calculator as seen above. 
+
+You can even type in a complex expression like:
+```{python}
+print 'sree' in 'sreekanth'
+```
+Don't worry what this expression does. For now, just remember you can type **any** python expression.
+
+
+##Running python scripts
+Save the previous code listing into a file and name it script.py. run that file using the command 
+```{python, eval=FALSE}
+run script.py
+```
+
+All python files should end with '.py'. you can give then any name(following the rules of variable naming).
+
+##Variables and Assignment
+In programming, we often need to save some number, some information somewhere so that we can use it later. Variables are used to save such infomation.
+```{python}
+age = 32
+name = 'sreekanth'
+```
+Here, `age` is variable to which the infomation 32 is saved. `name` is another variable to which the infomation 'sreekanth' is saved. we can see what infomation a particular variable has simply by printing them(don't worry about the quotes, we will get to that when we learn about strings).
+```{python, eval=FALSE}
+print age
+print name
+```
+```{python, echo=FALSE}
+age = 32
+name = 'sreekanth'
+print age
+print name
+```
+We could also modify the infomation assigned to a variable.
+```{python, eval=FALSE}
+age = age + 10
+print age
+name = name + 'kolamala'
+print name
+```
+```{python, echo=FALSE}
+age = 32
+age = age + 10
+print age
+```
+Here, we are assigning the variable age, the previously saved age and a 10 more. So, now the variable age would have the infomation 42.
+
+If you are familar with C or java, you would noticed that there is not variable declaration like `int age = 32;`. In python, you don't declare variables before assigning some infomation. you just use them. Also, the semicolon `;` is optional in python. 
+
+
+##Keywords
+Each langauge has a set of words that are reserved. They can't be used as variable names. The complete list is given here as referance. you don't need to know them by heart. This is just for your reference.
+
+| | | |
+------------|-------|-----------|------|----------
+| False 	| class | 	finally |	is | 	return 
+|  in	| continue | 	for |	lambda | 	try 
+| True 	| def | 	from |	raise | 	while 
+| and 	| del | 	global |	not | 	with 
+| as 	| elif | 	 if  |	or | 	yield 
+| assert 	| else | 	 import | 	pass 	 | except
+| ||break| 	 	  
+
+<!-- You can also get the complete set of keywords using this program. -->
+```{python, eval=FALSE , echo=FALSE}
+import keyword
+print keyword.kwlist
+```
+
+## Input-output
+```{python}
+print 'some-string'
+print 23
+# to print multiple variables on the same line:
+print 'some-sting', 23, 45.5
+```
+
+```{python, eval=FALSE}
+# Input
+a = raw_input("enter a number:")
+```
+`raw_input()` always takes the input as string. Even if you type numbers, they would be taken as string. So, if you really want to input numbers, you need to convert them. We use the built-in python functions `int()` , `float()` for this.
+```{python, eval=FALSE}
+a = raw_input("enter a number:")
+print a
+print type(a)
+# type is built-in functon that tell the type of anything
+a = int(a)
+print type(a)
+```
+```{python, echo=FALSE}
+a = '23'
+print "enter a number:" + a
+print a
+print type(a)
+a = int(a)
+print type(a)
+```
+Python programmers combine the input and conversion into one line like this:
+```{python, eval=FALSE}
+age = int(raw_input('enter age'))
+height = float(raw_input('enter height'))
+```
+## Indentation
+covered in if section
+```{python, error=TRUE}
+print 'this line will be printed'
+  print 'this will cause indentation error'
+```
+
+We will talk about indentation more when we talk about if statements. But, for now remember to indent all the statements uniformly.
+
+
