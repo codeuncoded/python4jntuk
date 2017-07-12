@@ -52,37 +52,39 @@ Did you try giving voice commands to your smart phone? Isn't it cool? the phone 
 ##Setup
 Download python from here: https://www.python.org/downloads/. 
 
-JNTUK does not specific which version to download. Python has two main versions. Python 2 and python 3. Download python 2. At the time of writing this book(July 2017), the latest verision was 2.7.13. Once you download the exe file, just double click and install. Press next to keep the default folder as 'C:\\Python27\\'. On the 'Customize Python 2.7.13', select the feature, 'Add python.exe to Path'. Press next and the installation should be complete. This should be very easily.
+JNTUK does not specific which version to download. Python has two main versions. Python 2 and python 3. Download python 2. At the time of writing this book(July 2017), the latest verision was 2.7.13. Once you download the exe file, just double click and install. Press next to keep the default folder as 'C:\\Python27\\'. On the 'Customize Python 2.7.13', select the feature, 'Add python.exe to Path'. Make sure that this feature is selected( no cross mark adjacent to this feature) Press next and the installation should be complete. This should be very easily.
 
 <!-- ![Install Python](./python download_LI.jpg) -->
+Congrats! You now have python installed on your machine.
+
+##Using the python interpreter
+Click on windows start and find python. In windows 7 and above, you could just type in python and in the search results something like **python(command line)** will come up. Click on that, and a black screen will come. That is called the **python interpreter**. 
+That is where we will run all our python code. We will open this black screen each time we need to do some coding, so become comfortable opening up this application.
 
 ##(Optional ipython installation)
-All python in this book can be done on the python interpreter we just installed. However, ipython is a better tool that the python interpreter. I highly recommend that you install ipython as well. If you do install it, use ipython whenever I say python interpreter.
+All python code in this book can be done on the python interpreter we just installed. However, ipython is a better tool that the python interpreter. I highly recommend that you install ipython as well. If you do install it, use ipython whenever I say python interpreter.
 Installation steps:
-Ipthon requires visual c++. It can be downloaded at 'http://aka.ms/vcpython27'. Download and install this software. It is pretty easy and should cause any troubles.
+Ipthon requires visual c++. It can be downloaded at `http://aka.ms/vcpython27`. Download and install this software. It is pretty easy and shouldn't cause any troubles.
 
-Open windows command line by pressing the windows key + r. Or search for an app called `run` from the start button. Type 'cmd' and press enter. you are now, in the windows command prompt.
-Now install ipython using pip. pip is utility command to install python modules.
+Open windows command line by pressing the windows key + r. Or search for an app called `run` from the start button. Type 'cmd' and press enter. A black screen will be launched, it's called the windows command prompt.
+
+Now install `ipython` using `pip`. `pip` is utility command to install python modules.
 ```{bash, eval=FALSE}
 pip install ipython
 ```
 
-Using ipython:
-Open the windows command prompt like in the previous step(windows key  + r, type 'cmd', enter). Type
+##Using ipython:
+Open the windows command prompt again like in the previous step(windows key  + r, type 'cmd', enter). Type
 ```{bash, eval=FALSE}
 ipython
 ```
-Congrats! you now have python installed on your machine.
-
-Click on windows start and find python. In windows 7 and above, you could just type in python and in the search results something like **python(command line)** will come up. Click on that, and a black screen will come. That is the **python interpreter**. 
-That is where we will run all our python code. We will open this black screen each time we need to do some coding, so become comfortable opening up this application.
+Remember, you can use either use the python interpreter or ipython.
 
 
 ##REPL
 Open the **python interpreter** and type in the following one line at a time:
-```{#numCode .python .numberLines}
-print 2 + 3
-print 'sreekanth'
+```{python, eval=FALSE}
+2 + 3
 45 + 21.1
 45/9
 ```
@@ -91,13 +93,13 @@ print 2 + 3
 print 45 + 21.1
 print 45/9
 ```
-Each line you typed above is a command for the python interpreter. It reads your command, evaluates it and prints the result. when you typed 2 + 3, python took this command, calculated the sum and then printed it. Again the same steps of reading, evaluating, printing happened for the second command. This loop is called the **read-eval-print** loop. And the python interpreter is also called the **python repl**. The nice thing about python repl is it works as a calculator as seen above. 
+Each line you typed above is a command for the python interpreter. It reads your command, evaluates it and prints the result. When you type `2 + 3`, python took this command, calculated the sum and then printed it. Again the same steps of reading, evaluating, printing happened for the second command. This loop is called the **read-eval-print-loop**. And the python interpreter is also called the **python repl**. The nice thing about python repl is it also works as a calculator as seen above. 
 
 You can even type in a complex expression like:
 ```{python}
 print 'sree' in 'sreekanth'
 ```
-Don't worry what this expression does. For now, just remember you can type **any** python expression.
+Don't worry what this expression does. For now, just remember you can type **any python expression**.
 
 
 ##Running python scripts
@@ -106,7 +108,7 @@ Save the previous code listing into a file and name it script.py. run that file 
 run script.py
 ```
 
-All python files should end with '.py'. you can give then any name(following the rules of variable naming).
+All python files should end with '.py'. You can give them any name(following the rules of variable naming).
 
 ##Variables and Assignment
 In programming, we often need to save some number, some information somewhere so that we can use it later. Variables are used to save such infomation.
@@ -114,7 +116,7 @@ In programming, we often need to save some number, some information somewhere so
 age = 32
 name = 'sreekanth'
 ```
-Here, `age` is variable to which the infomation 32 is saved. `name` is another variable to which the infomation 'sreekanth' is saved. we can see what infomation a particular variable has simply by printing them(don't worry about the quotes, we will get to that when we learn about strings).
+Here, `age` is variable to which the infomation 32 is saved. `name` is another variable to which the infomation `'sreekanth'` is saved. We can see what infomation a particular variable has simply by printing them(don't worry about the quotes, we will get to that when we learn about strings).
 ```{python, eval=FALSE}
 print age
 print name
@@ -125,25 +127,26 @@ name = 'sreekanth'
 print age
 print name
 ```
-We could also modify the infomation assigned to a variable.
+`print` is the built-in python command to print variables or values. More on that later. We could also modify the infomation assigned to a variable.
 ```{python, eval=FALSE}
 age = age + 10
 print age
-name = name + 'kolamala'
+name = name + ' kolamala'
 print name
 ```
 ```{python, echo=FALSE}
 age = 32
 age = age + 10
 print age
+print 'sreekanth kolamala'
 ```
-Here, we are assigning the variable age, the previously saved age and a 10 more. So, now the variable age would have the infomation 42.
+Here, we are assigning the variable `age`, the previously saved `age` and 10 more. So, now the `age` would have the infomation `42`.
 
-If you are familar with C or java, you would noticed that there is not variable declaration like `int age = 32;`. In python, you don't declare variables before assigning some infomation. you just use them. Also, the semicolon `;` is optional in python. 
+If you are familar with C or java, you would noticed that there is not variable declaration like `int age = 32;`. In python, you don't need to declare variables before assigning some infomation. You just use them. Also, the semicolon `;` is optional in python. 
 
 
 ##Keywords
-Each langauge has a set of words that are reserved. They can't be used as variable names. The complete list is given here as referance. you don't need to know them by heart. This is just for your reference.
+Each langauge has a set of words that are reserved. They can't be used as variable names. The complete list is given here as referance. You don't need to know them by heart. This is just for your reference.
 
 | | | |
 ------------|-------|-----------|------|----------
@@ -160,56 +163,23 @@ Each langauge has a set of words that are reserved. They can't be used as variab
 import keyword
 print keyword.kwlist
 ```
+The rest of unit will make more sense in unit-2 and hence is covered in unit-2.
 
-## Input-output
-```{python}
-print 'some-string'
-print 23
-# to print multiple variables on the same line:
-print 'some-sting', 23, 45.5
-```
+<!-- ## Indentation -->
+<!-- covered in if section -->
+<!-- ```{python, error=TRUE} -->
+<!-- print 'this line will be printed' -->
+<!--   print 'this will cause indentation error' -->
+<!-- ``` -->
 
-```{python, eval=FALSE}
-# Input
-a = raw_input("enter a number:")
-```
-`raw_input()` always takes the input as string. Even if you type numbers, they would be taken as string. So, if you really want to input numbers, you need to convert them. We use the built-in python functions `int()` , `float()` for this.
-```{python, eval=FALSE}
-a = raw_input("enter a number:")
-print a
-print type(a)
-# type is built-in functon that tell the type of anything
-a = int(a)
-print type(a)
-```
-```{python, echo=FALSE}
-a = '23'
-print "enter a number:" + a
-print a
-print type(a)
-a = int(a)
-print type(a)
-```
-Python programmers combine the input and conversion into one line like this:
-```{python, eval=FALSE}
-age = int(raw_input('enter age'))
-height = float(raw_input('enter height'))
-```
-## Indentation
-covered in if section
-```{python, error=TRUE}
-print 'this line will be printed'
-  print 'this will cause indentation error'
-```
-
-We will talk about indentation more when we talk about if statements. But, for now remember to indent all the statements uniformly.
+<!-- We will talk about indentation more when we talk about if statements. But, for now remember to indent all the statements uniformly. -->
 
 
 
 # unit 2
 ##Types
-Varaibles based on what operations we can do on them are group into so called **data types**.
-Python has 5 data types-Numbers, Strings, Lists, Tuple, Dictionary. In this chapter, we will discuss Numbers and Strings. We will see the other 3 in the next chapter.
+Varaibles based on what operations we can do on them are group into so called **Data types**.
+Python has 5 data types - `Numbers, Strings, Lists, Tuple, Dictionary`. In this chapter, we will discuss Numbers and Strings. We will see the other 3 in the next chapter.
 
 ###Numbers
 Numbers are further divided into 4 - `int, long, float, complex`. 
@@ -253,12 +223,48 @@ flag = False
 print flag
 ```
 
+##Input-Output
+It's not always the case that variables are assigned in code. Often times, an input from the user is used.
+```{python, eval=FALSE}
+# Input
+a = raw_input("enter a number:")
+```
+`raw_input()` always takes the input as string. Even if you type numbers, they would be taken as string. So, if you really want to input numbers, you need to convert them. We use the built-in python functions `int()` , `float()` for this.
+```{python, eval=FALSE}
+a = raw_input("enter a number:")
+print a
+print type(a)
+# type is built-in functon that tell the type of anything
+a = int(a)
+print type(a)
+```
+```{python, echo=FALSE}
+a = '23'
+print "enter a number:" + a
+print a
+print type(a)
+a = int(a)
+print type(a)
+```
+Python programmers combine the input and conversion into one line like this:
+```{python, eval=FALSE}
+age = int(raw_input('enter age'))
+height = float(raw_input('enter height'))
+```
+By now, I guess you are comfortable with printing. Few more examples:
+```{python}
+print 'some-string'
+print 23
+# to print multiple variables on the same line:
+print 'some-sting', 23, 45.5
+```
+
 ## Operators
 Variables are assigned values using the `=` operator. Variables are written when they are first assigned a value.
 ```{python}
 number = 10
 ```
-The variable `number` is assigned 10. Note that the type of variable `number` is not declared. This is not required because of the python type inference. Based on the operations we do on the variable, python will automatic guess its type. Isn't that cool?
+The variable `number` is assigned `10`. Note that the type of the variable `number` is not declared. This is not required because of the python type inference. Based on the operations we do on the variable, python will automatically guess its type. Isn't that cool?
 ```{python}
 #multiple assignments can be done in the same statement simultaneously.
 a, b = 10,20
@@ -271,9 +277,9 @@ print a,b
 ```
 
 ### Arithmetic Operators
-Arithmetic operators are used for doing comman arithmetic operations like addition, substraction etc. They are `+ - * / % **`. For example, `2 / 3` is 2 divided by 3.
+Arithmetic operators are used for doing comman arithmetic operations like addition, substraction etc. They are `+ - * / % **`. For example, `2/3` is `2` divided by `3`.
 
-`a%b` is gives the reminder of when a is divided by b. `a**b` gives a to power of b. Few examples for clarity are given in the table below.
+`a%b` is gives the reminder when `a` is divided by `b`. `a**b` gives a to power of `b`. Few examples for clarity are given in the table below.
 
 | operator       | example | result
 --------------|---------|------
@@ -284,7 +290,7 @@ Arithmetic operators are used for doing comman arithmetic operations like additi
 | % | 5%2 | 1
 | `**` | 5\*\*2 | 25
 ### Relational Operators
-Relational operators include `>, >=, <, <=, ==, !=`. They take 2 operands and return a boolean result(True or False). For example, the __greater than__ operator ( a > b ) returns `True` if a is bigger than b. Following table contains examples for other operators.
+Relational operators include `>, >=, <, <=, ==, !=`. They take 2 operands and return a boolean result(`True` or `False`). For example, the __greater than__ operator (`a > b`) returns `True` if `a` is bigger than `b`. Following table contains examples for other operators.
 
 | operator       | example | result
 --------------|---------|------
@@ -301,65 +307,28 @@ Relational operators include `>, >=, <, <=, ==, !=`. They take 2 operands and re
 
 ### Logical Operators
 
-There are three logical operators: not, or, and. 
+There are three logical operators: `not, or, and`. `'not a'` evaluates to the opposite of what `'a'` is. `'a and b'` evaluates to `True` only if both a, b are `True`.
+`'a or b'` evaluates to False if both a,b are `False`. They behave exactly like `!, ||, &&` operators in C.
 ```{python}
 condition = True
 print (not condition)
 print (condition or False)
 print (condition and False)
 ```
-`'not a'` evaluates to the opposite of what `'a'` is. `'a and b'` evaluates to `True` only if both a, b are `True`.
-`'a or b'` evaluates to False if both a,b are `False`. They behave exactly like !, ||, && operators in C.
+
 
 |     a   | not a       |
 ----------|--------------
 |     True   | False       |
 |     False  | True       |
 
-|     a   | b      | a and b
-----------|--------------|-----
-|     True   | True       | True
-|     True  | False       | False
-|     False   | True       | False
-|     False  | False       | False
+|     a   | b      | a and b  | a or b
+----------|--------------|-----|-----
+|     True   | True       | True  | True
+|     True  | False       | False | True
+|     False   | True       | False  | True
+|     False  | False       | False  | True
 
-|     a   | b      | a or b
-----------|--------------|-----
-|     True   | True       | True
-|     True  | False       | True
-|     False   | True       | True
-|     False  | False       | False
-
-###Membership Operator
-
-The `in` operator is used to determine whether a variable consists of other.
-```{python}
-isPresent = "sree" in "sreekanth"
-print isPresent
-```
-We will discuss this operator in more detail in unit-3 once we complete lists.
-```{python}
-fruits = ["apple", "banana", "orange"]
-print "apple" in fruits
-#the 'in' operator can be used with the 'not' operator 
-#to find out if a variable is not present in another
-print "banana" not in fruits
-```
-
-
-### Terary operator
-Terary operator is a shorter form of an if-else statement.
-*syntax:*
- 
-```{python, eval=FALSE}
-expression-1 if condition else expression-2
-```
-
-```{python}
-number = 24
-result = "odd" if number % 2 != 0 else "even"
-print result
-```
 
 
 ## Control flow
@@ -420,9 +389,133 @@ elif True:
 else:
   print 'this will not too'
 ```
+We will cover the rest of unit-2 in unit-3 once we are done with lists.
+### Terary operator
+Terary operator is a shorter form of an if-else statement.
+
+*syntax:*
+```{python, eval=FALSE}
+expression-1 if condition else expression-2
+```
+
+```{python}
+number = 24
+result = "odd" if number % 2 != 0 else "even"
+print result
+```
+
+
+
+# Lists
+Lists are similar to C arrays but more powerful. Lists store multiple values. Unlike C arrays, elements in a list don't have be of the same type. Lists are indexed from 0.
+```{python}
+fruits = ['apple', 'mango', 'pineapple']
+numbers = [10, 20, 30, 40, 50]
+#elements in a list can be accessed using index.
+print numbers[1]
+#even negative index is allowed, in which case length of list is added
+#to the index. 
+print numbers[-1]
+fruitsandnumbers =  ['apple', 'mango', 'pineapple', 10, 20, 30, True]
+#mixing elements of different types is fine
+print fruitsandnumbers
+print len(numbers)
+#len is a built-in function used to find the length of lists.
+integers = range(1,10)
+print integers
+#range(start,last) is built-in function that creates a list [start, start+1, ..., last-1] 
+```
+
+## Slicing
+Slicing is a simple way of creating a new list from an old list.
+
+*syntax*
+```{python, eval=FALSE}
+newList = oldList[start:end]
+```
+
+```{python}
+numbers = [0, 10, 20, 30, 40, 50, 60, 70]
+sublist = numbers[1:4]
+print sublist
+print numbers[0:3]
+print numbers[:3] #missing starting number, with replaced with 0
+print numbers[4:7]
+print numbers[4:] #missing ending number is replaced with length of the list.
+#negative indices can also be given. 
+#In which case, the length of the list is added
+print numbers[-2:7] 
+print numbers[:-1]  #this will print all elements except the last one.
+# you also can use a step
+print numbers[0:6:2]
+```
+As shown in the example, `sublist` is a new list consisting of elements 1 to 3(remember, 'end' is not inclusive) in the `numbers` list. We can also specify negative numbers for indexes in which case, the length of list is automatically added. For example, `numbers[-2:7]` is equivalent to `numbers[5:7]`. 
+
+## List methods
+Lists are not fixed in length. They increase and decrease when elements are added and removed.
+```{python}
+numbers = [10,20,30,40,50]  #creating a list
+numbers.append(60)  #adds 60 at the end of the list
+print numbers
+numbers.insert(2, 25) #you can even add an element at a specific index
+print numbers
+```
+Notice how the list gets re-adjusted. All the elements after index 1 are moved 1 place right when the new element is insert at index 2.
+
+We can delete an element from a list by using the keyword `del`.
+```{python}
+numbers = [10,20,30,40,50]
+del numbers[1] #this will remove element at index 1
+print numbers
+```
+Notice how the list is re-adjusted. All the elements after index 1 are moved 1 place left to full the list. The length of list is also reduced by 1.
+```{python}
+numbers = [10,20,30,40,50]  #creating a list
+print numbers.pop() #removes and returns the last element in the list
+print numbers
+# More methods
+print numbers.index(40) #returns the index of the element 40 if present
+numbers = [30,20,40,10,50]
+numbers.sort()  #sorts list
+print numbers
+```
+
+## Strings as lists
+In python, strings are similar to lists. So, some of the list operations can be done on strings.
+```{python}
+name = "sreekanth"
+print name[0]
+print name[1:5] #slicing
+print name + "kolamala" # concatination
+
+```
+```{python, echo=FALSE, eval=FALSE}
+#personal note: concatination does a shallow copy, use should use copy.deepcopy
+a = range(10)
+import copy
+b = copy.deepcopy(a)
+b.append(3)
+print a
+print b
+```
+
+###Membership Operator
+
+The `in` operator is used to determine whether a variable consists of other.
+```{python}
+isPresent = "sree" in "sreekanth"
+print isPresent
+```
+
+```{python}
+fruits = ["apple", "banana", "orange"]
+print "apple" in fruits
+#the 'in' operator can be used with the 'not' operator 
+#to find out if a variable is not present in another
+print "banana" not in fruits
+```
 
 ##Loops
-mental note: move this section after lists
 Let's write a program to print numbers from 0 to 4.
 ```{python}
 print 0
@@ -444,7 +537,7 @@ print 7
 print 8
 print 9
 ```
-This is very repeatative and tedious. We can't write code like this. And what if we need print a 100 numbers? 
+This is very repeatative and tedious. And what if we need print a 100 numbers? We can't write code like this.
 The solution to this is loops. They are two types of loops - *for* loop and *while* loop.
 
 ### The for loop
@@ -486,7 +579,7 @@ while condition:
   stmt
   stmt
 ```
-As with if block and for block, while block also uses the `:` and indentation. Lines 2,3,4 are within the while block. They will be repeatedly executed till the condition evaluates to False.
+As with *if* block and *for* block, *while* block also uses the `:` and indentation. Lines 2,3,4 are within the while block. They will be repeatedly executed till the `condition` evaluates to `False`.
 Following is code to print the contents of a list.
 ```{python}
 fruits = ["apple", "banana", "orange"]
@@ -503,7 +596,7 @@ for i in numbers:
   print i #remember indentation rules: this stmt is in for block but not in if block
 print "program end"
 ```
-Each time the keyword `continue` is hit, the remaining part of the for loop is not executed
+Each time the keyword `continue` is hit, the remaining part of the iteration of the `for` loop is not executed.
 ```{python}
 numbers = range(0,10)
 for i in numbers:
@@ -512,104 +605,18 @@ for i in numbers:
   print i
 print "program end"
 ```
-Notice that this program produces nothing. When `i=1`, the `if` condition is True, and break statement is hit. When a break statement is hit, the loop, the break statement is in, is immediately exited.  
+Notice that this program produces nothing. When `i=1`, the `if` condition is `True`, and `break` statement is hit. When a `break` statement is hit, the loop, the `break` statement is in, is immediately exited.  
 In summary, when a `continue` is hit, only the rest of the for interation is skipped. Whereas, when a `break` is hit, the `for` loop is exited.
 
-# Lists
-Lists are similar to C arrays but more powerful. Lists store multiple values. unlike C arrays, elements in a python list don't have be of the same type. lists are indexed from 0.
-```{python}
-fruits = ['apple', 'mango', 'pineapple']
-numbers = [10, 20, 30, 40, 50]
-#elements in a list can be accessed using index.
-print numbers[1]
-#even negative index is allowed, in which case length of list is added
-#to the index. 
-print numbers[-1]
-fruitsandnumbers =  ['apple', 'mango', 'pineapple', 10, 20, 30, True]
-#mixing elements of different types is fine
-print fruitsandnumbers
-print len(numbers)
-#len is a built-in function used to find the length of lists.
-integers = range(1,10)
-print integers
-#range(start,last) is built-in function that creates a list [start, start+1, ..., last-1] 
-```
-
-## Slicing
-Slicing is a simple way of creating a new list from (part of) an old list.
-*syntax*
-\fbox{newList = oldList[start:end]}
-```{python, eval=FALSE}
-newList = oldList[start:end]
-```
-
-```{python}
-numbers = [10, 20, 30, 40, 50, 60, 70]
-sublist = numbers[1:4]
-print sublist
-print numbers[0:3]
-print numbers[:3] #missing starting number, with replaced with 0
-print numbers[4:7]
-print numbers[4:] #missing ending number is replaced with length of the list.
-#negative indices can also be given. 
-#In which case, the length of the list is added
-print numbers[-2:7] 
-print numbers[:-1]  #this will print all elements except the last one.
-# you also can use a step
-print numbers[0:6:2]
-```
-As shown in the example, sublist is a new list consisting of elements 1 to 3(remember, 'end' is not inclusive) in the numbers list. you can also specify negative numbers for indexes in which case, the length of list is automatically added. For example `numbers[-2:7]` is equivalent to `numbers[5:7]`. 
-
-## List methods
-Lists are not fixed in length. They increase and decrease when elements are added and removed.
-```{python}
-numbers = [10,20,30,40,50]  #creating a list
-numbers.append(60)  #adds 60 at the end of the list
-print numbers
-numbers.insert(2, 25) #you can even add an element at a specific index
-print numbers
-```
-Notice how the list gets re-adjusted. All the elements after index 1 are moved 1 place right the new element is insert at index 2.
-you can delete an element from a list by using the keyword `del`.
-```{python}
-numbers = [10,20,30,40,50]
-del numbers[1] #this will remove element at index 1
-print numbers
-```
-Notice how the list is re-adjusted. All the elements after index 1 are moved 1 place left to full the list. The length of list is also reduced by 1.
-```{python}
-numbers = [10,20,30,40,50]  #creating a list
-print numbers.pop() #removes and returns the last element in the list
-print numbers
-# More methods
-print numbers.index(40) #returns the index of the element 40 if present
-numbers = [30,20,40,10,50]
-numbers.sort()  #sorts list
-print numbers
-```
-## Strings as lists
-In python, strings are lists. So, all the list operations can be done on strings.
-```{python}
-name = "sreekanth"
-print name[0]
-print name[1:5] #slicing
-print name + "kolamala" # concatination
-#personal note: concatination does a shallow copy, use should use copy.deepcopy
-a = range(10)
-import copy
-b = copy.deepcopy(a)
-b.append(3)
-print a
-print b
-```
-
 ## Comprehensions
-Comprehensions are quick way to create data. Often, data has a pattern like a series of integers, a series of squares etc. In other languages, such data is created using for loop. In python, comprehensions are used. 
+Comprehensions are a quick way to create data. Often, data has a pattern like a series of integers, a series of squares etc. In other languages, such data is created using for loop. In python, comprehensions are used.
+
+*Syntax:*
 ```{python, eval=FALSE}
 new_list = [expression(x) for x in some_list if condition]
 ```
-expression(x) is the formula used for creating the elements. The elements of some_list is are used in expression(x). The `if condition` is optional used for filtering. Some examples will solidify these concepts.
-This code is equivalent to:
+`expression(x)` is the formula used for creating the elements. The elements of `some_list` are used in `expression(x)`. The `if condition` is optional used for filtering. Some examples will solidify these concepts.
+The above code is equivalent to:
 ```{python, eval=FALSE}
 new_list = []
 for x in some_list:
@@ -623,19 +630,27 @@ print squares
 #squares of even numbers:
 squares = [x**2 for x in range(10) if x % 2 == 0]
 print squares
-squares = [x**2 for x in range(10) if not x % 2]
+squares = [x**2 for x in range(10) if x % 2 == 1]
 print squares
+vowels = [x for x in 'sreekanth' if x in 'aeoui']
+print vowels
 ```
 
 # Sets
 Sets are like lists but duplicates are not allowed.
 
+*syntax*
+```{python, eval=FALSE}
+new_set = {elements}
+```
+Few examples:
 ```{python}
 presentees = {1,5,6,7,10,1,6,6,5}
 print presentees
 presentees.add(10)
 print presentees
 ```
+Notice that `presentees` has only one 6 and one 5 even though we assigned more than one.
 
 Common mathematical set operations like union, intersection can be easily done.
 ```{python}
@@ -646,7 +661,7 @@ print setA.intersection(setB)
 ```
 
 # Dictionaries
-Dictionaries(commmonly shortened to dict) are {key,value} pair data structures. Each element in a dict is a pair of key and value. Keys have to be uquine. Keys can be thought as indices with names. Dicts are similar to java maps.
+Dictionaries(commmonly shortened to dict) are *{key,value}* pair data structures. Each element in a dict is a pair of key and value. Keys have to be uquine. Keys can be thought as indices with names. Dicts are similar to Java hashmaps.
 ```{python}
 wordFrequency = {'a':1, 'b':5, 'c':10, 'e':15}
 #Here all the strings('a', 'b', 'c', 'e' are keys)
@@ -668,6 +683,7 @@ if('d' in wordFrequency):
 else:
   print "not present"
 ```
+Notice that we used the membership operator `in` to find out if a key is present in a dict or not.
 
 # Functions
 Functions are small pieces of code that we can reuse by calling them instead of writing code multiple times. Their syntax:
@@ -887,34 +903,52 @@ pip install flask
 There is another module installation in lab programs exercise 12. Do have a look.
 
 # Object Oriented Programming OOP in Python
-Classes are neat way to organize code. Consider we write code for a box. A box has 3 properties-height, width, bredth. We can use variable like box_height, box_width, box_bredth to represent them. But doing this makes 3 seperate variables that seem to have no relation. 
-```{python}
+Classes are neat way to organize code. Consider we write code for a box. A box has 3 properties-height, width, bredth. We can use variable like box_height, box_width, box_bredth to represent them. But doing this makes 3 seperate variables that seem to have no relation. Instead, we could create a class that holds these variables.
+```{#numCode .python .numberLines}
 class Box(object):
-  static_variable = 10
+  def __init__(self, h, w, b):
+    print 'creating an object'
+    self.height = h
+    self.weight = w
+    self.bredth = b
+
   def set_height(self, h):
     self.height = h
   
   def get_height(self):
     return self.height
 
-  def __init__(self, h, w, b):
-    self.height = h
-    self.weight = w
-    self.bredth = b
-    Box.static_variable += 10
-
   def volume(self):
-    return self.height*self.weight*self.bredth
-  
-  def __len__(self):
-    return 10
+    return self.height * self.weight * self.bredth
 
-box = Box(2,3,4)
+
+box = Box(2,3,4)  #an object is created and __init__(2,3,4) is called.
 print box.volume()
-print len(box)
+print box.height, box.weight, box.bredth
+another_box = Box(3,2,1)
+print another_box.height, another_box.weight, another_box.bredth
+print another_box.volume()
 ```
-I know that's a lot of code. Don't worry. Before we We are creating a class called Box that has variable height
+I know that's a lot of code. Don't worry. It's not hard. Use of classes consists of 3 parts- defining a class, creating objects and calling methods on them.
 
+**Class Defination**
+
+We are creating a class called Box that contains variables height, weight and breadth. So, think of class as a container to holding varaibles. Remember, objects and classes are related but are different.Class is a blueprint-a plan that can be used to create objects. line 1 to 15 is the class defination whereas line 18 and line 21 is the object creation. Only one class can exist but several objects can exist. On line 18 and line 21, are creating 2 objects. These 2 are different from each other. Each object have a set of height, weight, bredth are have no connection from another. 
+
+**Object creation**
+
+line 17 creates a box object with height as 2, weight as 3 and bredth as 4. At this line, the special function `__init__()` is called with 2,3,4 as parameters. I know, there is no call to `__init__()`. Here is the thing with python: If a class is defined with name `XYZ` then we create an object by calling `XYZ()`. However, inside the class there is no such method. Instead the class `XYZ`'s `__init()__` is called. Notice the print stmt 'creating object' executed each time an object is created.
+
+Notice that the contructor defination on line 2 has 4 parameters while, called the method call on line 17 we had only 3 parameters. This is because all class methods have a default first parameter as `self` which doesn't have be passed when the method is called. you can notice this with the mehtod `volume()` as well. the defination on line 13 has one parameter but on line 18, while calling there is none.
+
+`self` is special variable that refers to the object itself. All the object variables are refered with the self variable. line 3 to line 5, we define the 3 instance variables. We are also assigning them h,w,b values. A Class can also has functions. We are defining the method `volume()` on line 13,14 within the class.
+
+line 2 to 5 is function defination named `__init__()`. `__init()__` is specail method called the constructor. It is called each time an object is created. All the variables inside an class should be initialited within the constructor. Our Box class has 3 varaibles and there are assigned inside the constructor. unlike java, we can't declare instance variables in python and hence they need to be initiated within the constructor.
+
+**Accessing instance variables**
+
+we can access instance varaibles either from within the class or outside the class. Within class, we use the self varaible to accessing(by saying `self.variable_name`). on line 14, all 3 variables are accessing.
+When we are referring outside the class, we use the varaible that pointes to the obj. like we on line 20 as `box.height`. 
 
 ## Magic methods
 The beauty of python is in its magic methods. Lets us that we are defining a class to represent a family.
@@ -936,8 +970,9 @@ class Family(object):
     return len(self.members)
 family = Family(['ram', 'priya', 'ravi'])
 print len(family) #notice the change
+print family
 ```
-What we have achivied here is: Family is type we build just now. The python language didn't know about this before now. len is built-in function. we defined our class to work seemlessly with python's built-in functions. __len(self)__ is a magic method that gets called when len(family) is encountered. 
+What we have achivied here is: Family is type we build just now. The python language didn't know about this before now. len is built-in function. we defined our class to work seemlessly with python's built-in functions. `__len__(self)` is a magic method that gets called when `len(family)` is encountered. 
 ```{python}
 class Family(object):
   def __init__(self, mems):
@@ -1031,20 +1066,19 @@ class Doctor(object):
     animal.make_sound()
 ```
 \setlength{\parindent}{5ex} This Doctor works great. All animal lovers are going to this doctor for medical help.
-Few years later, a cat is 
-
+Few years later, we create class to represent the cat. Since cats are animals, we define a class Cat that inherits from Animal class. We also override the make_sound() method to make it sound like a real cat.
 ```{python, eval=FALSE}
 class Cat(Animal):
   def make_sound(self):
     print 'meow meow'
 ```
-
+This looks great. Cats finally have a class of their own, with perfect cat sound. All is perfect. What happens when cats get sick? Will the doctor be able heal them? 
 ```{python, eval=FALSE}
 cat = Cat()
 doctor = Doctor()
 doctor.heal(cat)
 ```
-
+Yes, he can. A Cat is a Animal. And Doctor heals Animal. And hence Doctor can treat a Cat. This is power of Polymorpish. The Cat code didn't even exist when the Doctor code was written. The Cat code was written after the Doctor code. Even through, Doctor code worked seemlessly with the Cat code.
 ```{python, echo=FALSE}
 class Animal(object):
   def __init__(self):
