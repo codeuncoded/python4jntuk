@@ -21,12 +21,12 @@ knitr::opts_chunk$set(engine = "python")
 knitr::opts_chunk$set(comment = "Out:")
 ```
 
-# unit 1
+#Unit 1
 
-## History of python
+##History of python
 Python was created by Guido van Rossum in 1991.
 
-## Need of python programming
+##Need of python programming
 C, C++ are powerful langauges. langauges that can be used to write a variaty of software. they give you control of the machine and the very minitue control the system. But, they are very low level. we need to specify very small detail. For example, we have to create and manage memory requirement, object destruction etc, when all we need to do is save a few objects. 
 
 C, C++ syntax makes writing code very lengthly. C, C++ focus on reducing memory, running programs fast etc. Python's focus is to reduce developer time-time taken by the programmer to create software. C's 20 line code would be 5 or less lines long.
@@ -686,7 +686,9 @@ else:
 Notice that we used the membership operator `in` to find out if a key is present in a dict or not.
 
 # Functions
-Functions are small pieces of code that we can reuse by calling them instead of writing code multiple times. Their syntax:
+Functions are small pieces of code that we can reuse by calling them instead of writing code multiple times. 
+
+*Syntax:*
 ```{python, eval=FALSE}
 def function_name(parameters):
   stmt
@@ -696,11 +698,14 @@ def function_name(parameters):
 Few examples as usual will make things clear:
 ```{python, cache=TRUE}
 #function defination
+#function to add two numbers and print them.
 def add(a,b):
   c = a + b
   print c
 ```
-We define a function by using the keyword `def`. Notice that all the stmts after the first statement are indented. This is python's way to say that these statements are part of the function defination and not in the global context. Not indenting would throw an error. We can call this function like this:
+We define a function by using the keyword `def`. Notice that all the stmts after the first statement are indented. This is python's way to say that these statements are part of the function defination and not in the global context. Not indenting would throw an error. 
+
+`a,b` are called parameters. They are assigned values when this function is called. We can call this function like this:
 ```{python, eval=FALSE}
 #function calling
 add(2,3)
@@ -719,17 +724,19 @@ add(2.3, 4.5)
 add(a=2.3, b=4.5) #we can explicitly use the names of the parameter as defined in function defination
 add(b=4.5, a=2.3) # we can also change the order of parameters.
 ```
-Also notice that we were able to use the same add() function to add both ints and floats. Something we can't do in languages like C or Java.
+Also notice that we were able to use the same `add()` function to add both `ints` and `floats`. Something we can't do in languages like C or Java.
 
 ### Default parameters
-We could give default values to function parameters. In which case, if the function is called without the parameter, the default value is used. If an actual parameter is given then the default one is ignored.
+We could also give default values to function parameters. In which case, if the function is called without the parameter, the default value is used. If an actual parameter is given then the default one is ignored.
 ```{python}
 def print_series(n=10):
   for i in range(n):
     print i
-print_series(5) #this will print till 5 #mental note: write this into 2 programs and eval, echo blocks
-print_series()  #since no parameter is given, the default value 10 is assigned to n
-                #and 0 till n are printed.
+
+print 'calling with 5 as parameter'
+print_series(5) 
+print 'calling without an actual parameter'
+print_series()
 ```
 
 ### Fruitful Functions
@@ -750,16 +757,30 @@ def mean_mode_median(numbers):
 mean, mode, median = mean_mode_median(range(5))
 print mean, mode, median
 ```
+Consider the following program:
+```{python}
+print map(len, ['this', 'will', 'return', 'lengths', 'of', 'each', 'word'])
+```
+`map` is built-in function that takes a function and *applies* it to a list. Each element in the list is used a parameter for `len()` and the results form a list. Notice that `len` is passed and not `len()`. This is because, we are not calling `len`. We are just passing `len` to map. `map` will internally call it.
 
+Let's write a function that returns square of given number. And find the squares of a list of numbers.
 ```{python}
 def square(number):
   return number**2
 print map(square, range(10))
 ```
-Instead of defining a function, we can use **anonymous function**. Anonymous function are like regular functions except they don't have a name. They defined using the keyword, `lambda`. 
+Instead of defining a function for such a simple task, we can use **anonymous function**. Anonymous function are like regular functions except they don't have a name. They defined using the keyword, `lambda`. 
 ```{python}
 print map(lambda x: x**2, range(10))
 ```
+Few more examples will help:
+```{python}
+#adding indivial numbers in lists.
+sums = map(lambda x,y: x+y, range(0,5), range(5,10))
+print sums
+```
+mental note: add an example of lambda with a return statement.
+
 ### Variable-length arguments
 ```{python}
 # program to take variable number of parameters
@@ -775,7 +796,7 @@ max(20,30,60,70,40,50)
 max(20)
 max()
 ```
-You can also mix normal parameters with variable number of parameters
+You can also mix normal parameters with variable number of parameters. But the variable length argument should come last.
 ```{python, error=TRUE}
 def max(first, *numbers):
   result = first
@@ -791,12 +812,13 @@ max() #this will throw an error
 ```
 
 ## Scope
-Variables declared(appear for the first time in code) in the function(known as local variables) are not accessable outside the function.
+Variables declared(appear for the first time in code) inside a function(known as local variables) are not accessable outside the function.
 ```{python, error=TRUE}
 def some_function():
   variable = 'this variable is available only inside the function some_function()'
   print variable
-function()
+
+some_function()
 print variable
 ```
 Vaariables declared outside the function(known as global variables) are available inside a function but can't be modified directly.
@@ -816,7 +838,7 @@ def function():
     print variable
 print 'variable outside function before function call:', variable
 function()
-print 'age outside function after function call:', variable
+print 'variable outside function after function call:', variable
 ```
 To use and modify a global variable, you need to declare it as global first. we do that by using the keyword **global**.
 ```{python}
@@ -842,13 +864,19 @@ In the code example, a function is defined within other function. This is possib
 -->
 
 ## Import statements
-Often times, instead of writing code ourselves, we could you code written by others. This code is available in the form of libraries. We need to declare them before using them by writing an import statement. Its syntax:
+Often times, instead of writing code ourselves, we could you code written by others. This code is available in the form of libraries. We need to declare them before using them by writing an import statement. There are 2 ways of doing this:
+
+*Syntax:*
 ```{python, eval=FALSE}
 import library_name
+```
+```{python, eval=FALSE}
 from library_name import class_or_function_name
 ```
+
+
 Some examples:
-There is module called math that contains commonly used mathematical functions like square root{sqrt()} etc. To use them, we need to import the math module.
+There is module called math that contains commonly used mathematical functions like square root{`sqrt()`} etc. To use them, we need to import the math module. 
 ```{python, error=TRUE}
 import math #you can call anything within math. 
 print math.sqrt(25) #the full name math.sqrt() is requeried. 
@@ -871,7 +899,7 @@ Some of these libraries are loaded along with python and hence need no import. S
 
 ## Python packages and pip
 
-Python comes a rich libraby for doing pretty much anything under the sun. These libraries are available in the form of modules. Some of the modules are avaiable with python, but some are not. We can simpley import a module to check if a module is present or not. 
+Python comes a rich library for doing pretty much anything. These libraries are available in the form of modules. Some of the modules are available with python, but some are not. We can simply import a module to check if a module is present or not. 
 ```{python, error=TRUE}
 import flask
 ```
@@ -881,7 +909,9 @@ print '  File "<stdin>", line 1, in <module>'
 print "NameError: name 'pip' is not defined"
 ```
 
-As you see, the python interpreter says flask doesn't exist. Let's install it. Open windows command line by pressing the windows key + r. Or search for an app called `run` from the start button. Type 'cmd' and press enter. you are in the windows command prompt. Now install the module 'flask'
+As you see, the python interpreter says flask doesn't exist. Let's install it. 
+
+Open windows command line by pressing the windows key + r. Or search for an app called `run` from the start button. Type 'cmd' and press enter. you are in the windows command prompt. Now install the module 'flask'
 
 ```{python,eval=FALSE}
 pip install flask
@@ -903,14 +933,15 @@ pip install flask
 There is another module installation in lab programs exercise 12. Do have a look.
 
 # Object Oriented Programming OOP in Python
-Classes are neat way to organize code. Consider we write code for a box. A box has 3 properties-height, width, bredth. We can use variable like box_height, box_width, box_bredth to represent them. But doing this makes 3 seperate variables that seem to have no relation. Instead, we could create a class that holds these variables.
+
+Consider writing code for a box. A box has 3 properties-height, width, breadth. We can use variable like `box_height`, `box_width`, `box_breadth` to represent them. But doing this makes 3 seperate variables that seem to have no relation. Instead, we could create a *class* that holds these variables. Classes are neat way to organize code.
 ```{#numCode .python .numberLines}
 class Box(object):
   def __init__(self, h, w, b):
     print 'creating an object'
     self.height = h
     self.weight = w
-    self.bredth = b
+    self.breadth = b
 
   def set_height(self, h):
     self.height = h
@@ -919,36 +950,67 @@ class Box(object):
     return self.height
 
   def volume(self):
-    return self.height * self.weight * self.bredth
+    return self.height * self.weight * self.breadth
 
 
 box = Box(2,3,4)  #an object is created and __init__(2,3,4) is called.
 print box.volume()
-print box.height, box.weight, box.bredth
+print box.height, box.weight, box.breadth
 another_box = Box(3,2,1)
-print another_box.height, another_box.weight, another_box.bredth
+print another_box.height, another_box.weight, another_box.breadth
 print another_box.volume()
 ```
-I know that's a lot of code. Don't worry. It's not hard. Use of classes consists of 3 parts- defining a class, creating objects and calling methods on them.
+```{python, echo=FALSE}
+class Box(object):
+  def __init__(self, h, w, b):
+    print 'creating an object'
+    self.height = h
+    self.weight = w
+    self.breadth = b
+
+  def set_height(self, h):
+    self.height = h
+  
+  def get_height(self):
+    return self.height
+
+  def volume(self):
+    return self.height * self.weight * self.breadth
+
+
+box = Box(2,3,4)  #an object is created and __init__(2,3,4) is called.
+print box.volume()
+print box.height, box.weight, box.breadth
+another_box = Box(3,2,1)
+print another_box.height, another_box.weight, another_box.breadth
+print another_box.volume()
+```
+I know that's a lot of code. Don't worry. It's not hard. 
+
+Use of classes consists of 3 parts - defining a class, creating objects and calling methods on them.
 
 **Class Defination**
 
-We are creating a class called Box that contains variables height, weight and breadth. So, think of class as a container to holding varaibles. Remember, objects and classes are related but are different.Class is a blueprint-a plan that can be used to create objects. line 1 to 15 is the class defination whereas line 18 and line 21 is the object creation. Only one class can exist but several objects can exist. On line 18 and line 21, are creating 2 objects. These 2 are different from each other. Each object have a set of height, weight, bredth are have no connection from another. 
+We are creating a class called `Box` that contains variables `height`, `weight` and `breadth`. So, think of class as a container to holding varaibles.  line 1 to 15 is the class defination. 
+A Class can also has functions. We defined the method `volume()` on line 13,14 within the class.
 
-**Object creation**
+**Object creation and method calling**
 
-line 17 creates a box object with height as 2, weight as 3 and bredth as 4. At this line, the special function `__init__()` is called with 2,3,4 as parameters. I know, there is no call to `__init__()`. Here is the thing with python: If a class is defined with name `XYZ` then we create an object by calling `XYZ()`. However, inside the class there is no such method. Instead the class `XYZ`'s `__init()__` is called. Notice the print stmt 'creating object' executed each time an object is created.
+Line 17 creates a box object with `height` as 2, `weight` as 3 and `breadth` as 4. At this line, the special function `__init__()` is called with 2,3,4 as parameters. I know, there is no call to `__init__()`. Here is the thing with python: If a class is defined with name `XYZ` then we create an object by calling `XYZ()`. However, inside the class there is no such method. Instead the class `XYZ`'s `__init()__` is called. This is special method called **constructor**. Another object is created at line .. Notice the print stmt 'creating object' executed each time an object is created.
 
-Notice that the contructor defination on line 2 has 4 parameters while, called the method call on line 17 we had only 3 parameters. This is because all class methods have a default first parameter as `self` which doesn't have be passed when the method is called. you can notice this with the mehtod `volume()` as well. the defination on line 13 has one parameter but on line 18, while calling there is none.
+Only one class can exist but several objects can exist. On line 18 and line 21, are creating 2 objects. These 2 are different from each other. Each object have a set of `height, weight, breadth` and have no connection from another. 
 
-`self` is special variable that refers to the object itself. All the object variables are refered with the self variable. line 3 to line 5, we define the 3 instance variables. We are also assigning them h,w,b values. A Class can also has functions. We are defining the method `volume()` on line 13,14 within the class.
+Notice that the contructor defination on line 2 has 4 parameters while the method call on line 17 we had only 3 parameters. This is because all class methods have a default first parameter as `self` which doesn't have be passed when the method is called. You can notice this with the method `volume()` as well. The method defination on line 13 has one parameter but on line 18, while calling there is none.
 
-line 2 to 5 is function defination named `__init__()`. `__init()__` is specail method called the constructor. It is called each time an object is created. All the variables inside an class should be initialited within the constructor. Our Box class has 3 varaibles and there are assigned inside the constructor. unlike java, we can't declare instance variables in python and hence they need to be initiated within the constructor.
+`self` is special variable that refers to the object itself.  line 3 to line 5, we define the 3 instance variables. Since variables are not declared in python, we need to assign them values in the constructor itself. Also notice the use of the `self` variable to refer instance variables. If we don't use `self`, python would think the variable is a global variable. Our Box class has 3 varaibles and there are assigned inside the constructor.
 
-**Accessing instance variables**
+**In summary:**
 
-we can access instance varaibles either from within the class or outside the class. Within class, we use the self varaible to accessing(by saying `self.variable_name`). on line 14, all 3 variables are accessing.
-When we are referring outside the class, we use the varaible that pointes to the obj. like we on line 20 as `box.height`. 
+Objects and classes are related but are different. Class is a blueprint - a plan that can be used to create objects. Any number of objects can be created from a Class.
+
+Classes can have instance variables and methods.  Each object will have its own set of variables. Each time an object is created, the corresponding Class' constructor is called. 
+
+All class methods have first parameter as self. An instance variable height is referred as `self.height` within the class defination and as `box.height`, `box` been an object, outside the class defination.
 
 ## Magic methods
 The beauty of python is in its magic methods. Lets us that we are defining a class to represent a family.
@@ -972,12 +1034,12 @@ family = Family(['ram', 'priya', 'ravi'])
 print len(family) #notice the change
 print family
 ```
-What we have achivied here is: Family is type we build just now. The python language didn't know about this before now. len is built-in function. we defined our class to work seemlessly with python's built-in functions. `__len__(self)` is a magic method that gets called when `len(family)` is encountered. 
+In the last section, we learnt about special method `__init__()`. There are more special methods. `__len__()` is another one. It's called when `len()` is called on the corresponding object. What we have achivied here is: Family is type we build just now. The python language didn't know about this before now. we defined our class to work seemlessly with python's built-in functions. `__len__(self)` is a magic method that gets called when `len(family)` is encountered. 
 ```{python}
 class Family(object):
   def __init__(self, mems):
     self.members = mems
-  def __repr__(self):
+  def __str__(self):
     return str(self.members)
   def __getitem__(self, name):
     return self.members[name]
@@ -985,6 +1047,8 @@ family = Family(['ram', 'priya', 'ravi'])
 print family    
 print family[1]
 ```
+As you can use in the output, when we printed `family`, instead of printing object id(as was the case in the previous example), it printed the contains of the list `members`. This is because of the magic method `__str__()`. In summary, magic methods are defined in classes to work well python's built-in methods.
+
 An excellent guide for magic methods(don't forget to check the table towards the end of the article): http://minhhh.github.io/posts/a-guide-to-pythons-magic-methods
 
 self-note: discuss the keyword is
@@ -1016,9 +1080,13 @@ southy = South_Indian_Family(['ram', 'priya', 'ravi'])
 print southy.members
 print southy
 ```
+Often times, we would need a class that is similar to a class we already defined, but with more capabilites - more instance variables and methods. In the above example, we created a specialized version of the `Family` class. We did this by created a class called `South_Indian_Family` that derived from the `Family` class. The specialized class is called the derived class and the class from which it is derived is called the base class. The Family class is the base class whereas `South_Indian_Family` class would be derived class. The power of such inheritance is this: All of instance varaibles and methods of the base class will also be present in the derived class. 
+
+Notice that the South_Indian_Family had no methods or variables defined. But, we will able to access `southy.members`. This is because South_Indian_Family derived the varialbe `members` from its base class.
 
 ```{python}
-#multiple inheritance
+#multiple inheritance: Inheriting from more than one class.
+#methods and varaibles of all base classes will be inherited.
 class A(object):
   pass
 
@@ -1118,18 +1186,22 @@ print example.public_variable
 print example._private_variable #works, but never do this
 ```
 
-
-
-
-
-
 ## Exception Handling
-Let's write a program to for a simple calculator. Our calculator repeatedly asks 2 numbers and  calculates their division. 
+
+###Difference between an error and Exception
+
+Errors are incorrectly written programs. Errors are something that can be avoided by carefully writing software. Like calculation mistake or not handling a corner case.
+
+Exceptions are errors that the programmer can't stop from happening. Like when trying to read from a file, the file is not available. Or when a program tries to find something on the internet but there is no internet. Since exceptions can't be prevented, there should atleast be handled. Which means, We need to provide some safety code. As usual, examples will clearify further.
+
+###Handling Exception
+
+Let's write a program for a simple calculator. Our calculator repeatedly asks 2 numbers and  calculates their division. 
 
 ```{python, eval=FALSE}
 while True:
-	a = int(raw_input("enter numerator:"))
-	b = int(raw_input("enter denominator:"))
+	a = float(raw_input("enter numerator:"))
+	b = float(raw_input("enter denominator:"))
 	print a/b
 ```
 
@@ -1137,7 +1209,7 @@ while True:
 def divide(a,b):
   print "enter numerator:" + str(a)
   print "enter denominator:" + str(b)
-  print a/b
+  print 1.0*a/b
 divide(2.3, 4.5)
 divide(5,2)
 print "enter numerator:"
@@ -1149,19 +1221,16 @@ print "enter numerator:" + str(a)
 print "enter denominator:" + str(b)
 print a/b
 ```
-
-The program stops with an error message. ... we can avoid this by using a try-except block
-
-```{python, eval=FALSE}
+Not surprisingly, the program stops with an error message. Instead of letting the program crash and stop, we could make the program to safely continue.
+```{#numCode .python .numberLines}
 while True:
 	try:
-		a = int(raw_input("enter numerator:"))
-		b = int(raw_input("enter denominator:"))
+		a = float(raw_input("enter numerator:"))
+		b = float(raw_input("enter denominator:"))
 		print a/b
 	except ZeroDivisionError as e:
 		print 'Denominator cannot be zero. Try again'
 ```
-
 ```{python, echo=FALSE}
 def divide(a,b):
   try:
@@ -1175,15 +1244,18 @@ divide(5,0)
 divide(42,5)
 print 'enter numerator:'
 ```
+All the code that can throw an exception is written in the `try` block. A `try` block is followed by an `except` block, where code that handles the exception situation is written. Line 4 throws an exception. All the rest of the code in `try` block is not executed and program control is passed to the `except` block. The `except` block catches the exception. The `except` block is executed.
 
-Looks good. let's break this again. this time we will give invalid input.
+As we can in the output, the program safely continues taking input even in the case of a Divide by zero error. 
+
+Let's break this again. This time we will give invalid input.
 
 ```{python, echo=FALSE, error=TRUE}
 a = 'e'
 print 'enter numerator:' + a
-int(a)
+float(a)
 ```
-Giving a string instead of a number crashed the program. We can see from the error output, there was a ValueError error. Let's handle that.
+Giving a string instead of a number crashed the program. We can see from the error output, there was a `ValueError` error. Let's handle that.
 ```{python, eval=FALSE}
 while True:
 	try:
@@ -1195,7 +1267,6 @@ while True:
 	except ValueError as e:
 		print 'Please enter numbers'
 ```
-
 ```{python, echo=FALSE}
 a,b = 'string', 3
 try:
@@ -1220,13 +1291,13 @@ except ValueError as e:
 
 print 'enter numerator:'
 ```
-We can also combine both exceptions into a single block like this:
+For every try block, we can have 1 or more except blocks. We can also combine both exceptions into a single block like this:
 ```{python, eval=FALSE}
   except (ZeroDivisionError, ValueError) as e:
     print 'Bad input. Please try again'
 ```
 
-ZeroDivisionError and ValueError are two types of Exceptions. Infact there are derived from the class called Exception. A lot of exceptions are predefined by the language and all of them are derived from the class Exception. So, instead of using these, we can use the super class Exception.
+`ZeroDivisionError` and `ValueError` are two types of exceptions. Infact there are derived from the class called `Exception`. A lot of exceptions are predefined by the language and all of them are derived from the class `Exception`. So, instead of using these, we can use the super class `Exception`.
 ```{python, eval=FALSE}
 while True:
 	try:
@@ -1257,7 +1328,7 @@ queue.enqueue(1)
 print queue.deque()
 print queue.deque()
 ```
-Notice in the output, the message we coded was printed. We can also raise a more specific exception(like IndexError) instead of the generic superclass Exception. Or we could just create an exception. Let's create a exception called EmptyQueueError.
+Notice in the output, the message we coded was printed. We can also raise a more specific exception(like `IndexError`) instead of the generic superclass `Exception`. Or we could just create an exception. Let's create a exception called EmptyQueueError.
 
 
 ```{python, error=TRUE}
@@ -1282,7 +1353,7 @@ print queue.deque()
 print queue.deque()
 ```
 
-Notice instead of object, we are subclassing Exception instead of teh usaul object. This is because we the functionality of the Exception class.
+Notice instead of object, we are subclassing `Exception` instead of the usual object. This is because we need  the functionality of the `Exception` class.
 
 # Testing
 Consider the following program to print whether a number is even or not
