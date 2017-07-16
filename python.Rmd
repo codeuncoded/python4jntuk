@@ -5,7 +5,6 @@ date: "M.tech Computer Science, IIT Kanpur"
 header-includes:
 - \usepackage{fancyhdr}
 - \pagestyle{fancy}
-- \fancyhead[CO,CE]{This is fancy header}
 - \fancyfoot[CO,CE]{\copyright \ sreekanth.kolamala@gmail.com}
 - \fancyfoot[LE,RO]{\thepage}
 - \usepackage{marvosym}
@@ -27,27 +26,28 @@ knitr::opts_chunk$set(comment = "Out:")
 Python was created by Guido van Rossum in 1991.
 
 ##Need of python programming
-C, C++ are powerful langauges. langauges that can be used to write a variaty of software. they give you control of the machine and the very minitue control the system. But, they are very low level. we need to specify very small detail. For example, we have to create and manage memory requirement, object destruction etc, when all we need to do is save a few objects. 
+C, C++ are powerful langauges. Langauges that can be used to write a variety of software. They give you very minute control of the machine. But, they are very low level. We need to specify every small detail. For example, we have to create and manage memory, object destruction etc, when all we need to do is save a few objects. 
 
-C, C++ syntax makes writing code very lengthly. C, C++ focus on reducing memory, running programs fast etc. Python's focus is to reduce developer time-time taken by the programmer to create software. C's 20 line code would be 5 or less lines long.
+C, C++ syntax makes writing code very lengthly. C, C++ focus on reducing memory, running programs fast etc. Python's focus is to reduce developer time-time taken by the programmer to create software. C's 20 line code would be 5 or less lines long in python.
 
 ##Applications
-Python's concise code makes it real quick to write software. It's high level. Python's is used for the real software that we see often in our day-to-day life.
+Python's concise code makes it real quick to write software. It's high level. Python is used for the real software that we see often in our day-to-day life.
 
 ####Web development
-Django is popular python framework(a big library is called a framework) that simplifies build websites like amazon or flipkart. 
+Django is popular python framework(a big library is called a framework) that simplifies building websites. Popular websites like Instagram, YouTube, BitBucket, Pinterest
+use Django/python.
 
 ####Data Science and Maching Learning
-Data science is different from the general programming. In general programming, finding out the average of subjects marks is a typical programming. Data science trys to predict the answer to question 'when will you come to college tommorow?' It does it by observing previous data. Since you came on 8:30 everyday for the past 6 months, you will come tommorow at 8:30. This is simple problem but typical problems in this field are like 'what is chance of getting cancer if you have a family history?' 'what will the whether be today?' etc. Two langauges dominate this field - Python and R. Both of which are in your sylabus. 
+Data science is different from the general programming. In general programming, finding out the average of subjects marks is a typical programming problem. Data science trys to predict the answer to question 'When will you come to college tommorow?' It does it by observing previous data. Since you came at 8:30 everyday for the past 6 months, you will come tommorow at 8:30. This is simple problem but typical problems in this field are like 'what is chance of getting cancer if you have a family history?' 'what will the whether be today?' etc. Two langauges dominate this field - Python and R. Both of which are in your syllabus. 
 
 ####Gaming and GUI applications
-The famous game Civiliztion IV where you get build an empire was written in python.
+The famous game Civiliztion IV, where you get build an empire, was written in python.
 
 ####Internet of Things(IoT)
-Our calculators are computers. Not as powerful as our laptops but still are computers. Iot is a technology where, small calculator sized but more powerful computers are attached everyday devices like TV, Fridge, AC to make them smart. The smart house where you can voice operate lights, doors, music is becuase of iot. And, python is the primary language of this field.
+Our calculators are computers. Not as powerful as our laptops but still are computers. Iot is a technology where, small calculator sized but more powerful computers are attached to everyday devices like TV, Fridge, AC to make them smart. The smart house; where you can voice operate lights, doors, music; is becuase of iot. And, python is the primary language of this field.
 
 ####Natural language processing
-Did you try giving voice commands to your smart phone? Isn't it cool? the phone listens and finds out what you are talking out. It does this even if an acsent is present. This field of find out what humans are saying is called natural language processing. Python has cool librabies for this too.
+Did you try giving voice commands to your smart phone? Isn't it cool? The phone listens and finds out what you are talking out. It does this even if an accent is present. This field  is called natural language processing. Python has cool librabies for this too.
 
 ##Setup
 Download python from here: https://www.python.org/downloads/. 
@@ -176,7 +176,7 @@ The rest of unit will make more sense in unit-2 and hence is covered in unit-2.
 
 <!-- We will talk about indentation more when we talk about if statements. But, for now remember to indent all the statements uniformly. -->
 
-
+\newpage
 
 #Types, Operators and Expressions
 ##Types
@@ -318,7 +318,6 @@ print (condition or False)
 print (condition and False)
 ```
 
-
 |     a   | not a       |
 ----------|--------------
 |     True   | False       |
@@ -331,9 +330,9 @@ print (condition and False)
 |     False   | True       | False  | True
 |     False  | False       | False  | True
 
-
-
 ## Control flow
+
+### if, if-else, if-elif-else
 ```{#numCode .python .numberLines}
 a,b = 3,2
 if a > b:
@@ -392,6 +391,7 @@ else:
   print 'this will not too'
 ```
 We will cover the rest of unit-2 in unit-3 once we are done with lists.
+
 ### Terary operator
 Terary operator is a shorter form of an if-else statement.
 
@@ -406,7 +406,7 @@ result = "odd" if number % 2 != 0 else "even"
 print result
 ```
 
-
+\newpage
 
 #Data Structures
 
@@ -430,32 +430,6 @@ integers = range(1,10)
 print integers
 #range(start,last) is built-in function that creates a list [start, start+1, ..., last-1] 
 ```
-
-### Slicing
-Slicing is a simple way of creating a new list from an old list.
-
-*syntax*
-```{python, eval=FALSE}
-newList = oldList[start:end]
-```
-
-```{python}
-numbers = [0, 10, 20, 30, 40, 50, 60, 70]
-sublist = numbers[1:4]
-print sublist
-print numbers[0:3]
-print numbers[:3] #missing starting number, with replaced with 0
-print numbers[4:7]
-print numbers[4:] #missing ending number is replaced with length of the list.
-#negative indices can also be given. 
-#In which case, the length of the list is added
-print numbers[-2:7] 
-print numbers[:-1]  #this will print all elements except the last one.
-# you also can use a step
-print numbers[0:6:2]
-```
-As shown in the example, `sublist` is a new list consisting of elements 1 to 3(remember, 'end' is not inclusive) in the `numbers` list. We can also specify negative numbers for indexes in which case, the length of list is automatically added. For example, `numbers[-2:7]` is equivalent to `numbers[5:7]`. 
-
 ### List methods
 Lists are not fixed in length. They increase and decrease when elements are added and removed.
 ```{python}
@@ -485,6 +459,31 @@ numbers.sort()  #sorts list
 print numbers
 ```
 
+### Slicing
+Slicing is a simple way of creating a new list from an old list.
+
+*syntax*
+```{python, eval=FALSE}
+newList = oldList[start:end]
+```
+
+```{python}
+numbers = [0, 10, 20, 30, 40, 50, 60, 70]
+sublist = numbers[1:4]
+print sublist
+print numbers[0:3]
+print numbers[:3] #missing starting number, with replaced with 0
+print numbers[4:7]
+print numbers[4:] #missing ending number is replaced with length of the list.
+#negative indices can also be given. 
+#In which case, the length of the list is added
+print numbers[-2:7] 
+print numbers[:-1]  #this will print all elements except the last one.
+# you also can use a step
+print numbers[0:6:2]
+```
+As shown in the example, `sublist` is a new list consisting of elements 1 to 3(remember, 'end' is not inclusive) in the `numbers` list. We can also specify negative numbers for indexes in which case, the length of list is automatically added. For example, `numbers[-2:7]` is equivalent to `numbers[5:7]`. 
+
 ### Strings as lists
 In python, strings are similar to lists. So, some of the list operations can be done on strings.
 ```{python}
@@ -504,8 +503,7 @@ print a
 print b
 ```
 
-###Membership Operator
-
+### Membership Operator
 The `in` operator is used to determine whether a variable consists of other.
 ```{python}
 isPresent = "sree" in "sreekanth"
@@ -689,6 +687,8 @@ else:
   print "not present"
 ```
 Notice that we used the membership operator `in` to find out if a key is present in a dict or not.
+
+\newpage
 
 # Functions
 Functions are small pieces of code that we can reuse by calling them instead of writing code multiple times. 
@@ -951,6 +951,8 @@ pip install flask
 ```
 There is another module installation in lab programs exercise 12. Do have a look.
 
+\newpage
+
 # Object Oriented Programming OOP in Python
 
 Consider writing code for a box. A box has 3 properties-height, width, breadth. We can use variable like `box_height`, `box_width`, `box_breadth` to represent them. But doing this makes 3 seperate variables that seem to have no relation. Instead, we could create a *class* that holds these variables. Classes are a neat way to organize code.
@@ -1101,7 +1103,7 @@ print southy
 ```
 Often times, we would need a class that is similar to a class we already defined, but with more capabilites - more instance variables and methods. In the above example, we created a specialized version of the `Family` class. We did this by created a class called `South_Indian_Family` that derived from the `Family` class. The specialized class is called the derived class and the class from which it is derived is called the base class. The Family class is the base class whereas `South_Indian_Family` class would be derived class. The power of such inheritance is this: All of instance varaibles and methods of the base class will also be present in the derived class. 
 
-Notice that the South_Indian_Family had no methods or variables defined. But, we will able to access `southy.members`. This is because South_Indian_Family derived the varialbe `members` from its base class.
+Notice that the `South_Indian_Family` had no methods or variables defined. But, we will able to access `southy.members`. This is because `South_Indian_Family` derived the variable `members` from its base class.
 
 ```{python}
 #multiple inheritance: Inheriting from more than one class.
@@ -1165,7 +1167,7 @@ cat = Cat()
 doctor = Doctor()
 doctor.heal(cat)
 ```
-Yes, he can. A Cat is a Animal. And Doctor heals Animal. And hence Doctor can treat a Cat. This is power of Polymorpish. The Cat code didn't even exist when the Doctor code was written. The Cat code was written after the Doctor code. Even through, Doctor code worked seemlessly with the Cat code.
+Yes, he can. A `Cat` is a `Animal`. And `Doctor` heals `Animal`. And hence `Doctor` can treat a `Cat`. This is power of polymorpism. The `Cat` code didn't even exist when the `Doctor` code was written. The `Cat` code was written after the `Doctor` code. Even through, `Doctor` code worked seemlessly with the `Cat` code.
 ```{python, echo=FALSE}
 class Animal(object):
   def __init__(self):
@@ -1374,6 +1376,8 @@ print queue.deque()
 
 Notice instead of object, we are subclassing `Exception` instead of the usual object. This is because we need  the functionality of the `Exception` class.
 
+\newpage
+
 # Testing
 Consider the following program to print whether a number is even or not
 ```{python}
@@ -1522,11 +1526,13 @@ main()
 As expected, one of the test cases failed.
 \setlength{\parindent}{0ex}
 
-# Lab programs
+\newpage
 
-## Exercise 1 Basics
+#Lab programs
 
-a) Running instructions in Interactive interpreter and a Python Script
+##Exercise 1 Basics
+
+a\) Running instructions in Interactive interpreter and a Python Script
 ```{python}
 2 + 3
 45 - 21.1
@@ -1544,7 +1550,7 @@ run script.py
 # output omitted as it would be the same as above
 ```
 
-b) Write a program to purposefully raise Indentation Error and Correct it
+b\) Write a program to purposefully raise Indentation Error and Correct it
 ```{python, error=TRUE}
 #with error
 print 42
@@ -1559,10 +1565,8 @@ print 'some-string'
 print True
 ```
 
-
 ##Exercise 2 Operations
-
-a) Write a program to compute distance between two points taking input from the user
+a\) Write a program to compute distance between two points taking input from the user
 (Pythagorean Theorem)
 ```{python, eval=FALSE}
 import math
@@ -1580,8 +1584,7 @@ print 'enter x2:1.2'
 print 'enter y2:3'
 print 'distance between the two points is 1.86010752377'
 ```
-
-b) Write a program add.py that takes 2 numbers as command line arguments and prints its sum.
+b\) Write a program add.py that takes 2 numbers as command line arguments and prints its sum.
 ```{python, eval=FALSE}
 from sys import argv
 script, first, second = argv
@@ -1595,9 +1598,8 @@ run add.py 2 3
 print '5.0'
 ```
 
-
 ##Exercise 3 Control Flow
-a) Write a Program for checking whether the given number is a even number or not.
+a\) Write a Program for checking whether the given number is a even number or not.
 ```{python,eval=FALSE}
 number = int(raw_input("enter a number:"))
 print "odd" if number % 2 else "even"
@@ -1608,7 +1610,7 @@ print "enter a number:" + str(number)
 print "odd" if number % 2 else "even"
 ```
 
-b) Using a `for` loop, write a program that prints out the decimal equivalents of 1/2, 1/3, 1/4, . . . ,
+b\) Using a `for` loop, write a program that prints out the decimal equivalents of 1/2, 1/3, 1/4, . . . ,
 1/10
 
 ```{python}
@@ -1616,7 +1618,7 @@ for i in range(2, 11):
     print 1.0/i
 ```
 
-c) Write a program using a `for` loop that loops over a sequence. What is sequence ?
+c\) Write a program using a `for` loop that loops over a sequence. What is sequence ?
 ```{python}
 numbers = [2,3,4,5]
 for i in numbers:
@@ -1630,7 +1632,7 @@ for i in numbers:
 ```
 A sequence is a list or a tuple of items.
 
-d) Write a program using a `while` loop that asks the user for a number, and prints a countdown
+d\) Write a program using a `while` loop that asks the user for a number, and prints a countdown
 from that number to zero.
 ```{python, eval=FALSE}
 number = int(raw_input("enter any number:"))
@@ -1662,7 +1664,7 @@ while number >= 0:
 <!-- ``` -->
 ##Exercise 4 Control Flow - Continued
 
-a) Find the sum of all the primes below two million.
+a\) Find the sum of all the primes below two million.
 ```{python, eval=FALSE}
 def primes_till(limit):
     primes = {2}
@@ -1675,8 +1677,7 @@ def primes_till(limit):
 
 print sum(primes_till(2000000))
 ```
-We are using the famous Sieve of Eratosthenes https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-. It's a algorithm to find primes up to a limit. It's does this by iteratively removing multiples of each prime. 
+**Explanation:** We are using the famous Sieve of Eratosthenes(https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes). It's a algorithm to find primes up to a limit. It's does this by iteratively removing multiples of each prime. 
 From the numbers, first multiples of 2 are removed. Then multiples of 3 are removed. Then of 5 and so on. 
 Line 2 and 5, we create a set of odd numbers from 2 to the given limit. And then on line 6,7 we remove multiples of each number.
 
@@ -1685,7 +1686,7 @@ Each new term in the Fibonacci sequence is generated by adding the previous two 
 starting with 1 and 2, the first 10 terms will be:
 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 
-b) By considering the terms in the Fibonacci sequence whose values do not exceed four million,
+b\) By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 find the sum of the even-valued terms.
 ```{python, eval=FALSE}
 def fibonacci(limit):
@@ -1702,7 +1703,7 @@ print sum(filter(lambda x: x % 2 == 0, fibonacci(4000000)))
 
 ##Exercise 5 DS
 
-a) Write a program to count the numbers of characters in the string and store them in a
+a\) Write a program to count the numbers of characters in the string and store them in a
 dictionary data structure
 ```{python, eval=FALSE}
 name = raw_input("enter a string:")
@@ -1730,7 +1731,7 @@ def countFrequency(name):
     return wordFrequency
 print countFrequency(name)
 ```
-Alternate solution
+####Alternate solution
 ```{python}
 import collections
 def countFrequency(name):
@@ -1739,7 +1740,7 @@ def countFrequency(name):
         wordFrequency[char] += 1
     return dict(wordFrequency)
 ```
-Alternate solution
+####Alternate solution
 ```{python, eval=FALSE}
 import collections
 name = raw_input("enter a string:")
@@ -1754,7 +1755,7 @@ print dict(collections.Counter(name))
 
 `collections.Counter` is built-in dict class that counts the frequecies of elements. It also has the method `most_common()` that returns the most common element.
 
-b) Write a program to use split and join methods in the string and trace a birthday with a
+b\) Write a program to use split and join methods in the string and trace a birthday with a
 dictionary data structure.
 
 I don't understand the question. I don't understand what 'trace a birthday' means. So, I can't give an answer. Sorry. But here is some code to understand split and join methods.
@@ -1764,14 +1765,14 @@ print 'here i am giving, comma as ,the pattern'.split(',')
 print ','.join(['join', 'is', 'opposite', 'of', 'split'])
 print ' '.join(['it', 'joins', 'a', 'list', 'of', 'strings', 'to', 'form', 'one', 'string'])
 ```
-##Exercise - 6 DS - Continued
-a) Write a program combine_lists that combines these lists into a dictionary.
-b) Write a program to count frequency of characters in a given file. Can you use character
+##Exercise 6 DS Continued
+a\) Write a program combine_lists that combines these lists into a dictionary.
+b\) Write a program to count frequency of characters in a given file. Can you use character
 frequency to tell whether the given file is a Python program file, C program file or a text file?
 
 ##Exercise 7 Files
 
-a) Write a program to print each line of a file in reverse order.
+a\) Write a program to print each line of a file in reverse order.
 ```{python, eval=FALSE}
 text_file = open('sample.txt', 'r')
 fileContent = text_file.readlines()
@@ -1781,18 +1782,17 @@ text_file.close()
 ```
 Create a file named sample.txt and write some text in it. Output of this program is ommited as it would be the text in that file.
 
-### Alternate solution
+####Alternate solution
 ```{python, eval=FALSE}
 with open('sample.txt', 'r') as text_file:
     fileContent = text_file.readlines()
     while fileContent:
         print fileContent.pop()
 ```
-Explanation:
-`open()` is a standard python function for opening files. The first parameter is the name the file. The second is the mode. Modes can be 'r' for read, 'w' for write and 'a' for append. `open()` returns a file descriptor. `readlines()` is method of the descriptor that returns all the lines in the file as a list. Every file we open, we need to close it be calling its `close()` method. `with` is keyword that lets us create context managers. Context managers a clearer way to write code. Notice that in the alternate solution, we didn't close the file. That is done by the context manager. Context managers are not in the sylabus so don't worry if you don't understand them.
+**Explanation:** `open()` is a standard python function for opening files. The first parameter is the name the file. The second is the mode. Modes can be 'r' for read, 'w' for write and 'a' for append. `open()` returns a file descriptor. `readlines()` is method of the descriptor that returns all the lines in the file as a list. Every file we open, we need to close it be calling its `close()` method. `with` is keyword that lets us create context managers. Context managers a clearer way to write code. Notice that in the alternate solution, we didn't close the file. That is done by the context manager. Context managers are not in the sylabus so don't worry if you don't understand them.
 
 
-b) Write a program to compute the number of characters, words and lines in a file.
+b\) Write a program to compute the number of characters, words and lines in a file.
 ```{python}
 with open('sample.txt', 'r') as text_file:
     lines = text_file.readlines()
@@ -1806,7 +1806,7 @@ with open('sample.txt', 'r') as text_file:
 
 ##Exercise 8 Functions
 
-a) Write a function ball_collide that takes two balls as parameters and computes if they are
+a\) Write a function ball_collide that takes two balls as parameters and computes if they are
 colliding. Your function should return a Boolean representing whether or not the balls are
 colliding.
 Hint: Represent a ball on a plane as a tuple of (x, y, r), r being the radius
@@ -1825,7 +1825,7 @@ b = (1,2,3)
 print ball_collide(a, b)
 ```
 
-b) Find mean, median, mode for the given set of numbers in a list.
+b\) Find mean, median, mode for the given set of numbers in a list.
 ```{python, eval=FALSE}
 def mean(numbers):
     return float(sum(numbers)) / len(numbers)
@@ -1852,10 +1852,10 @@ def mode(numbers):
 numbers = [2,3,5,2,10,25]
 print mean(numbers), median(numbers), mode(numbers)
 ```
-Explanation: Median it the middle most elements when all the numbers are in an ascending order.
+**Explanation:** Median it the middle most elements when all the numbers are in an ascending order.
 Mode is the element that has the most common. So, we count the frequencies of all elements and find the with the highest.
 
-Alternate Solution:
+####Alternate Solution
 ```{#numCode .python .numberLines}
 def mode(numbers):
     import collections
@@ -1867,7 +1867,7 @@ Line 4 is a really nice example of how powerful python's pattern matching is. An
 
 ##Exercise 9 Functions - Continued
 
-a) Write a function nearly_equal to test whether two strings are nearly equal. Two strings a and b are nearly equal when a can be generated by a single mutation on b.
+a\) Write a function nearly_equal to test whether two strings are nearly equal. Two strings a and b are nearly equal when a can be generated by a single mutation on b.
 
 ```{python}
 def nearly_equal(a,b):
@@ -1886,14 +1886,14 @@ print nearly_equal("sree", "srek")
 print nearly_equal("sree", "sek")
 print nearly_equal("sree", "serk")
 ```
-Explanation: `zip` is built-in function that takes two or more sequences and returns a sequence of tubles
+**Explanation:** `zip` is built-in function that takes two or more sequences and returns a sequence of tubles
 that contain the corresponding elements the sequences. Few examples:
 ```{python}
 print zip(range(5), range(5,10))
 print zip('abcd', 'efgh', 'hijk')
 ```
 
-b) Write a function dups to find all duplicates in the list.
+b\) Write a function dups to find all duplicates in the list.
 
 ```{python}
 def dups(array):
@@ -1904,7 +1904,7 @@ def dups(array):
 print dups([2,3,1,2,5,8,9,8])
 ```
 
-c) Write a function unique to find all the unique elements of a list.
+c\) Write a function unique to find all the unique elements of a list.
 ```{python}
 def unique(array):
     import collections
@@ -1931,7 +1931,7 @@ print unique(numbers)
 
 ## Exercise 10 Functions - Problem Solving
 
-###a\) Write a function cumulative_product to compute cumulative product of a list of numbers.
+a\) Write a function cumulative_product to compute cumulative product of a list of numbers.
 ```{python}
 def cumulative_product(numbers):
     result = 1
@@ -1950,9 +1950,9 @@ def cumulative_product(numbers):
     
 print cumulative_product(range(1,5))
 ```
-Explanation: By now, you would have seen a pattern. Python has a rich library of built-in functions that simplify programming. `reduce` is built-in function that built-in function---
+<!-- **Explanation:** By now, you would have seen a pattern. Python has a rich library of built-in functions that simplify programming. `reduce` is built-in function that built-in function--- -->
 
-###b\) Write a function `reverse` to reverse a list. Without using the reverse function.
+b\) Write a function `reverse` to reverse a list. Without using the reverse function.
 
 ```{python}
 def reverse(elements):
@@ -1973,8 +1973,7 @@ def reverse(elements):
 
 print reverse([1,2,3,4,5])
 ```
-
-c) Write function to compute gcd, lcm of two numbers. Each function shouldn't exceed one line.
+c\) Write function to compute gcd, lcm of two numbers. Each function shouldn't exceed one line.
 ```{python}
 def gcd(a,b):
     return [x for x in range(1, max(a, b)) if a % x == 0 and b % x == 0].pop()
@@ -1988,10 +1987,8 @@ print lcm(20, 30)
 print lcm(3, 5)
 ```
 
-
-## Exercise 11 Multi-D Lists
-
-a) Write a program that defines a matrix and prints
+##Exercise 11 Multi-D Lists
+a\) Write a program that defines a matrix and prints
 ```{python}
 matA = [[1,2,3],
         [4,5,6],
@@ -2005,7 +2002,7 @@ print matA
 print matB
 ```
 
-b) Write a program to perform addition of two square matrices
+b\) Write a program to perform addition of two square matrices
 ```{python}
 def addMatrix(a,b):
     import operator
@@ -2022,7 +2019,7 @@ matB = [[3,2,1],
 print addMatrix(matA, matB)
 ```
 
-c) Write a program to perform multiplication of two square matrices
+c\) Write a program to perform multiplication of two square matrices
 ```{python}
 def multiply_matrix(mat_a, mat_b):
     a = len(mat_a)
@@ -2044,7 +2041,7 @@ matB = [[3,2,1],
 
 print multiply_matrix(matA, matB)
 ```
-### Alternate solution
+####Alternate solution
 ```{python}
 def tranpose(a):
     no_of_rows = len(a)
@@ -2069,13 +2066,13 @@ print multiply_matrix(matA, matB)
 ```
 ## Exercise 12 Modules
 
-a) Install packages requests, flask and explore them. using (pip)
+a\) Install packages requests, flask and explore them. using (pip)
 ```{python,eval=FALSE}
 pip install requests
 pip install flask
 ```
 
-b) Write a script that imports requests and fetch content from the page. Eg. (Wiki)
+b\) Write a script that imports requests and fetch content from the page. Eg. (Wiki)
 ```{python}
 import requests
 r = requests.get('https://google.com')
@@ -2084,7 +2081,7 @@ print r.status_code
 #print r.text
 ```
 
-c) Write a simple script that serves a simple HTTPResponse and a simple HTML Page
+c\) Write a simple script that serves a simple HTTPResponse and a simple HTML Page
 
 
 ## Exercise 13 OOP
@@ -2105,10 +2102,9 @@ print a.instance_variable, a.class_variable
 a = MyClass()
 print a.instance_variable, a.class_variable
 ```
-Explanation:
-`self` is a variable every object has that points to itself. In the above code, we are checking `obj == self` where a is passed as obj. Observe that it results in True. `class_variable` is common to all objects whereas a copy of `instance_variable` is present in each object. Hence, `class_variable` is assigned `0` only once and incremented each time an object is created. Whereas each time an object is created, a new `instance_variable` is created and assigned `0`. 
+**Explanation:** `self` is a variable every object has that points to itself. In the above code, we are checking `obj == self` where a is passed as obj. Observe that it results in True. `class_variable` is common to all objects whereas a copy of `instance_variable` is present in each object. Hence, `class_variable` is assigned `0` only once and incremented each time an object is created. Whereas each time an object is created, a new `instance_variable` is created and assigned `0`. 
 
-i) Robot
+i\) Robot
 ```{python}
 class Robot(object):
     def __init__(self):
@@ -2132,7 +2128,7 @@ robot.move_forward(100)
 print robot.location, robot.angle
 ```
 
-ii) ATM Machine
+ii\) ATM Machine
 ```{python, eval=FALSE}
 class ATM(object):
     def __init__(self):
@@ -2207,8 +2203,8 @@ print 'enter username:'
 ```
 
 ##Exercise 14 GUI, Graphics
-1. Write a GUI for an Expression Calculator using tk
-2. Write a program to implement the following figures using turtle
+1\) Write a GUI for an Expression Calculator using tk
+2\) Write a program to implement the following figures using turtle
 ```{python,eval=FALSE}
 import turtle
 turtle.width(2)
@@ -2235,7 +2231,7 @@ for _ in range(36):
 
 ## Exercise 15 Testing
 
-a) Write a test-case to check the function even-numbers which return True on passing a list of all even numbers
+a\) Write a test-case to check the function even-numbers which return True on passing a list of all even numbers
 ```{python}
 from unittest import TestCase, main
 
@@ -2257,7 +2253,7 @@ main()
 ```
 Ideally, actual code and test code shouldn't be written in the same file. The test code should be in a separate file. We will use this approach in the next exercise.
 
-b) Write a test-case to check the function reverse_sting which returns the reversed string
+b\) Write a test-case to check the function reverse_sting which returns the reversed string
 
 ```{python, eval=FALSE}
 #write this code in a file named rever.py
@@ -2303,7 +2299,7 @@ main()
 ```
 ##Exercise 16 Advanced
 
-a) Build any one classical data
+a\) Build any one classical data
 
 ```{python}
 class Queue(object):
@@ -2332,7 +2328,7 @@ print queue.deque()
 print queue
 print 'queue has', len(queue), 'elements'
 ```
-b) Write a program to solve knapsack
+b\) Write a program to solve knapsack
 ```{python}
 def knapsack(items, max_weight):
     best_values = [[0] * (max_weight + 1)
@@ -2363,7 +2359,5 @@ best_value, best_items = knapsack(items, 8)
 print 'best value is', best_value
 print 'best items are', best_items
 ```
-
-
 
 # Appendix
