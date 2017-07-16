@@ -21,7 +21,7 @@ knitr::opts_chunk$set(engine = "python")
 knitr::opts_chunk$set(comment = "Out:")
 ```
 
-#Unit 1
+#Introduction
 
 ##History of python
 Python was created by Guido van Rossum in 1991.
@@ -63,8 +63,10 @@ That is where we will run all our python code. We will open this black screen ea
 
 ##(Optional ipython installation)
 All python code in this book can be done on the python interpreter we just installed. However, ipython is a better tool that the python interpreter. I highly recommend that you install ipython as well. If you do install it, use ipython whenever I say python interpreter.
+
 Installation steps:
-Ipthon requires visual c++. It can be downloaded at `http://aka.ms/vcpython27`. Download and install this software. It is pretty easy and shouldn't cause any troubles.
+
+Ipython requires visual c++. It can be downloaded at `http://aka.ms/vcpython27`. Download and install this software. It is pretty easy and shouldn't cause any troubles.
 
 Open windows command line by pressing the windows key + r. Or search for an app called `run` from the start button. Type 'cmd' and press enter. A black screen will be launched, it's called the windows command prompt.
 
@@ -176,7 +178,7 @@ The rest of unit will make more sense in unit-2 and hence is covered in unit-2.
 
 
 
-# unit 2
+#Types, Operators and Expressions
 ##Types
 Varaibles based on what operations we can do on them are group into so called **Data types**.
 Python has 5 data types - `Numbers, Strings, Lists, Tuple, Dictionary`. In this chapter, we will discuss Numbers and Strings. We will see the other 3 in the next chapter.
@@ -406,7 +408,10 @@ print result
 
 
 
-# Lists
+#Data Structures
+
+##Lists
+
 Lists are similar to C arrays but more powerful. Lists store multiple values. Unlike C arrays, elements in a list don't have be of the same type. Lists are indexed from 0.
 ```{python}
 fruits = ['apple', 'mango', 'pineapple']
@@ -426,7 +431,7 @@ print integers
 #range(start,last) is built-in function that creates a list [start, start+1, ..., last-1] 
 ```
 
-## Slicing
+### Slicing
 Slicing is a simple way of creating a new list from an old list.
 
 *syntax*
@@ -451,7 +456,7 @@ print numbers[0:6:2]
 ```
 As shown in the example, `sublist` is a new list consisting of elements 1 to 3(remember, 'end' is not inclusive) in the `numbers` list. We can also specify negative numbers for indexes in which case, the length of list is automatically added. For example, `numbers[-2:7]` is equivalent to `numbers[5:7]`. 
 
-## List methods
+### List methods
 Lists are not fixed in length. They increase and decrease when elements are added and removed.
 ```{python}
 numbers = [10,20,30,40,50]  #creating a list
@@ -480,7 +485,7 @@ numbers.sort()  #sorts list
 print numbers
 ```
 
-## Strings as lists
+### Strings as lists
 In python, strings are similar to lists. So, some of the list operations can be done on strings.
 ```{python}
 name = "sreekanth"
@@ -636,7 +641,7 @@ vowels = [x for x in 'sreekanth' if x in 'aeoui']
 print vowels
 ```
 
-# Sets
+##Sets
 Sets are like lists but duplicates are not allowed.
 
 *syntax*
@@ -660,7 +665,7 @@ print setA.union(setB)
 print setA.intersection(setB)
 ```
 
-# Dictionaries
+##Dictionaries
 Dictionaries(commmonly shortened to dict) are *{key,value}* pair data structures. Each element in a dict is a pair of key and value. Keys have to be uquine. Keys can be thought as indices with names. Dicts are similar to Java hashmaps.
 ```{python}
 wordFrequency = {'a':1, 'b':5, 'c':10, 'e':15}
@@ -761,9 +766,24 @@ Consider the following program:
 ```{python}
 print map(len, ['this', 'will', 'return', 'lengths', 'of', 'each', 'word'])
 ```
-`map` is built-in function that takes a function and *applies* it to a list. Each element in the list is used a parameter for `len()` and the results form a list. Notice that `len` is passed and not `len()`. This is because, we are not calling `len`. We are just passing `len` to map. `map` will internally call it.
+`map` is built-in function that takes a function and *applies* it to a list. Each element in the list is used a parameter for `len()` and the results form a list. Notice that `len` is passed and not `len()`. This is because, we are not calling `len`. We are just passing `len` to map. `map` will internally call it. More examples:
+```{python}
+def is_odd(num):
+  return num % 2 == 1
+  
+print map(is_odd, range(5))
+```
+```{python}
+def add(a,b):
+  return a+b
+#we also pass a function that takes more than one argument
+print map(add, [1,2,3,4], [10,20,30,40])
+```
 
-Let's write a function that returns square of given number. And find the squares of a list of numbers.
+
+
+
+Let's write a function that returns square of a given number. And find the squares of a list of numbers.
 ```{python}
 def square(number):
   return number**2
@@ -775,11 +795,12 @@ print map(lambda x: x**2, range(10))
 ```
 Few more examples will help:
 ```{python}
-#adding indivial numbers in lists.
-sums = map(lambda x,y: x+y, range(0,5), range(5,10))
+#element-wise adding in multiple lists.
+sums = map(lambda x,y: x + y, range(0,5), range(5,10))
 print sums
+sums = map(lambda x,y,z: x + y + z, range(0,5), range(5,10), range(15,20))
 ```
-mental note: add an example of lambda with a return statement.
+We can see that we were able to element-wise add from 3 lists without the need to declare a new function. mental note: add an example of lambda with a return statement.
 
 ### Variable-length arguments
 ```{python}
@@ -811,8 +832,8 @@ max(20)
 max() #this will throw an error
 ```
 
-## Scope
-Variables declared(appear for the first time in code) inside a function(known as local variables) are not accessable outside the function.
+## Scope of Variables in a Function
+Variables declared(appear for the first time in code) inside a function are known as **local variables**. Local variables are not accessable outside the function.
 ```{python, error=TRUE}
 def some_function():
   variable = 'this variable is available only inside the function some_function()'
@@ -821,7 +842,7 @@ def some_function():
 some_function()
 print variable
 ```
-Vaariables declared outside the function(known as global variables) are available inside a function but can't be modified directly.
+Variables declared outside the function are known as **global variables**. Global variables are available inside a function but can't be modified directly.
 ```{python}
 variable = 'global_variable'
 def function():
@@ -829,7 +850,7 @@ def function():
 
 function()
 ```
-If you try to modify, python will think that you are creating a new **local variable** that coincidentally has the same name as the global varaible.
+If you try to modify, python will think that you are creating a new **local variable** that coincidentally has the same name as the global variable.
 ```{python}
 variable = 'global_variable'
 def function():
@@ -840,7 +861,7 @@ print 'variable outside function before function call:', variable
 function()
 print 'variable outside function after function call:', variable
 ```
-To use and modify a global variable, you need to declare it as global first. we do that by using the keyword **global**.
+To use and modify a global variable, you need to declare it as global first, by using the keyword **global**.
 ```{python}
 global_variable = 10
 def function():
@@ -864,7 +885,7 @@ In the code example, a function is defined within other function. This is possib
 -->
 
 ## Import statements
-Often times, instead of writing code ourselves, we could you code written by others. This code is available in the form of libraries. We need to declare them before using them by writing an import statement. There are 2 ways of doing this:
+Often times, instead of writing code ourselves, we could use code written by others. This code is available in the form of libraries. We need to declare them before using them by writing an import statement. There are 2 ways of doing this:
 
 *Syntax:*
 ```{python, eval=FALSE}
@@ -876,30 +897,29 @@ from library_name import class_or_function_name
 
 
 Some examples:
-There is module called math that contains commonly used mathematical functions like square root{`sqrt()`} etc. To use them, we need to import the math module. 
+There is a module called `math` that contains commonly used mathematical functions like square root{`sqrt()`}, `tan()`, `sin()` etc. To use them, we need to import the math module. 
 ```{python, error=TRUE}
 import math #you can call anything within math. 
 print math.sqrt(25) #the full name math.sqrt() is requeried. 
 print math.pi
 print sqrt(25)
 ```
-
+Another way is to import only the necessary function:
 ```{python, error=TRUE}
-from math import sqrt #only importing sqrt and not the whole of math module.
+from math import sqrt 
 print sqrt(25)  #full name not required.
-print pi  #can't use anything else.
+print pi  #can't use anything else in the module.
 ```
 We can also give alias(shortcut name) to the imported module. This way, we could use the shortcut instead of the full module name.
 ```{python}
 import math as m
 print m.sqrt(25)
 ```
-
-Some of these libraries are loaded along with python and hence need no import. Some examples:
+Finally, we can also import code written by us in the same way. An example is given the chapter on testing.
 
 ## Python packages and pip
 
-Python comes a rich library for doing pretty much anything. These libraries are available in the form of modules. Some of the modules are available with python, but some are not. We can simply import a module to check if a module is present or not. 
+Python comes a rich library for doing pretty much anything. These libraries are available in the form of modules. Some of the modules are pre-installed with python, but some are not. We can simply import a module to check if a module is present or not. 
 ```{python, error=TRUE}
 import flask
 ```
@@ -911,7 +931,7 @@ print "NameError: name 'pip' is not defined"
 
 As you see, the python interpreter says flask doesn't exist. Let's install it. 
 
-Open windows command line by pressing the windows key + r. Or search for an app called `run` from the start button. Type 'cmd' and press enter. you are in the windows command prompt. Now install the module 'flask'
+Open *windows command line* by pressing the *windows key* + r. Or search for an app called `run` from the start button. Type 'cmd' and press enter. You are in the windows command prompt. Now install the module 'flask' using `pip`.
 
 ```{python,eval=FALSE}
 pip install flask
@@ -921,8 +941,7 @@ Now try to import flask to check if it was successfully installed. This should b
 ```{python}
 import flask
 ```
-
-If you get an error with pip command, it be that the path is not set. In this case, you could go to the folder that python was installed in. It normally is `C:\Python27\`. check your python folder is this. Now, navigate to this folder in the windows command prompt. 
+If you get no error, then the module was successfully installed. If you get an error with pip command, it may be that the path is not set. In that case, you could go to the folder that python was installed in. It normally is `C:\Python27\`. check your python folder is this. Now, navigate to this folder in the windows command prompt. 
 ```{bash, eval=FALSE}
 cd C:\Python27\Scripts
 ```
@@ -934,7 +953,7 @@ There is another module installation in lab programs exercise 12. Do have a look
 
 # Object Oriented Programming OOP in Python
 
-Consider writing code for a box. A box has 3 properties-height, width, breadth. We can use variable like `box_height`, `box_width`, `box_breadth` to represent them. But doing this makes 3 seperate variables that seem to have no relation. Instead, we could create a *class* that holds these variables. Classes are neat way to organize code.
+Consider writing code for a box. A box has 3 properties-height, width, breadth. We can use variable like `box_height`, `box_width`, `box_breadth` to represent them. But doing this makes 3 seperate variables that seem to have no relation. Instead, we could create a *class* that holds these variables. Classes are a neat way to organize code.
 ```{#numCode .python .numberLines}
 class Box(object):
   def __init__(self, h, w, b):
@@ -991,7 +1010,7 @@ Use of classes consists of 3 parts - defining a class, creating objects and call
 
 **Class Defination**
 
-We are creating a class called `Box` that contains variables `height`, `weight` and `breadth`. So, think of class as a container to holding varaibles.  line 1 to 15 is the class defination. 
+Line 1 to 15 is the class defination. A class defination tells what variables and functions, the class should have. We are creating a class called `Box` that contains variables `height`, `weight` and `breadth`. So, think of class as a container to holding varaibles.   
 A Class can also has functions. We defined the method `volume()` on line 13,14 within the class.
 
 **Object creation and method calling**
@@ -1244,11 +1263,11 @@ divide(5,0)
 divide(42,5)
 print 'enter numerator:'
 ```
-All the code that can throw an exception is written in the `try` block. A `try` block is followed by an `except` block, where code that handles the exception situation is written. Line 4 throws an exception. All the rest of the code in `try` block is not executed and program control is passed to the `except` block. The `except` block catches the exception. The `except` block is executed.
+All the code that can throw an exception is written in the `try` block. A `try` block is followed by an `except` block, where code that handles the exception situation is written. Line 5 throws an exception. All the rest of the code in `try` block is not executed and program control is passed to the `except` block. The `except` block catches the exception. The `except` block is executed.
 
-As we can in the output, the program safely continues taking input even in the case of a Divide by zero error. 
+As we can see in the output, the program safely continues taking input even in the case of a Divide by zero error. 
 
-Let's break this again. This time we will give invalid input.
+Let's break the code again. This time we will give invalid input.
 
 ```{python, echo=FALSE, error=TRUE}
 a = 'e'
@@ -1519,7 +1538,7 @@ print 2 + 3
 print 45 - 21.1
 print 45/9 + 2*1.2
 ```
-Write the above lines in file named script.py and that file with the following command.
+Write the above lines in file named script.py and run that file with the following command.
 ```{python, eval=FALSE}
 run script.py
 # output omitted as it would be the same as above
@@ -1547,15 +1566,35 @@ a) Write a program to compute distance between two points taking input from the 
 (Pythagorean Theorem)
 ```{python, eval=FALSE}
 import math
-x1 = int(raw_input("enter x1:"))
-y1 = int(raw_input("enter y1:"))
-x2 = int(raw_input("enter x2:"))
-y2 = int(raw_input("enter y2:"))
+x1 = float(raw_input("enter x1:"))
+y1 = float(raw_input("enter y1:"))
+x2 = float(raw_input("enter x2:"))
+y2 = float(raw_input("enter y2:"))
 distance = math.sqrt(math.pow(x2-x1, 2) + math.pow(y2-y1, 2))
-print distance
+print 'distance between the two points is ', distance
+```
+```{python, echo=FALSE}
+print 'enter x1:2.3'
+print 'enter y1:4.5'
+print 'enter x2:1.2'
+print 'enter y2:3'
+print 'distance between the two points is 1.86010752377'
 ```
 
 b) Write a program add.py that takes 2 numbers as command line arguments and prints its sum.
+```{python, eval=FALSE}
+from sys import argv
+script, first, second = argv
+print float(first) + float(second)
+```
+Write this code in a file and name it add.py. Run the file as:
+```{python, eval=FALSE}
+run add.py 2 3
+```
+```{python, echo=FALSE}
+print '5.0'
+```
+
 
 ##Exercise 3 Control Flow
 a) Write a Program for checking whether the given number is a even number or not.
@@ -1569,7 +1608,7 @@ print "enter a number:" + str(number)
 print "odd" if number % 2 else "even"
 ```
 
-b) Using a for loop, write a program that prints out the decimal equivalents of 1/2, 1/3, 1/4, . . . ,
+b) Using a `for` loop, write a program that prints out the decimal equivalents of 1/2, 1/3, 1/4, . . . ,
 1/10
 
 ```{python}
@@ -1577,7 +1616,7 @@ for i in range(2, 11):
     print 1.0/i
 ```
 
-c) Write a program using a for loop that loops over a sequence. What is sequence ?
+c) Write a program using a `for` loop that loops over a sequence. What is sequence ?
 ```{python}
 numbers = [2,3,4,5]
 for i in numbers:
@@ -1589,33 +1628,38 @@ numbers = (2,3,4,5)
 for i in numbers:
     print i
 ```
+A sequence is a list or a tuple of items.
 
-d) Write a program using a while loop that asks the user for a number, and prints a countdown
+d) Write a program using a `while` loop that asks the user for a number, and prints a countdown
 from that number to zero.
 ```{python, eval=FALSE}
 number = int(raw_input("enter any number:"))
-for i in range(number, -1, -1):
-    print i
+while number >= 0:
+  print number
+  number = number - 1
 ```
 ```{python, echo=FALSE}
 number = 5
 print "enter any number:" + str(number)
-for i in range(number, -1, -1):
-    print i
+while number >= 0:
+  print number
+  number = number - 1
 ```
 
-Alternate method
-```{python, eval=FALSE}
-number = int(raw_input("enter any number:"))
-for i in reversed(range(number + 1)):
-    print i
-```
-```{python, echo=FALSE, eval=FALSE}
-number = 5
-print "enter any number:" + str(number)
-for i in reversed(range(number + 1)):
-    print i
-```
+<!-- Each iteration, number is decremented. When it becomes 0, the `while` loop stops as 0 is also `False` in python. -->
+
+<!-- Alternate method -->
+<!-- ```{python, eval=FALSE} -->
+<!-- number = int(raw_input("enter any number:")) -->
+<!-- for i in reversed(range(number + 1)): -->
+<!--     print i -->
+<!-- ``` -->
+<!-- ```{python, echo=FALSE, eval=FALSE} -->
+<!-- number = 5 -->
+<!-- print "enter any number:" + str(number) -->
+<!-- for i in reversed(range(number + 1)): -->
+<!--     print i -->
+<!-- ``` -->
 ##Exercise 4 Control Flow - Continued
 
 a) Find the sum of all the primes below two million.
@@ -1631,6 +1675,12 @@ def primes_till(limit):
 
 print sum(primes_till(2000000))
 ```
+We are using the famous Sieve of Eratosthenes https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+. It's a algorithm to find primes up to a limit. It's does this by iteratively removing multiples of each prime. 
+From the numbers, first multiples of 2 are removed. Then multiples of 3 are removed. Then of 5 and so on. 
+Line 2 and 5, we create a set of odd numbers from 2 to the given limit. And then on line 6,7 we remove multiples of each number.
+
+
 Each new term in the Fibonacci sequence is generated by adding the previous two terms. By
 starting with 1 and 2, the first 10 terms will be:
 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
@@ -1647,6 +1697,8 @@ def fibonacci(limit):
 
 print sum(filter(lambda x: x % 2 == 0, fibonacci(4000000)))
 ```
+`filter` is similar to map. It takes a boolean test function and a list. Applies the function to each list element. All the elements that do not pass the test are removed and the remaining form the result.
+
 
 ##Exercise 5 DS
 
@@ -1654,20 +1706,21 @@ a) Write a program to count the numbers of characters in the string and store th
 dictionary data structure
 ```{python, eval=FALSE}
 name = raw_input("enter a string:")
-def countWordFrequency(name):
-    wordFrequency = {}
+def countFrequencies(name):
+    frequencies = {}
     for char in name:
-        if char in wordFrequency:
-            wordFrequency[char] += 1
+        if char in frequencies:
+            frequencies[char] += 1
         else:
-            wordFrequency[char] = 1
-    return wordFrequency
-print countWordFrequency(name)
+            frequencies[char] = 1
+    return frequencies
+
+print countFrequencies(name)
 ```
 ```{python, echo=FALSE}
 name = 'sreekanth kolamala'
 print "enter a string:" + name
-def countWordFrequency(name):
+def countFrequency(name):
     wordFrequency = {}
     for char in name:
         if char in wordFrequency:
@@ -1675,7 +1728,7 @@ def countWordFrequency(name):
         else:
             wordFrequency[char] = 1
     return wordFrequency
-print countWordFrequency(name)
+print countFrequency(name)
 ```
 Alternate solution
 ```{python}
@@ -1699,6 +1752,7 @@ print "enter a string:" + name
 print dict(collections.Counter(name))
 ```
 
+`collections.Counter` is built-in dict class that counts the frequecies of elements. It also has the method `most_common()` that returns the most common element.
 
 b) Write a program to use split and join methods in the string and trace a birthday with a
 dictionary data structure.
@@ -1710,26 +1764,32 @@ print 'here i am giving, comma as ,the pattern'.split(',')
 print ','.join(['join', 'is', 'opposite', 'of', 'split'])
 print ' '.join(['it', 'joins', 'a', 'list', 'of', 'strings', 'to', 'form', 'one', 'string'])
 ```
+##Exercise - 6 DS - Continued
+a) Write a program combine_lists that combines these lists into a dictionary.
+b) Write a program to count frequency of characters in a given file. Can you use character
+frequency to tell whether the given file is a Python program file, C program file or a text file?
 
 ##Exercise 7 Files
 
 a) Write a program to print each line of a file in reverse order.
-```{python}
+```{python, eval=FALSE}
 text_file = open('sample.txt', 'r')
 fileContent = text_file.readlines()
 for line in reversed(fileContent):
     print line
 text_file.close()
 ```
+Create a file named sample.txt and write some text in it. Output of this program is ommited as it would be the text in that file.
+
 ### Alternate solution
-```{python}
+```{python, eval=FALSE}
 with open('sample.txt', 'r') as text_file:
     fileContent = text_file.readlines()
     while fileContent:
         print fileContent.pop()
 ```
 Explanation:
-`open()` is a standard python function for opening files. The first parameter is the name the file. The second is the mode. Modes can be 'r' for read, 'w' for write and 'a' for append. For 
+`open()` is a standard python function for opening files. The first parameter is the name the file. The second is the mode. Modes can be 'r' for read, 'w' for write and 'a' for append. `open()` returns a file descriptor. `readlines()` is method of the descriptor that returns all the lines in the file as a list. Every file we open, we need to close it be calling its `close()` method. `with` is keyword that lets us create context managers. Context managers a clearer way to write code. Notice that in the alternate solution, we didn't close the file. That is done by the context manager. Context managers are not in the sylabus so don't worry if you don't understand them.
 
 
 b) Write a program to compute the number of characters, words and lines in a file.
@@ -1768,7 +1828,7 @@ print ball_collide(a, b)
 b) Find mean, median, mode for the given set of numbers in a list.
 ```{python, eval=FALSE}
 def mean(numbers):
-    return float(sum(numbers)) / max(len(numbers), 1)
+    return float(sum(numbers)) / len(numbers)
 
 def median(numbers):
     if not numbers:
@@ -1777,9 +1837,10 @@ def median(numbers):
     length = len(sortedNumbers)
     return (sortedNumbers[length/2] + sortedNumbers[(length-1)/2])/2.0
 
-#if you are going to sort numbers, there is simpler way to find mode
+
 def mode(numbers):
-    frequencies = countWordFrequency(numbers)
+    frequencies = countFrequencies(numbers)
+    #countFrequencies() was defined in exercise 5. Use it.
     maximum = None
     result = None
     for number, frequency in frequencies.items():
@@ -1791,13 +1852,25 @@ def mode(numbers):
 numbers = [2,3,5,2,10,25]
 print mean(numbers), median(numbers), mode(numbers)
 ```
+Explanation: Median it the middle most elements when all the numbers are in an ascending order.
+Mode is the element that has the most common. So, we count the frequencies of all elements and find the with the highest.
+
+Alternate Solution:
+```{#numCode .python .numberLines}
+def mode(numbers):
+    import collections
+    counter = collections.Counter(numbers)
+    [(elem, _)] = counter.most_common(1)
+    return elem
+```
+Line 4 is a really nice example of how powerful python's pattern matching is. And how it results in simpler code.
 
 ##Exercise 9 Functions - Continued
 
 a) Write a function nearly_equal to test whether two strings are nearly equal. Two strings a and b are nearly equal when a can be generated by a single mutation on b.
 
 ```{python}
-def nearlyEqual(a,b):
+def nearly_equal(a,b):
     if len(a) != len(b):
         return False
     difference = False
@@ -1809,10 +1882,17 @@ def nearlyEqual(a,b):
                 difference = True
     return True
 
-print nearlyEqual("sree", "srek")
-print nearlyEqual("sree", "sek")
-print nearlyEqual("sree", "serk")
+print nearly_equal("sree", "srek")
+print nearly_equal("sree", "sek")
+print nearly_equal("sree", "serk")
 ```
+Explanation: `zip` is built-in function that takes two or more sequences and returns a sequence of tubles
+that contain the corresponding elements the sequences. Few examples:
+```{python}
+print zip(range(5), range(5,10))
+print zip('abcd', 'efgh', 'hijk')
+```
+
 b) Write a function dups to find all duplicates in the list.
 
 ```{python}
@@ -1870,8 +1950,9 @@ def cumulative_product(numbers):
     
 print cumulative_product(range(1,5))
 ```
+Explanation: By now, you would have seen a pattern. Python has a rich library of built-in functions that simplify programming. `reduce` is built-in function that built-in function---
 
-###b\) Write a function reverse to reverse a list. Without using the reverse function.
+###b\) Write a function `reverse` to reverse a list. Without using the reverse function.
 
 ```{python}
 def reverse(elements):
@@ -2025,7 +2106,8 @@ a = MyClass()
 print a.instance_variable, a.class_variable
 ```
 Explanation:
-`self` is a variable every object has that points to itself. In the above code, we are checking `obj == self` where a is passed as obj. Observe that it results in True. 
+`self` is a variable every object has that points to itself. In the above code, we are checking `obj == self` where a is passed as obj. Observe that it results in True. `class_variable` is common to all objects whereas a copy of `instance_variable` is present in each object. Hence, `class_variable` is assigned `0` only once and incremented each time an object is created. Whereas each time an object is created, a new `instance_variable` is created and assigned `0`. 
+
 i) Robot
 ```{python}
 class Robot(object):
