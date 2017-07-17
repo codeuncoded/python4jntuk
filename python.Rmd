@@ -5,6 +5,7 @@ date: "M.tech Computer Science, IIT Kanpur"
 header-includes:
 - \usepackage{fancyhdr}
 - \pagestyle{fancy}
+# - \fancyhead[CO,CE]{This is fancy header}
 - \fancyfoot[CO,CE]{\copyright \ sreekanth.kolamala@gmail.com}
 - \fancyfoot[LE,RO]{\thepage}
 - \usepackage{marvosym}
@@ -19,6 +20,16 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(engine = "python")
 knitr::opts_chunk$set(comment = "Out:")
 ```
+
+#How to read this book
+This is a *tiny, tiny* book. It was meant to be tiny. It's 50 pages. Without the lab exercises it's 32 pages. Why? Brevity.
+
+The best way to *teach* is **by example**. That is what this book does. The explanation is kept purposefully concise as examples do the talking. 
+If, at times, you feel the explanation is not enough, be patient and complete the examples. Although the lab examples are in a seperate section, they form a good repertoire of examples. So don't skip them. 
+
+The best way to *learn* is **by doing**. **It is highly recommended that you type each line of code in the book.** That, I believe, is the best way to get the maximum out of this book.
+
+Finally, this book is meant to be quick read. It is not a python encyclopedia. However, it does cover quite a lot of ground. It is meant to be quick but thorough book on Python basics. Experienced programmers(who have experience in other languages) can directly code up the code listings. They can skim/skip the explanation part.
 
 #Introduction
 
@@ -331,7 +342,7 @@ print (condition and False)
 |     False  | False       | False  | True
 
 ## Control flow
-
+Often times, instead of letting each line execute, we would need to selectively execute some lines. This can be done by `if`, `if-else`, `if-elif-else` blocks.
 ### if, if-else, if-elif-else
 ```{#numCode .python .numberLines}
 a,b = 3,2
@@ -339,7 +350,18 @@ if a > b:
   print "a is greater than b" #Notice this print stmt is indented 
   #this means that the print stmt is within the if block
 ```
-Python seperates blocks based on their indentation. Line 3,4 are within the if block and will only execute if the condition is True. Notice unlike other langauges, python doesn't use curly brackets{} for creating blocks.
+The `if` block is executed only if the condition is `True`. In the above code, line 3,4 are executed only if `a` is greater than `b`. Python seperates blocks based on their indentation. Line 3,4 are within the if block and will only execute if the condition is True. Notice unlike other langauges, python doesn't use curly brackets{} for creating blocks. More examples:
+```{python}
+a,b = 3,2
+if a < b:
+  print "this statement is within the if block"
+  print "this statement aswell"
+else:
+  print "this statement is in the else block"
+  print "this statement is also in the else block"
+print "this statement is not in the if block. it's in the global block and will always print"
+```
+Here, the condition `a<b` will result in `False`.The `if` block will be skipped and the `else` block will be executed.
 ```{#numCode .python .numberLines}
 a,b = 10,20
 if a > b:
@@ -355,16 +377,9 @@ else:
   pass
 ```
 `pass` is a keyword that represents an empty statement. It's is like an empty ; in C. Again, observe the indentation. Line 3 is inside the if block and line 5 is inside the else block.
-```{python}
-a,b = 3,2
-if a > b:
-  print "this statement is within the if block"
-  print "this statement aswell"
-else:
-  print "this statement is in the else block"
-  print "this statement is also in the else block"
-print "this statement is not in the if block. it's in the global block and will always print"
-```
+
+We can check more than 1 condition using the `if-elif-else` block.
+
 **syntax**
 ```{python, eval=FALSE}
 if condition_1:
@@ -1012,18 +1027,18 @@ Use of classes consists of 3 parts - defining a class, creating objects and call
 
 **Class Defination**
 
-Line 1 to 15 is the class defination. A class defination tells what variables and functions, the class should have. We are creating a class called `Box` that contains variables `height`, `weight` and `breadth`. So, think of class as a container to holding varaibles.   
-A Class can also has functions. We defined the method `volume()` on line 13,14 within the class.
+Line 1 to 15 is the class defination. A class defination tells what variables and functions the class should have. We are creating a class called `Box` that contains variables `height`, `weight` and `breadth`. So, think of class as a container to holding variables.   
+A `Class` can also has functions. We defined the method `volume()` on line 14,15 within the class.
 
 **Object creation and method calling**
 
-Line 17 creates a box object with `height` as 2, `weight` as 3 and `breadth` as 4. At this line, the special function `__init__()` is called with 2,3,4 as parameters. I know, there is no call to `__init__()`. Here is the thing with python: If a class is defined with name `XYZ` then we create an object by calling `XYZ()`. However, inside the class there is no such method. Instead the class `XYZ`'s `__init()__` is called. This is special method called **constructor**. Another object is created at line .. Notice the print stmt 'creating object' executed each time an object is created.
+Line 18 creates a box object with `height` as 2, `weight` as 3 and `breadth` as 4. At this line, the special function `__init__()` is called with 2,3,4 as parameters. I know, there is no call to `__init__()`. Here is the thing with python: If a class is defined with name `XYZ` then we create an object by calling `XYZ()`. However, inside the class there is no such method. Instead the class `XYZ`'s `__init()__` is called. This is special method called **constructor**. Another object is created at line .. Notice the print stmt 'creating object' executed each time an object is created.
 
-Only one class can exist but several objects can exist. On line 18 and line 21, are creating 2 objects. These 2 are different from each other. Each object have a set of `height, weight, breadth` and have no connection from another. 
+Only one class can exist but several objects can exist. On line 18 and line 21, 2 objects are created. These 2 are different from each other. Each object have a set of `height, weight, breadth` and have no connection from another.
 
-Notice that the contructor defination on line 2 has 4 parameters while the method call on line 17 we had only 3 parameters. This is because all class methods have a default first parameter as `self` which doesn't have be passed when the method is called. You can notice this with the method `volume()` as well. The method defination on line 13 has one parameter but on line 18, while calling there is none.
+Notice that the constructor defination on line 2 takes 4 parameters while the method call on line 18, takes only 3 parameters. This is because all class methods have a default first parameter as `self` which doesn't have be passed when the method is called. You can notice this with the method `volume()` as well. The method defination on line 14 has one parameter but on line 19, while calling there is none.
 
-`self` is special variable that refers to the object itself.  line 3 to line 5, we define the 3 instance variables. Since variables are not declared in python, we need to assign them values in the constructor itself. Also notice the use of the `self` variable to refer instance variables. If we don't use `self`, python would think the variable is a global variable. Our Box class has 3 varaibles and there are assigned inside the constructor.
+`self` is special variable that refers to the object itself.  line 4 to line 6, we define the 3 instance variables. Since variables are not declared in python, we need to assign them values in the constructor itself. Also notice the use of the `self` variable to refer instance variables. If we don't use `self`, python would think the variable is a global variable. Our Box class has 3 varaibles and there are assigned inside the constructor.
 
 **In summary:**
 
@@ -1213,7 +1228,7 @@ print example._private_variable #works, but never do this
 
 Errors are incorrectly written programs. Errors are something that can be avoided by carefully writing software. Like calculation mistake or not handling a corner case.
 
-Exceptions are errors that the programmer can't stop from happening. Like when trying to read from a file, the file is not available. Or when a program tries to find something on the internet but there is no internet. Since exceptions can't be prevented, there should atleast be handled. Which means, We need to provide some safety code. As usual, examples will clearify further.
+Exceptions are errors that the programmer can't stop from happening. Like when trying to read from a file, the file is not available. Or when a program tries to find something on the internet but there is no internet. Since exceptions can't be prevented, there should atleast be handled. Which means, we need to provide some safety code. **Exception Handling** is writing safety code to handle unavoidable problems. As usual, examples will clearify further.
 
 ###Handling Exception
 
