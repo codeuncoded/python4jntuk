@@ -22,7 +22,7 @@ knitr::opts_chunk$set(comment = "Out:")
 ```
 
 #How to read this book
-This is a *tiny, tiny* book. It was meant to be tiny. It's 50 pages. Without the lab exercises it's 32 pages. Why? Brevity.
+This is a *tiny, tiny* book. It was meant to be tiny. It's 50 pages. Without the lab exercises it's 34 pages. Why? They say, a picture is worth a thousand words. Similarly, an example is worth a page of explanation. Most often, dry paragraphs are replaced with examples. 
 
 The best way to *teach* is **by example**. That is what this book does. The explanation is kept purposefully concise as examples do the talking. 
 If, at times, you feel the explanation is not enough, be patient and complete the examples. Although the lab examples are in a seperate section, they form a good repertoire of examples. So don't skip them. 
@@ -61,7 +61,7 @@ Our calculators are computers. Not as powerful as our laptops but still are comp
 Did you try giving voice commands to your smart phone? Isn't it cool? The phone listens and finds out what you are talking out. It does this even if an accent is present. This field  is called natural language processing. Python has cool librabies for this too.
 
 ##Setup
-Download python from here: https://www.python.org/downloads/. 
+Download python from here: `https://www.python.org/downloads/`
 
 JNTUK does not specific which version to download. Python has two main versions. Python 2 and python 3. Download python 2. At the time of writing this book(July 2017), the latest verision was 2.7.13. Once you download the exe file, just double click and install. Press next to keep the default folder as 'C:\\Python27\\'. On the 'Customize Python 2.7.13', select the feature, 'Add python.exe to Path'. Make sure that this feature is selected( no cross mark adjacent to this feature) Press next and the installation should be complete. This should be very easily.
 
@@ -815,7 +815,7 @@ sums = map(lambda x,y: x + y, range(0,5), range(5,10))
 print sums
 sums = map(lambda x,y,z: x + y + z, range(0,5), range(5,10), range(15,20))
 ```
-We can see that we were able to element-wise add from 3 lists without the need to declare a new function. mental note: add an example of lambda with a return statement.
+We can see that we were able to element-wise add from 3 lists without the need to declare a new function.
 
 ### Variable-length arguments
 ```{python}
@@ -1087,11 +1087,9 @@ As you can use in the output, when we printed `family`, instead of printing obje
 
 An excellent guide for magic methods(don't forget to check the table towards the end of the article): http://minhhh.github.io/posts/a-guide-to-pythons-magic-methods
 
-self-note: discuss the keyword is
-
 ## Inheritance
 
-Let's create a special kind of family: south indian family
+Let's create a special kind of family: south indian family.
 
 ```{python, eval=FALSE}
 class South_Indian_Family(Family):
@@ -1680,7 +1678,7 @@ while number >= 0:
 ##Exercise 4 Control Flow - Continued
 
 a\) Find the sum of all the primes below two million.
-```{python, eval=FALSE}
+```{python, eval=TRUE}
 def primes_till(limit):
     primes = {2}
     #notice that primes is a set, not a list.
@@ -1703,7 +1701,7 @@ starting with 1 and 2, the first 10 terms will be:
 
 b\) By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 find the sum of the even-valued terms.
-```{python, eval=FALSE}
+```{python, eval=TRUE}
 def fibonacci(limit):
     series, one, two = [], 1, 2
     while one <= limit:
@@ -1746,15 +1744,7 @@ def countFrequency(name):
     return wordFrequency
 print countFrequency(name)
 ```
-####Alternate solution
-```{python}
-import collections
-def countFrequency(name):
-    wordFrequency = collections.defaultdict(int)
-    for char in name:
-        wordFrequency[char] += 1
-    return dict(wordFrequency)
-```
+
 ####Alternate solution
 ```{python, eval=FALSE}
 import collections
@@ -1767,8 +1757,17 @@ name = 'sreekanth kolamala'
 print "enter a string:" + name
 print dict(collections.Counter(name))
 ```
+**Explanation:** `collections.Counter` is built-in dict class that counts the frequecies of elements. It also has the method `most_common()` that returns the most common element.
 
-`collections.Counter` is built-in dict class that counts the frequecies of elements. It also has the method `most_common()` that returns the most common element.
+####Alternate solution
+```{python}
+import collections
+def countFrequency(name):
+    wordFrequency = collections.defaultdict(int)
+    for char in name:
+        wordFrequency[char] += 1
+    return dict(wordFrequency)
+```
 
 b\) Write a program to use split and join methods in the string and trace a birthday with a
 dictionary data structure.
@@ -1781,9 +1780,27 @@ print ','.join(['join', 'is', 'opposite', 'of', 'split'])
 print ' '.join(['it', 'joins', 'a', 'list', 'of', 'strings', 'to', 'form', 'one', 'string'])
 ```
 ##Exercise 6 DS Continued
+
 a\) Write a program combine_lists that combines these lists into a dictionary.
+
+I don't understand what 'these lists' mean. So, can't really answer this.
+
 b\) Write a program to count frequency of characters in a given file. Can you use character
 frequency to tell whether the given file is a Python program file, C program file or a text file?
+```{python, eval=FALSE}
+filename = 'sample.py'  #create a file named 'sample.py' on your local drive
+text_file = open(filename, 'r')
+fileContent = text_file.readlines()  #returns a list of strings: one string per line in the file
+text_file.close()
+fileContent = ''.join(fileContent)  #combining all lines to form one single string
+print countFrequencies(fileContent)
+# countFrequencies() is the function we wrote in exercise 5a. you need to include or import that
+```
+Output is omitted since it would depend on the contents of file `sample.py`. 
+
+**Explanation:** `open()` is a standard python function for opening files. The first parameter is the name the file. The second is the mode. Modes can be `'r'` for read, `'w'` for write and `'a'` for append. `open()` returns a file descriptor. `readlines()` is method of the descriptor that returns all the lines in the file as a list. Every file we open, we need to close it be calling its `close()` method.
+
+C programs need a semicolon on each statement. Python needs none. And a text file might contain a semicolon buy not as much as a C file.
 
 ##Exercise 7 Files
 
@@ -1804,8 +1821,7 @@ with open('sample.txt', 'r') as text_file:
     while fileContent:
         print fileContent.pop()
 ```
-**Explanation:** `open()` is a standard python function for opening files. The first parameter is the name the file. The second is the mode. Modes can be 'r' for read, 'w' for write and 'a' for append. `open()` returns a file descriptor. `readlines()` is method of the descriptor that returns all the lines in the file as a list. Every file we open, we need to close it be calling its `close()` method. `with` is keyword that lets us create context managers. Context managers a clearer way to write code. Notice that in the alternate solution, we didn't close the file. That is done by the context manager. Context managers are not in the sylabus so don't worry if you don't understand them.
-
+**Explanation:** `with` is keyword that lets us create context managers. Context managers are a clearer way to write code. Notice that in this solution, we didn't close the file. That is done by the context manager. Context managers are not in the syllabus so don't worry if you don't understand them. Just remember that they are neat way to organize code.
 
 b\) Write a program to compute the number of characters, words and lines in a file.
 ```{python}
@@ -1846,8 +1862,10 @@ def mean(numbers):
     return float(sum(numbers)) / len(numbers)
 
 def median(numbers):
+    #this condition will pass when numbers is empty
     if not numbers:
         return 0
+    #sorted() is built-in python function
     sortedNumbers = sorted(numbers)
     length = len(sortedNumbers)
     return (sortedNumbers[length/2] + sortedNumbers[(length-1)/2])/2.0
@@ -1868,7 +1886,7 @@ numbers = [2,3,5,2,10,25]
 print mean(numbers), median(numbers), mode(numbers)
 ```
 **Explanation:** Median it the middle most elements when all the numbers are in an ascending order.
-Mode is the element that has the most common. So, we count the frequencies of all elements and find the with the highest.
+Mode is the element that has the most common. So, we count the frequencies of all elements and find the element with the highest frequency. 
 
 ####Alternate Solution
 ```{#numCode .python .numberLines}
@@ -2002,6 +2020,12 @@ print lcm(20, 30)
 print lcm(3, 5)
 ```
 
+**Explanation:** `pop(index)` is a list method that removes and returns the element at `index`. `index` has a default value of `length - 1`. That means `pop()`(without `index`) removes and returns the last element in the list.
+
+Greatest Common Diviser(gcd) of two numbers a,b lies between 1 to a or b which is the maximum. So, we create a list of all the numbers that are from 1 to `max(a, b)` and also divide a,b prefectly. Since gcd is the maximum of all these numbers, we pop the last element. 
+
+Least Common Multiple(lcm) of tow numbers a,b lies between max(a,b) and a*b. So, we create a list of all such numbers and which are also perfectly divided by a,b. Since lcd is the min of all these numbers, we pop() the first element. 
+
 ##Exercise 11 Multi-D Lists
 a\) Write a program that defines a matrix and prints
 ```{python}
@@ -2033,6 +2057,8 @@ matB = [[3,2,1],
 
 print addMatrix(matA, matB)
 ```
+
+**Explanation:** We discussed about `map` in the Functions section. `map` takes a function and applies it to a list(or lists) to create a new list. But what if instead of a function, we need to a simple operation like addition. We can't pass the operator `+` to map. For these kind of situations, python has built-in functions are behave exactly like operators. `operator.add()` is one such example. It mimics `+` operator. There are others like `operator.mul()`, `operator.sub()`. Even functions that mimic logical operators like `operator.gt()` (for `>`) and `operator.not_()` (for `not`) exist.
 
 c\) Write a program to perform multiplication of two square matrices
 ```{python}
@@ -2117,7 +2143,7 @@ print a.instance_variable, a.class_variable
 a = MyClass()
 print a.instance_variable, a.class_variable
 ```
-**Explanation:** `self` is a variable every object has that points to itself. In the above code, we are checking `obj == self` where a is passed as obj. Observe that it results in True. `class_variable` is common to all objects whereas a copy of `instance_variable` is present in each object. Hence, `class_variable` is assigned `0` only once and incremented each time an object is created. Whereas each time an object is created, a new `instance_variable` is created and assigned `0`. 
+**Explanation:** `self` is a variable every object has that points to itself. In the above code, we are checking `obj == self` where `a` is passed as `obj`. Observe that it results in True. `class_variable` is common to all objects whereas a copy of `instance_variable` is present in each object. Hence, `class_variable` is assigned `0` only once and incremented each time an object is created. Whereas each time an object is created, a new `instance_variable` is created and assigned `0`. 
 
 i\) Robot
 ```{python}
@@ -2243,7 +2269,6 @@ for _ in range(36):
     draw_square(100)
 ```
 
-
 ## Exercise 15 Testing
 
 a\) Write a test-case to check the function even-numbers which return True on passing a list of all even numbers
@@ -2366,7 +2391,6 @@ def knapsack(items, max_weight):
             j -= items[i - 1][1]
 
     reconstruction.reverse()
-
     return best_values[len(items)][max_weight], reconstruction
     
 items = [(1,3), (3,5), (5,4), (8,3)]
@@ -2374,5 +2398,3 @@ best_value, best_items = knapsack(items, 8)
 print 'best value is', best_value
 print 'best items are', best_items
 ```
-
-# Appendix
