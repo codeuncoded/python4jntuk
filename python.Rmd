@@ -22,80 +22,89 @@ knitr::opts_chunk$set(comment = "Out:")
 ```
 
 #How to read this book
-This is a *tiny, tiny* book. It was meant to be tiny. It's 50 pages. Without the lab exercises it's 34 pages. Why? They say, a picture is worth a thousand words. Similarly, an example is worth a page of explanation. Most often, dry paragraphs are replaced with examples. 
+This is a *tiny, tiny* book. It was meant to be tiny. It's about 50 pages. Without lab exercises, it's 34 pages. Why? They say, a picture is worth a thousand words. Similarly, an example is worth a page of explanation.
 
 The best way to *teach* is **by example**. That is what this book does. The explanation is kept purposefully concise as examples do the talking. 
-If, at times, you feel the explanation is not enough, be patient and complete the examples. Although the lab examples are in a seperate section, they form a good repertoire of examples. So don't skip them. 
+If, at times, you feel the explanation is not enough, be patient and complete the examples. I assure you as you go along, things will be clearer. Although the lab examples are in a seperate section, they form a good repertoire of examples. So don't skip them. 
 
 The best way to *learn* is **by doing**. **It is highly recommended that you type each line of code in the book.** That, I believe, is the best way to get the maximum out of this book.
 
 Finally, this book is meant to be quick read. It is not a python encyclopedia. However, it does cover quite a lot of ground. It is meant to be quick but thorough book on Python basics. Experienced programmers(who have experience in other languages) can directly code up the code listings. They can skim/skip the explanation part.
 
-#Introduction
+#Unit 1 Introduction
 
-##History of python
+##History of Python
 Python was created by Guido van Rossum in 1991.
 
-##Need of python programming
+##Need of Python programming
 C, C++ are powerful langauges. Langauges that can be used to write a variety of software. They give you very minute control of the machine. But, they are very low level. We need to specify every small detail. For example, we have to create and manage memory, object destruction etc, when all we need to do is save a few objects. 
 
-C, C++ syntax makes writing code very lengthly. C, C++ focus on reducing memory, running programs fast etc. Python's focus is to reduce developer time-time taken by the programmer to create software. C's 20 line code would be 5 or less lines long in python.
+C, C++ syntax makes writing code very lengthly. C, C++ focus on reducing memory, running programs fast etc. Python's focus is to reduce developer time-time taken by the programmer to create software. C's 20 line code would be 5 or less lines long in Python.
 
 ##Applications
 Python's concise code makes it real quick to write software. It's high level. Python is used for the real software that we see often in our day-to-day life.
 
 ####Web development
-Django is popular python framework(a big library is called a framework) that simplifies building websites. Popular websites like Instagram, YouTube, BitBucket, Pinterest
-use Django/python.
+Django is popular Python framework(a big library is called a framework) that simplifies building websites. Popular websites like Instagram, YouTube, BitBucket, Pinterest
+use Django/Python.
 
-####Data Science and Maching Learning
-Data science is different from the general programming. In general programming, finding out the average of subjects marks is a typical programming problem. Data science trys to predict the answer to question 'When will you come to college tommorow?' It does it by observing previous data. Since you came at 8:30 everyday for the past 6 months, you will come tommorow at 8:30. This is simple problem but typical problems in this field are like 'what is chance of getting cancer if you have a family history?' 'what will the whether be today?' etc. Two langauges dominate this field - Python and R. Both of which are in your syllabus. 
+####Data Science and Machine Learning
+Data science is different from the general programming. Generaly, finding out the average of subjects marks is a typical programming problem. Data science trys to predict the answer to question 'When will you come to college tommorow?' It does it by observing previous data. Since you came at 8:30 everyday for the past 6 months, you will come tommorow at 8:30. This is a simple problem but typical problems in this field are like 'what is chance of getting cancer if you have a family history?' 'what will the weather be like today?' etc. Two langauges dominate this field - Python and R. Both of which are in our syllabus.
 
 ####Gaming and GUI applications
-The famous game Civiliztion IV, where you get build an empire, was written in python.
+The famous game Civilization IV, where you build an empire, was written in Python.
 
 ####Internet of Things(IoT)
-Our calculators are computers. Not as powerful as our laptops but still are computers. Iot is a technology where, small calculator sized but more powerful computers are attached to everyday devices like TV, Fridge, AC to make them smart. The smart house; where you can voice operate lights, doors, music; is becuase of iot. And, python is the primary language of this field.
+Our calculators are computers. Not as powerful as our laptops but still are computers. Iot is a technology where, small calculator sized but more powerful computers are attached to everyday devices like TV, Fridge, AC to make them smart. The smart house-where you can voice operate lights, doors, music, etc-is because of iot. And, Python is the primary language of this field.
 
 ####Natural language processing
 Did you try giving voice commands to your smart phone? Isn't it cool? The phone listens and finds out what you are talking out. It does this even if an accent is present. This field  is called natural language processing. Python has cool librabies for this too.
 
-##Setup
-Download python from here: `https://www.python.org/downloads/`
+##Setup - Intalling Python
+Download Python from here: `https://www.python.org/downloads/`
 
-JNTUK does not specific which version to download. Python has two main versions. Python 2 and python 3. Download python 2. At the time of writing this book(July 2017), the latest verision was 2.7.13. Once you download the exe file, just double click and install. Press next to keep the default folder as 'C:\\Python27\\'. On the 'Customize Python 2.7.13', select the feature, 'Add python.exe to Path'. Make sure that this feature is selected( no cross mark adjacent to this feature) Press next and the installation should be complete. This should be very easily.
+JNTUK does not specific which version to download. Python has two main versions. Python 2 and Python 3. Download Python 2. At the time of writing this book(July 2017), the latest verision was 2.7.13.
+
+Once you download the exe file, just double click and install. 
+
+Press next to keep the default folder as 'C:\\Python27\\'. On the 'Customize Python 2.7.13', select the feature, 'Add python.exe to Path'. Make sure that this feature is selected (no cross mark adjacent to this feature). 
+
+Keep pressing next till the installation is complete. This should be very easily.
 
 <!-- ![Install Python](./python download_LI.jpg) -->
-Congrats! You now have python installed on your machine.
+Congrats! You now have Python installed on your machine.
 
-##Using the python interpreter
-Click on windows start and find python. In windows 7 and above, you could just type in python and in the search results something like **python(command line)** will come up. Click on that, and a black screen will come. That is called the **python interpreter**. 
-That is where we will run all our python code. We will open this black screen each time we need to do some coding, so become comfortable opening up this application.
+##Using the Python interpreter
+Click on windows start and find Python. In windows 7 and above, you could just type in Python.
 
-##(Optional ipython installation)
-All python code in this book can be done on the python interpreter we just installed. However, ipython is a better tool that the python interpreter. I highly recommend that you install ipython as well. If you do install it, use ipython whenever I say python interpreter.
+Click on **python(command line)**. A black screen will appear. This is called the **python interpreter**.
+
+This is where we will run all our Python code. We will open the python interpreter each time we need to do some coding, so become comfortable opening it.
+
+##(Optional IPython installation)
+All Python code in this book can be done on the python interpreter we just installed. However, IPython is a better tool than the Python interpreter. I highly recommend that you install IPython as well. If you do install it, use IPython whenever I say Python interpreter.
 
 Installation steps:
 
-Ipython requires visual c++. It can be downloaded at `http://aka.ms/vcpython27`. Download and install this software. It is pretty easy and shouldn't cause any troubles.
+IPython requires visual c++. It can be downloaded at `http://aka.ms/vcpython27`. Download and install this software. It is pretty easy and shouldn't cause any troubles.
 
 Open windows command line by pressing the windows key + r. Or search for an app called `run` from the start button. Type 'cmd' and press enter. A black screen will be launched, it's called the windows command prompt.
 
-Now install `ipython` using `pip`. `pip` is utility command to install python modules.
+Now install `ipython` using `pip`. `pip` is utility command to install Python modules.
 ```{bash, eval=FALSE}
 pip install ipython
 ```
 
-##Using ipython:
+##Using IPython:
 Open the windows command prompt again like in the previous step(windows key  + r, type 'cmd', enter). Type
 ```{bash, eval=FALSE}
 ipython
 ```
-Remember, you can use either use the python interpreter or ipython.
+Remember, you can use either the Python interpreter or IPython.
 
 
 ##REPL
-Open the **python interpreter** and type in the following one line at a time:
+Open the **python interpreter** and type in the following, one line at a time:
 ```{python, eval=FALSE}
 2 + 3
 45 + 21.1
@@ -106,7 +115,7 @@ print 2 + 3
 print 45 + 21.1
 print 45/9
 ```
-Each line you typed above is a command for the python interpreter. It reads your command, evaluates it and prints the result. When you type `2 + 3`, python took this command, calculated the sum and then printed it. Again the same steps of reading, evaluating, printing happened for the second command. This loop is called the **read-eval-print-loop**. And the python interpreter is also called the **python repl**. The nice thing about python repl is it also works as a calculator as seen above. 
+Each line you typed above is a command for the Python interpreter. It reads your command, evaluates it and prints the result. When you type `2 + 3`, Python took this command, calculated the sum and then printed it. Again the same steps of reading, evaluating, printing happened for the second command. This loop is called the **read-eval-print-loop**. And the Python interpreter is also called the **python repl**. The nice thing about Python repl is it also works as a calculator as seen above. 
 
 You can even type in a complex expression like:
 ```{python}
@@ -115,13 +124,13 @@ print 'sree' in 'sreekanth'
 Don't worry what this expression does. For now, just remember you can type **any python expression**.
 
 
-##Running python scripts
-Save the previous code listing into a file and name it script.py. run that file using the command 
+##Running Python scripts
+Save the previous code listing into a file and name it script.py and run that file using the command:
 ```{python, eval=FALSE}
 run script.py
 ```
 
-All python files should end with '.py'. You can give them any name(following the rules of variable naming).
+All Python files should end with '.py'. You can give them any name(following the rules of variable naming).
 
 ##Variables and Assignment
 In programming, we often need to save some number, some information somewhere so that we can use it later. Variables are used to save such infomation.
@@ -129,7 +138,7 @@ In programming, we often need to save some number, some information somewhere so
 age = 32
 name = 'sreekanth'
 ```
-Here, `age` is variable to which the infomation 32 is saved. `name` is another variable to which the infomation `'sreekanth'` is saved. We can see what infomation a particular variable has simply by printing them(don't worry about the quotes, we will get to that when we learn about strings).
+Here, `age` is variable to which the infomation 32 is saved. `name` is another variable to which the infomation `'sreekanth'` is saved. We can see what infomation a particular variable has simply by printing them(don't worry about the quotes, more on that later).
 ```{python, eval=FALSE}
 print age
 print name
@@ -140,7 +149,7 @@ name = 'sreekanth'
 print age
 print name
 ```
-`print` is the built-in python command to print variables or values. More on that later. We could also modify the infomation assigned to a variable.
+`print` is the built-in Python command to print variables or values. We could also modify the infomation assigned to a variable.
 ```{python, eval=FALSE}
 age = age + 10
 print age
@@ -155,7 +164,7 @@ print 'sreekanth kolamala'
 ```
 Here, we are assigning the variable `age`, the previously saved `age` and 10 more. So, now the `age` would have the infomation `42`.
 
-If you are familar with C or java, you would noticed that there is not variable declaration like `int age = 32;`. In python, you don't need to declare variables before assigning some infomation. You just use them. Also, the semicolon `;` is optional in python. 
+If you are familar with C or java, you would noticed that there is no variable declaration like `int age = 32;`. In Python, you don't need to declare variables before assigning some infomation. You just use them. Also, the semicolon `;` is optional in Python. 
 
 
 ##Keywords
@@ -176,7 +185,7 @@ Each langauge has a set of words that are reserved. They can't be used as variab
 import keyword
 print keyword.kwlist
 ```
-The rest of unit will make more sense in unit-2 and hence is covered in unit-2.
+The rest of unit will make more sense in Unit-2 and hence is covered in Unit-2.
 
 <!-- ## Indentation -->
 <!-- covered in if section -->
@@ -189,19 +198,19 @@ The rest of unit will make more sense in unit-2 and hence is covered in unit-2.
 
 \newpage
 
-#Types, Operators and Expressions
+#Unit 2 Types, Operators and Expressions
 ##Types
-Varaibles based on what operations we can do on them are group into so called **Data types**.
-Python has 5 data types - `Numbers, Strings, Lists, Tuple, Dictionary`. In this chapter, we will discuss Numbers and Strings. We will see the other 3 in the next chapter.
+Based on what operations we can do on them, variables are grouped into so called **Data types**.
+Python has 5 data types - `Numbers, Strings, Lists, Tuple, Dictionary`. In this unit, we will discuss `Numbers` and `Strings`. We will see the other 3 in the next unit.
 
 ###Numbers
-Numbers are further divided into 4 - `int, long, float, complex`. 
+`Numbers` are further divided into 4 - `int, long, float, complex`. 
 
 `int` and `long` are used to represent whole numbers. `float` is used for numbers that have a decimal part. Languages like C have double type for really big floating point numbers. But, Python only has float. 
 ```{python}
 a = 12
 print type(a)
-#type is a built-in function that returns the type of a variable
+#type is a built-in function we can use to check a variable's type
 b = 12.3
 print type(b)
 c = 2323231211142342424
@@ -213,7 +222,7 @@ print type(d)
 The data type `complex` represent mathematical complex numbers that have a real and an imaginary part.
 
 ###Strings
-Strings are used for saving text like `'India'` or `'Cake'`.Strings can be surrounded with either single quotes or double quotes. Unlike in C, there is not difference between char and string-both are same.
+Strings are used for saving text like `'India'` or `'Cake'`.Strings can be surrounded with either single quotes or double quotes. Unlike in C, there is no difference between char and string-both are same.
 ```{python}
 name = "sreekanth"
 occupation = 'software engineer'
@@ -228,7 +237,7 @@ You can have a 1 single quote within 2 double quotes or vice versa. But, you can
 qoute = "He said "I am not going" to her" #this will not work.
 ```
 ###Booleans
-`int` variables can be assigned any whole number. `string` variables can be assigned any charecters. Boolean variables are special. They can be assigned only 2 values - `True` or `False`
+`int` variables can be assigned any whole number. `string` variables can be assigned any charecters. `bool` variables(otherwise known as booleans) are special. They can be assigned only 2 values - `True` or `False`
 ```{python}
 flag = True
 print flag
@@ -242,12 +251,11 @@ It's not always the case that variables are assigned in code. Often times, an in
 # Input
 a = raw_input("enter a number:")
 ```
-`raw_input()` always takes the input as string. Even if you type numbers, they would be taken as string. So, if you really want to input numbers, you need to convert them. We use the built-in python functions `int()` , `float()` for this.
+`raw_input()` always takes the input as string. Even if we type numbers, they would be taken as string. So, if we really want to input numbers, we need to convert them. We use the built-in python functions `int()` and `float()` for this.
 ```{python, eval=FALSE}
 a = raw_input("enter a number:")
 print a
 print type(a)
-# type is built-in functon that tell the type of anything
 a = int(a)
 print type(a)
 ```
@@ -259,6 +267,8 @@ print type(a)
 a = int(a)
 print type(a)
 ```
+Also note that the type of a variable can change during program executation.
+
 Python programmers combine the input and conversion into one line like this:
 ```{python, eval=FALSE}
 age = int(raw_input('enter age'))
@@ -284,15 +294,15 @@ a, b = 10,20
 #a is assigned 10 and b is assigned 20.
 print a,b
 a,b = b,a
-#a is assigned the value in b and b is assigned the value in a simultaneously. 
+# 'a' is assigned the value in 'b' and 'b' is assigned the value in 'a' simultaneously. 
 #this is a popular way of swapping numbers in python.
 print a,b
 ```
 
 ### Arithmetic Operators
-Arithmetic operators are used for doing comman arithmetic operations like addition, substraction etc. They are `+ - * / % **`. For example, `2/3` is `2` divided by `3`.
+Arithmetic operators are used for doing common arithmetic operations like addition, substraction etc. They are `+ - * / % **`. For example, `2/3` is `2` divided by `3`.
 
-`a%b` is gives the reminder when `a` is divided by `b`. `a**b` gives a to power of `b`. Few examples for clarity are given in the table below.
+`a%b` gives the reminder when `a` is divided by `b`. `a**b` gives `a` to power of `b`. Few examples for clarity are given in the table below.
 
 | operator       | example | result
 --------------|---------|------
@@ -321,7 +331,7 @@ Relational operators include `>, >=, <, <=, ==, !=`. They take 2 operands and re
 ### Logical Operators
 
 There are three logical operators: `not, or, and`. `'not a'` evaluates to the opposite of what `'a'` is. `'a and b'` evaluates to `True` only if both a, b are `True`.
-`'a or b'` evaluates to False if both a,b are `False`. They behave exactly like `!, ||, &&` operators in C.
+`'a or b'` evaluates to `False` if both `a,b` are `False`. They behave exactly like `!, ||, &&` operators in C.
 ```{python}
 condition = True
 print (not condition)
@@ -339,10 +349,11 @@ print (condition and False)
 |     True   | True       | True  | True
 |     True  | False       | False | True
 |     False   | True       | False  | True
-|     False  | False       | False  | True
+|     False  | False       | False  | False
 
 ## Control flow
 Often times, instead of letting each line execute, we would need to selectively execute some lines. This can be done by `if`, `if-else`, `if-elif-else` blocks.
+
 ### if, if-else, if-elif-else
 ```{#numCode .python .numberLines}
 a,b = 3,2
@@ -350,7 +361,7 @@ if a > b:
   print "a is greater than b" #Notice this print stmt is indented 
   #this means that the print stmt is within the if block
 ```
-The `if` block is executed only if the condition is `True`. In the above code, line 3,4 are executed only if `a` is greater than `b`. Python seperates blocks based on their indentation. Line 3,4 are within the if block and will only execute if the condition is True. Notice unlike other langauges, python doesn't use curly brackets{} for creating blocks. More examples:
+The `if` block is executed only if the condition is `True`. In the above code, line 3,4 are executed only if condition `a > b` is `True`. One key point: **Python seperates blocks based on their indentation.** Line 3,4 are within the `if` block. Unlike other langauges, python doesn't use curly brackets{} for creating blocks. More examples:
 ```{python}
 a,b = 3,2
 if a < b:
@@ -361,7 +372,7 @@ else:
   print "this statement is also in the else block"
 print "this statement is not in the if block. it's in the global block and will always print"
 ```
-Here, the condition `a<b` will result in `False`.The `if` block will be skipped and the `else` block will be executed.
+Here, the condition `a<b` results in `False`.The `if` block is skipped and the `else` block is executed.
 ```{#numCode .python .numberLines}
 a,b = 10,20
 if a > b:
@@ -405,7 +416,7 @@ elif True:
 else:
   print 'this will not too'
 ```
-We will cover the rest of unit-2 in unit-3 once we are done with lists.
+
 
 ### Terary operator
 Terary operator is a shorter form of an if-else statement.
@@ -420,10 +431,11 @@ number = 24
 result = "odd" if number % 2 != 0 else "even"
 print result
 ```
+We will cover the rest of unit-2 in unit-3 once we are done with lists.
 
 \newpage
 
-#Data Structures
+#Unit 3 Data Structures
 
 ##Lists
 
@@ -462,7 +474,7 @@ numbers = [10,20,30,40,50]
 del numbers[1] #this will remove element at index 1
 print numbers
 ```
-Notice how the list is re-adjusted. All the elements after index 1 are moved 1 place left to full the list. The length of list is also reduced by 1.
+Notice how the list is re-adjusted. All the elements after index 1 are moved one place left to fill the list. The length of list is also reduced by 1.
 ```{python}
 numbers = [10,20,30,40,50]  #creating a list
 print numbers.pop() #removes and returns the last element in the list
@@ -487,7 +499,7 @@ numbers = [0, 10, 20, 30, 40, 50, 60, 70]
 sublist = numbers[1:4]
 print sublist
 print numbers[0:3]
-print numbers[:3] #missing starting number, with replaced with 0
+print numbers[:3] #missing starting number will be replaced with 0
 print numbers[4:7]
 print numbers[4:] #missing ending number is replaced with length of the list.
 #negative indices can also be given. 
@@ -502,11 +514,12 @@ As shown in the example, `sublist` is a new list consisting of elements 1 to 3(r
 ### Strings as lists
 In python, strings are similar to lists. So, some of the list operations can be done on strings.
 ```{python}
-name = "sreekanth"
+name = "pine"
 print name[0]
-print name[1:5] #slicing
-print name + "kolamala" # concatination
-
+print name[1:3] #slicing
+#we can concatinate(combine) two strings too
+fruit = name + "apple"
+print fruit
 ```
 ```{python, echo=FALSE, eval=FALSE}
 #personal note: concatination does a shallow copy, use should use copy.deepcopy
@@ -542,7 +555,7 @@ print 2
 print 3
 print 4
 ```
-Now, let's write a program to print numbers from 1 to 10.
+Now, let's write a program to print numbers from 1 to 9.
 ```{python}
 print 0
 print 1
@@ -555,7 +568,7 @@ print 7
 print 8
 print 9
 ```
-This is very repeatative and tedious. And what if we need print a 100 numbers? We can't write code like this.
+This is very repeatative and tedious. And what if we need print 100 numbers? We can't write code like this.
 The solution to this is loops. They are two types of loops - *for* loop and *while* loop.
 
 ### The for loop
@@ -565,7 +578,7 @@ numbers = range(0,5)
 #list of numbers within the specified range
 
 for number in numbers:
-  print number
+  print number  #Notice the indentation. Only this line is within the for loop
 ```
 The `for` loop executes the print statement a number of times. Each time the variable `number` is assigned a value from `numbers`. An equivalent non-for code would be:
 ```{python}
@@ -611,7 +624,7 @@ numbers = range(0,10) #remember range() creates a list [0,1,2...,9]
 for i in numbers:
   if i%2 != 0:
     continue   
-  print i #remember indentation rules: this stmt is in for block but not in if block
+  print i #remember indentation rules: this stmt is in 'for' block but not in 'if' block
 print "program end"
 ```
 Each time the keyword `continue` is hit, the remaining part of the iteration of the `for` loop is not executed.
@@ -623,17 +636,17 @@ for i in numbers:
   print i
 print "program end"
 ```
-Notice that this program produces nothing. When `i=1`, the `if` condition is `True`, and `break` statement is hit. When a `break` statement is hit, the loop, the `break` statement is in, is immediately exited.  
+Notice that this program prints `0` and exits the `for` loop. When `i=1`, the `if` condition is `True`, and `break` statement is hit; When a `break` statement is hit; the loop, the `break` statement is in, is immediately exited.
+
 In summary, when a `continue` is hit, only the rest of the for interation is skipped. Whereas, when a `break` is hit, the `for` loop is exited.
 
 ## Comprehensions
-Comprehensions are a quick way to create data. Often, data has a pattern like a series of integers, a series of squares etc. In other languages, such data is created using for loop. In python, comprehensions are used.
+Comprehensions are a quick way to create data. Often, data has a pattern. Like a series of integers, a series of squares etc. In other languages, such data is created using for loop. In python, comprehensions are used.
 
 *Syntax:*
 ```{python, eval=FALSE}
 new_list = [expression(x) for x in some_list if condition]
 ```
-`expression(x)` is the formula used for creating the elements. The elements of `some_list` are used in `expression(x)`. The `if condition` is optional used for filtering. Some examples will solidify these concepts.
 The above code is equivalent to:
 ```{python, eval=FALSE}
 new_list = []
@@ -641,7 +654,8 @@ for x in some_list:
   if condition:
     new_list.append(expression(x))
 ```
-Few examples will make things clear.
+`expression(x)` is the formula used for creating the elements. The elements of `some_list` are used in `expression(x)`. The `if condition` is optional used for filtering. Some examples will solidify these concepts.
+
 ```{python}
 squares = [x**2 for x in range(10)]
 print squares
@@ -670,7 +684,7 @@ print presentees
 ```
 Notice that `presentees` has only one 6 and one 5 even though we assigned more than one.
 
-Common mathematical set operations like union, intersection can be easily done.
+Built-in functions exist for common mathematical set operations like union, intersection.
 ```{python}
 setA = {1,2,3,4,5}
 setB = {4,5,6,7,8}
@@ -679,19 +693,24 @@ print setA.intersection(setB)
 ```
 
 ##Dictionaries
-Dictionaries(commmonly shortened to dict) are *{key,value}* pair data structures. Each element in a dict is a pair of key and value. Keys have to be uquine. Keys can be thought as indices with names. Dicts are similar to Java hashmaps.
+Dictionaries(commmonly shortened to dict) are *{key,value}* pair data structures. Each element in a dict is a pair of key and value. Keys have to be uquine. Keys can be thought as indices with names. Dicts are similar to Java hashmaps. Let's create a dict and play around.
 ```{python}
 wordFrequency = {'a':1, 'b':5, 'c':10, 'e':15}
-#Here all the strings('a', 'b', 'c', 'e' are keys)
-#all the numbers are values(1,5,10,15)
+#Here all the strings('a', 'b', 'c', 'e') are keys
+#all the numbers(1,5,10,15) are values
 #each key has a associated value.
-#For example, wordFrequency can be used to store frequency of alphabets in a string
+#wordFrequency can be used to store frequency of alphabets in a string
+
+#key can be used access value. Like an index is used in a list
 print wordFrequency['a']
-#key can be used like an index of a list.
+#deleting is similar to list
 del wordFrequency['a']
-#deleting is similar to list.
 print wordFrequency
-print 'd' in wordFrequency  #find out if a key exists in dict using the 'in' keyword
+#adding a key,value pair
+wordFrequency['x'] = 4
+print wordFrequency
+#find out if a key exists in dict using the 'in' keyword
+print 'd' in wordFrequency  
 ```
 Accessing the key that isn't present in the dict can result in an exception. This can be avoided by checking if that key is present before accessing it.
 ```{python}
@@ -705,7 +724,7 @@ Notice that we used the membership operator `in` to find out if a key is present
 
 \newpage
 
-# Functions
+#Unit 4 Functions
 Functions are small pieces of code that we can reuse by calling them instead of writing code multiple times. 
 
 *Syntax:*
@@ -777,6 +796,7 @@ def mean_mode_median(numbers):
 mean, mode, median = mean_mode_median(range(5))
 print mean, mode, median
 ```
+
 Consider the following program:
 ```{python}
 print map(len, ['this', 'will', 'return', 'lengths', 'of', 'each', 'word'])
@@ -798,15 +818,15 @@ print map(add, [1,2,3,4], [10,20,30,40])
 
 
 
-Let's write a function that returns square of a given number. And find the squares of a list of numbers.
+Let's write a function that returns cube of a given number. And find the cubes of a list of numbers.
 ```{python}
-def square(number):
-  return number**2
-print map(square, range(10))
+def cube(number):
+  return number**3
+print map(cube, range(10))
 ```
-Instead of defining a function for such a simple task, we can use **anonymous function**. Anonymous function are like regular functions except they don't have a name. They defined using the keyword, `lambda`. 
+Instead of defining a function for such a simple task, we can use an **anonymous function**. Anonymous functions are like regular functions except they don't have a name. They defined using the keyword `lambda`. 
 ```{python}
-print map(lambda x: x**2, range(10))
+print map(lambda x: x**3, range(10))
 ```
 Few more examples will help:
 ```{python}
@@ -814,10 +834,11 @@ Few more examples will help:
 sums = map(lambda x,y: x + y, range(0,5), range(5,10))
 print sums
 sums = map(lambda x,y,z: x + y + z, range(0,5), range(5,10), range(15,20))
+print sums
 ```
-We can see that we were able to element-wise add from 3 lists without the need to declare a new function.
+We can see that we were able to element-wise add from 3 lists without the need to declare a new function. If we had to add 4 lists, we could easily write an anonymous function instead of declaring a new funcition.
 
-### Variable-length arguments
+### Variable-length parameters
 ```{python}
 # program to take variable number of parameters
 def max(*numbers):
@@ -848,7 +869,7 @@ max() #this will throw an error
 ```
 
 ## Scope of Variables in a Function
-Variables declared(appear for the first time in code) inside a function are known as **local variables**. Local variables are not accessable outside the function.
+Variables declared(appear for the first time in code) inside a function are known as **local variables**. Local variables are not accessible outside the function.
 ```{python, error=TRUE}
 def some_function():
   variable = 'this variable is available only inside the function some_function()'
@@ -871,7 +892,7 @@ variable = 'global_variable'
 def function():
     # this variable is different from the one declared in the global context
     variable = 'local_variable'
-    print variable
+    print 'variable inside function', variable
 print 'variable outside function before function call:', variable
 function()
 print 'variable outside function after function call:', variable
@@ -881,7 +902,7 @@ To use and modify a global variable, you need to declare it as global first, by 
 global_variable = 10
 def function():
     global global_variable
-    global_variable = 20  #this change will be visiable in the global variable
+    global_variable = 20  #this change will be visible outside the function as well
 
 function()
 print global_variable
@@ -915,7 +936,7 @@ Some examples:
 There is a module called `math` that contains commonly used mathematical functions like square root{`sqrt()`}, `tan()`, `sin()` etc. To use them, we need to import the math module. 
 ```{python, error=TRUE}
 import math #you can call anything within math. 
-print math.sqrt(25) #the full name math.sqrt() is requeried. 
+print math.sqrt(25) #the full name math.sqrt() is required 
 print math.pi
 print sqrt(25)
 ```
@@ -923,14 +944,14 @@ Another way is to import only the necessary function:
 ```{python, error=TRUE}
 from math import sqrt 
 print sqrt(25)  #full name not required.
-print pi  #can't use anything else in the module.
+print pi  #can't use anything else within the module.
 ```
 We can also give alias(shortcut name) to the imported module. This way, we could use the shortcut instead of the full module name.
 ```{python}
 import math as m
 print m.sqrt(25)
 ```
-Finally, we can also import code written by us in the same way. An example is given the chapter on testing.
+Finally, we can also import code written by us in the same way. An example is given in the unit on testing.
 
 ## Python packages and pip
 
@@ -956,7 +977,7 @@ Now try to import flask to check if it was successfully installed. This should b
 ```{python}
 import flask
 ```
-If you get no error, then the module was successfully installed. If you get an error with pip command, it may be that the path is not set. In that case, you could go to the folder that python was installed in. It normally is `C:\Python27\`. check your python folder is this. Now, navigate to this folder in the windows command prompt. 
+If you get no error, then the module was successfully installed. If you get an error with pip command, it may be that the path is not set. In that case, you could go to the folder that python was installed in. It normally is `C:\Python27\` . Check your python folder on your computer. Now, navigate to this folder in the windows command prompt. 
 ```{bash, eval=FALSE}
 cd C:\Python27\Scripts
 ```
@@ -968,9 +989,9 @@ There is another module installation in lab programs exercise 12. Do have a look
 
 \newpage
 
-# Object Oriented Programming OOP in Python
+#Unit 5 Object Oriented Programming OOP
 
-Consider writing code for a box. A box has 3 properties-height, width, breadth. We can use variable like `box_height`, `box_width`, `box_breadth` to represent them. But doing this makes 3 seperate variables that seem to have no relation. Instead, we could create a *class* that holds these variables. Classes are a neat way to organize code.
+Consider writing code for a box. A box has 3 properties-height, width, breadth. We can use variables like `box_height`, `box_width`, `box_breadth` to represent them. But doing this makes 3 seperate variables that seem to have no relation. Instead, we could create a *class* that holds these variables. Classes are a neat way to organize code.
 ```{#numCode .python .numberLines}
 class Box(object):
   def __init__(self, h, w, b):
@@ -1023,22 +1044,22 @@ print another_box.volume()
 ```
 I know that's a lot of code. Don't worry. It's not hard. 
 
-Use of classes consists of 3 parts - defining a class, creating objects and calling methods on them.
+Use of classes consists of 3 parts - defining a class, creating objects of that class and calling methods on them.
 
 **Class Defination**
 
-Line 1 to 15 is the class defination. A class defination tells what variables and functions the class should have. We are creating a class called `Box` that contains variables `height`, `weight` and `breadth`. So, think of class as a container to holding variables.   
+Line 1 to 15 is the class defination. A class defination tells what variables and functions the class should have. We are creating a class called `Box` that contains variables `height`, `weight` and `breadth`. So, think of class as a container for holding variables.   
 A `Class` can also has functions. We defined the method `volume()` on line 14,15 within the class.
 
 **Object creation and method calling**
 
-Line 18 creates a box object with `height` as 2, `weight` as 3 and `breadth` as 4. At this line, the special function `__init__()` is called with 2,3,4 as parameters. I know, there is no call to `__init__()`. Here is the thing with python: If a class is defined with name `XYZ` then we create an object by calling `XYZ()`. However, inside the class there is no such method. Instead the class `XYZ`'s `__init()__` is called. This is special method called **constructor**. Another object is created at line .. Notice the print stmt 'creating object' executed each time an object is created.
+Line 18 creates a box object with `height` as 2, `weight` as 3 and `breadth` as 4. At this line, the special function `__init__()` is called with `2,3,4` as parameters. I know, there is no call to `__init__()`. Here is the thing with python: If a class is defined with name `XYZ` then we create an object by calling `XYZ()`. However, inside the class there is no such method. Instead the class `XYZ`'s `__init()__` is called. This is special method called **constructor**. Another object is created at line 21. Notice the print stmt 'creating object' executed each time an object is created.
 
-Only one class can exist but several objects can exist. On line 18 and line 21, 2 objects are created. These 2 are different from each other. Each object have a set of `height, weight, breadth` and have no connection from another.
+Only one class can exist but several objects can exist. On line 18 and line 21, 2 objects are created. These 2 are different from each other. Each object have a set of `height, weight, breadth` and have no connection from one another.
 
-Notice that the constructor defination on line 2 takes 4 parameters while the method call on line 18, takes only 3 parameters. This is because all class methods have a default first parameter as `self` which doesn't have be passed when the method is called. You can notice this with the method `volume()` as well. The method defination on line 14 has one parameter but on line 19, while calling there is none.
+Notice that the constructor defination on line 2 takes 4 parameters while the method call on line 18 takes only 3 parameters. This is because all class methods have a default first parameter as `self` which doesn't have be passed when the method is called. You can notice this with the method `volume()` as well. The method defination on line 14 has one parameter but on line 19, while calling there is none.
 
-`self` is special variable that refers to the object itself.  line 4 to line 6, we define the 3 instance variables. Since variables are not declared in python, we need to assign them values in the constructor itself. Also notice the use of the `self` variable to refer instance variables. If we don't use `self`, python would think the variable is a global variable. Our Box class has 3 varaibles and there are assigned inside the constructor.
+`self` is special variable that refers to the object itself. Line 4 to line 6, we define the 3 instance variables. Since variables are not declared in python, we need to assign them values in the constructor itself. Also notice the use of the `self` variable to refer instance variables. If we don't use `self`, python would think the variable is a global variable. Our `Box` class has 3 varaibles and there are assigned inside the constructor.
 
 **In summary:**
 
@@ -1049,14 +1070,14 @@ Classes can have instance variables and methods.  Each object will have its own 
 All class methods have first parameter as self. An instance variable height is referred as `self.height` within the class defination and as `box.height`, `box` been an object, outside the class defination.
 
 ## Magic methods
-The beauty of python is in its magic methods. Lets us that we are defining a class to represent a family.
+The beauty of python is in its magic methods. Let's define a class to represent a family.
 ```{python}
 class Family(object):
   def __init__(self, mems):
     self.members = mems
 family = Family(['ram', 'priya', 'ravi'])
 print family.members
-# We can use the len() functin to find out how many family members are there.
+# We can use the len() function to find out how many family members are there.
 print len(family.members)
 ```
 But with magic methods, we could simplify this. 
@@ -1070,7 +1091,7 @@ family = Family(['ram', 'priya', 'ravi'])
 print len(family) #notice the change
 print family
 ```
-In the last section, we learnt about special method `__init__()`. There are more special methods. `__len__()` is another one. It's called when `len()` is called on the corresponding object. What we have achivied here is: Family is type we build just now. The python language didn't know about this before now. we defined our class to work seemlessly with python's built-in functions. `__len__(self)` is a magic method that gets called when `len(family)` is encountered. 
+In the last section, we learnt about special method `__init__()`. There are more special methods. `__len__()` is another one. It's called when `len()` is called on the corresponding object. What we have achivied here is: Family is type we build just now. The python language didn't know about this before now. We defined our class to work seemlessly with python's built-in functions. `__len__(self)` is a magic method that gets called when `len(family)` is encountered. 
 ```{python}
 class Family(object):
   def __init__(self, mems):
@@ -1083,7 +1104,7 @@ family = Family(['ram', 'priya', 'ravi'])
 print family    
 print family[1]
 ```
-As you can use in the output, when we printed `family`, instead of printing object id(as was the case in the previous example), it printed the contains of the list `members`. This is because of the magic method `__str__()`. In summary, magic methods are defined in classes to work well python's built-in methods.
+As you can see in the output, when we printed `family`, instead of printing object id(as was the case in the previous example), the contains of the list `members` was printed. This is because of the magic method `__str__()` which is called when the object is printed. In summary, magic methods are defined in classes to work well python's built-in methods.
 
 An excellent guide for magic methods(don't forget to check the table towards the end of the article): http://minhhh.github.io/posts/a-guide-to-pythons-magic-methods
 
@@ -1094,6 +1115,7 @@ Let's create a special kind of family: south indian family.
 ```{python, eval=FALSE}
 class South_Indian_Family(Family):
   pass
+  # pass is a empty statement. It don't do anything
 
 southy = South_Indian_Family(['ram', 'priya', 'ravi'])
 print southy.members
@@ -1114,9 +1136,11 @@ southy = South_Indian_Family(['ram', 'priya', 'ravi'])
 print southy.members
 print southy
 ```
-Often times, we would need a class that is similar to a class we already defined, but with more capabilites - more instance variables and methods. In the above example, we created a specialized version of the `Family` class. We did this by created a class called `South_Indian_Family` that derived from the `Family` class. The specialized class is called the derived class and the class from which it is derived is called the base class. The Family class is the base class whereas `South_Indian_Family` class would be derived class. The power of such inheritance is this: All of instance varaibles and methods of the base class will also be present in the derived class. 
+Often times, we would need a class that is similar to a class we already defined, but with more capabilites - more instance variables and methods. In the above example, we created a specialized version of the `Family` class. We did this by created a class called `South_Indian_Family` that derived from the `Family` class. 
 
-Notice that the `South_Indian_Family` had no methods or variables defined. But, we will able to access `southy.members`. This is because `South_Indian_Family` derived the variable `members` from its base class.
+The specialized class is called the derived class and the class from which it is derived is called the base class. The `Family` class is the base class whereas `South_Indian_Family` class would be derived class. The power of such inheritance is this: All of instance varaibles and methods of the base class will also be present in the derived class. 
+
+Notice that the `South_Indian_Family` had no methods or variables defined. But, we are able to access `southy.members`. This is because `South_Indian_Family` derived the variable `members` from its base class.
 
 ```{python}
 #multiple inheritance: Inheriting from more than one class.
@@ -1154,21 +1178,21 @@ animal.make_sound()
 animal.eat()
 dog = Dog()
 dog.eat() #the Animal class' eat() will be called, as Dog has not overridden this method.
-dog.make_sound()  #the Dog class' make_sound() will be called. 
+dog.make_sound()  #the Dog class' make_sound() will be called and not Animal's method.
 dog.attack_visitor()
 animal.attack_visitor() #error: remember attack_visitor() is not defined in Animal.
 ```
 
 ## Polymorphism
-\indent Lets code up a class Doctor that heals the animal when it is sick. To keep this simple, lets assume htat the doctor checks for the animal's bp(blood pressure) and the sound that the animal makes.
+\indent Lets code up a class `Doctor` that heals the animal when it is sick. To keep this simple, lets assume that the doctor checks for the animal's bp(blood pressure) and the sound that the animal makes.
 ```{python}
 class Doctor(object):
   def heal(self, animal):
     print animal.bp
     animal.make_sound()
 ```
-\setlength{\parindent}{5ex} This Doctor works great. All animal lovers are going to this doctor for medical help.
-Few years later, we create class to represent the cat. Since cats are animals, we define a class Cat that inherits from Animal class. We also override the make_sound() method to make it sound like a real cat.
+\setlength{\parindent}{5ex} This `Doctor` works great. All animal lovers are going to this doctor for medical help.
+Few years later, we create class to represent the cat. Since cats are animals, we define a class `Cat` that inherits from Animal class. We also override the make_sound() method to make it sound like a real cat.
 ```{python, eval=FALSE}
 class Cat(Animal):
   def make_sound(self):
@@ -1180,7 +1204,7 @@ cat = Cat()
 doctor = Doctor()
 doctor.heal(cat)
 ```
-Yes, he can. A `Cat` is a `Animal`. And `Doctor` heals `Animal`. And hence `Doctor` can treat a `Cat`. This is power of polymorpism. The `Cat` code didn't even exist when the `Doctor` code was written. The `Cat` code was written after the `Doctor` code. Even through, `Doctor` code worked seemlessly with the `Cat` code.
+Yes, he can. A `Cat` is a `Animal`. And `Doctor` heals `Animal`. And hence `Doctor` can treat a `Cat`. This is power of polymorpism. __The `Cat` code didn't even exist when the `Doctor` code was written. The `Cat` code was written after the `Doctor` code. Yet, `Doctor` code worked seemlessly with the `Cat` code.__
 ```{python, echo=FALSE}
 class Animal(object):
   def __init__(self):
@@ -1207,7 +1231,7 @@ doctor.heal(cat)
 
 
 ## Datahiding
-Languages like C++, Java have public or private class variables. Python has none of them. All class variables are public. However, python programmers follow a naming convention to differentiate between public and private variables. __All variables that start with an underscore are deemmed as private and should not be touched by outside code__.
+Languages like C++, Java have public or private class variables. Python has none of them. All class variables are public. However, python programmers follow a naming convention to differentiate between public and private variables. __All variables that start with an underscore are deemed as private and should not be touched by outside code__.
 
 ```{python}
 class Example(object):
@@ -1220,7 +1244,7 @@ print example.public_variable
 print example._private_variable #works, but never do this
 ```
 
-## Exception Handling
+##Exception Handling
 
 ###Difference between an error and Exception
 
@@ -1248,7 +1272,7 @@ divide(2.3, 4.5)
 divide(5,2)
 print "enter numerator:"
 ```
-Looks good. This an never ending program(you can stop the program by pressing ctrl+z) lets see what happens when we give 0 for denominator
+Looks good. This is an never ending program (press ctrl+z to stop). Lets see what happens when we give 0 for denominator
 ```{python, echo=FALSE, error=TRUE}
 a,b=4,0
 print "enter numerator:" + str(a)
@@ -1279,8 +1303,9 @@ divide(42,5)
 print 'enter numerator:'
 ```
 All the code that can throw an exception is written in the `try` block. A `try` block is followed by an `except` block, where code that handles the exception situation is written. Line 5 throws an exception. All the rest of the code in `try` block is not executed and program control is passed to the `except` block. The `except` block catches the exception. The `except` block is executed.
+Had there been no exception, the try block would have completely executed and the except block would have never executed. Remember, we write error handling code in except block. So, if there is no error, there is not need for the error handling code to be executed.
 
-As we can see in the output, the program safely continues taking input even in the case of a Divide by zero error. 
+As we can see in the output, the program safely continues taking input even in the case of a divide by zero error. 
 
 Let's break the code again. This time we will give invalid input.
 
@@ -1331,7 +1356,7 @@ For every try block, we can have 1 or more except blocks. We can also combine bo
     print 'Bad input. Please try again'
 ```
 
-`ZeroDivisionError` and `ValueError` are two types of exceptions. Infact there are derived from the class called `Exception`. A lot of exceptions are predefined by the language and all of them are derived from the class `Exception`. So, instead of using these, we can use the super class `Exception`.
+`ZeroDivisionError` and `ValueError` are two types of exceptions. Infact there are derived from the class called `Exception`. A lot of exceptions are predefined by the language and all of them are derived from the class `Exception`. So, instead of using these, we can use the superclass `Exception`.
 ```{python, eval=FALSE}
 while True:
 	try:
@@ -1341,9 +1366,9 @@ while True:
 	except Exception as e:
 		print 'Bad input. Please try again'
 ```
-However this is bad practice and should never be done. The reason being: this would mask exceptions which the programmer not intented to. Fyi, the above will run infinetely even if you press ctrl+z as that would also be caught as bad input.
+However this is bad practice and should never be done. The reason being: this would mask exceptions which the programmer not intented to. Like the above will run infinetely even if you press ctrl+z as that would also be caught as bad input. Something we as a programmer not intended to handle.
 
-##Raising exceptions
+##Raising Exceptions
 ```{python, error=TRUE}
 class Queue(object):
     def __init__(self):
@@ -1362,7 +1387,7 @@ queue.enqueue(1)
 print queue.deque()
 print queue.deque()
 ```
-Notice in the output, the message we coded was printed. We can also raise a more specific exception(like `IndexError`) instead of the generic superclass `Exception`. Or we could just create an exception. Let's create a exception called EmptyQueueError.
+Notice in the output, the message we coded was printed. We can also raise a more specific exception(like `IndexError`) instead of the generic superclass `Exception`. Or we could just create our own exception class. Let's create a exception called EmptyQueueError.
 
 
 ```{python, error=TRUE}
@@ -1387,14 +1412,14 @@ print queue.deque()
 print queue.deque()
 ```
 
-Notice instead of object, we are subclassing `Exception` instead of the usual object. This is because we need  the functionality of the `Exception` class.
+Notice that instead of object, we are subclassing `Exception`. So that we can get the functionaly of Exception class.
 
 \newpage
 
-# Testing
+#Unit 6 Testing
 Consider the following program to print whether a number is even or not
 ```{python}
-def even(num):
+def even_or_odd(num):
   if num % 2 == 0:
     print num + ' is even'
   else:
@@ -1402,7 +1427,7 @@ def even(num):
 ```
 Now let's call with an odd number
 ```{python,eval=FALSE}
-even(3)
+even_or_odd(3)
 ```
 ```{python, echo=FALSE}
 def even(num):
@@ -1415,7 +1440,7 @@ even(3)
 ```
 Now, let's call this function with an even number.
 ```{python,eval=FALSE}
-even(4)
+even_or_odd(4)
 ```
 ```{python, error=TRUE, echo=FALSE}
 def even(num):
@@ -1426,17 +1451,18 @@ def even(num):
 
 even(4)
 ```
-I purposefully placed an error on line 3 of the even() function. num is number and cannot be directly concatinated with a string. It should be converted into a string first. We did this on line 5. This is the reason that the program did not report error for the `even(3)`, because the program never hit line 3. The if condition failed and line 3 was never executed. Whereas `even(4)` was called, if condition passed and line 3 was hit. And then, the error came up. 
+I purposefully placed an error on line 3 of the `even_or_odd()` function. `num` is number and cannot be directly concatinated with a string. It should be converted into a string first. We did this on line 5. This is the reason that the program did not report error for the `even(3)`, because the program never hit line 3. The if condition failed and line 3 was never executed. Whereas, when `even(4)` was called, `if` condition passed and line 3 was hit. And then, the error came up. 
 
-In staticly typed langauages like C and java, this error would have been a compile time error. In python, it's a runtime error. Hence, we can't be sure that our code is error-free till we all the lines in our code are executed. This is where testing comes. No peice of software can be written in python without a through testing. 
+In staticly typed langauages like C and java, this error would have been a compile time error. In python, it's a runtime error. Hence, we can't be sure that our code is error-free till all the lines in our code are executed. This is where testing comes. No piece of software can be written in python without a thorough testing.
+
 Luckily, Testing in python is easy.
 
-Let's say we want to test the function reverse_string(). 
+Let's say we want to test the function `reverse_string()`. 
 ```{python}
 def reverse_string(sentence):
 	return ''.join(reversed(sentence))
 ```
-What this function does is important but not how it does. This function reverses a string passed to it. We could have 3 test cases:
+As a test engineer, *what* this function does is important but not *how* it does. This function reverses a string passed to it. We could have 3 test cases:
 
 1) a random non-zero length string as input
 
@@ -1444,7 +1470,9 @@ What this function does is important but not how it does. This function reverses
 
 3) an empty string
 
-let's write the first test case and run it. We use the module unittest-a testing framework. We write test code seperate from our actual code. We create a class to hold all our test cases. you can name it everything but it should inherit from the TestCase class. Here, we name it `ReverseStringTestCase`.
+Let's write the first test case and run it. Python has built-in module unittest - a testing framework. 
+
+We write test code seperate from our actual code. We create a class to hold all our test cases. You can name it everything but it should inherit from the TestCase class. Here, we name it `ReverseStringTestCase`.
 
 ```{python, eval=FALSE}
 from unittest import TestCase, main
@@ -1455,11 +1483,11 @@ class ReverseStringTestCase(TestCase):
 ```
 
 
-Each test case is written as a method. `test_reverse_string_random_string()` will test the first test case. Remember our class inherited from the class TestCase. The cool thing about this class is it has few helper functions like `assertEqual(a,b)` that throws an error if a and b are not equal. 
+Each test case is written as a method. `test_reverse_string_random_string()` will test the first test case. Note that our class inherited the class `TestCase`. The cool thing about this class is it has few helper functions like `assertEqual(a,b)` that throws an error if `a` and `b` are not equal. 
 
-In our test case, we call `assertEqual('random', reverse_string('modnar'))`. If reverse_string() works correct, it should return 'random' which would be equal to the first argument of `assertEqual()`. Else, it throws an error and the test case will fail. 
+In our test case, we call `assertEqual('random', reverse_string('modnar'))`. If `reverse_string()` works as intended, it should return `'random'` which would be equal to the first argument of `assertEqual()`. Else, it throws an error and the test case will fail. 
 
-We run the test cases by calling `main()`. This is not a function we wrote, but is imported from unittest.
+We run the test cases by calling `main()`. This is not a function we wrote, but is imported from `unittest`.
 ```{python, eval=FALSE}
 main()
 ```
@@ -1552,18 +1580,19 @@ a\) Running instructions in Interactive interpreter and a Python Script
 45/9 + 2*1.2
 ```
 
-```{python, echo=FALSE}
+Write the below lines in file named script.py and run that file with the following command.
+```{python, eval=FALSE}
 print 2 + 3
 print 45 - 21.1
 print 45/9 + 2*1.2
 ```
-Write the above lines in file named script.py and run that file with the following command.
+
 ```{python, eval=FALSE}
 run script.py
 # output omitted as it would be the same as above
 ```
 
-b\) Write a program to purposefully raise Indentation Error and Correct it
+b\) Write a program to purposefully raise Indentation Error and correct it.
 ```{python, error=TRUE}
 #with error
 print 42
@@ -1597,13 +1626,13 @@ print 'enter x2:1.2'
 print 'enter y2:3'
 print 'distance between the two points is 1.86010752377'
 ```
-b\) Write a program add.py that takes 2 numbers as command line arguments and prints its sum.
+b\) Write a program add.py that takes 2 numbers as command line arguments and prints their sum.
 ```{python, eval=FALSE}
 from sys import argv
 script, first, second = argv
 print float(first) + float(second)
 ```
-Write this code in a file and name it add.py. Run the file as:
+Write this code in a file and name it `add.py`. Run the file as:
 ```{python, eval=FALSE}
 run add.py 2 3
 ```
@@ -1612,7 +1641,7 @@ print '5.0'
 ```
 
 ##Exercise 3 Control Flow
-a\) Write a Program for checking whether the given number is a even number or not.
+a\) Write a Program for checking whether the given number is an even number or not.
 ```{python,eval=FALSE}
 number = int(raw_input("enter a number:"))
 print "odd" if number % 2 else "even"
@@ -1622,6 +1651,7 @@ number = 24
 print "enter a number:" + str(number)
 print "odd" if number % 2 else "even"
 ```
+There is another version of this program using functions in the section on functions. You might want to have a look.
 
 b\) Using a `for` loop, write a program that prints out the decimal equivalents of 1/2, 1/3, 1/4, . . . ,
 1/10
@@ -1631,7 +1661,7 @@ for i in range(2, 11):
     print 1.0/i
 ```
 
-c\) Write a program using a `for` loop that loops over a sequence. What is sequence ?
+c\) Write a program using a `for` loop that loops over a sequence. What is sequence?
 ```{python}
 numbers = [2,3,4,5]
 for i in numbers:
@@ -1690,16 +1720,18 @@ def primes_till(limit):
 
 print sum(primes_till(2000000))
 ```
-**Explanation:** We are using the famous Sieve of Eratosthenes(https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes). It's a algorithm to find primes up to a limit. It's does this by iteratively removing multiples of each prime. 
-From the numbers, first multiples of 2 are removed. Then multiples of 3 are removed. Then of 5 and so on. 
+**Explanation:** We are using the famous Sieve of Eratosthenes(https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes). It's a algorithm to find primes up to a limit. It does this by iteratively removing multiples of each prime. 
+
+From natural numbers, first multiples of 2 are removed. Then multiples of 3 are removed. Then of 5 and so on.
+
 Line 2 and 5, we create a set of odd numbers from 2 to the given limit. And then on line 6,7 we remove multiples of each number.
 
 
-Each new term in the Fibonacci sequence is generated by adding the previous two terms. By
+b\) Each new term in the Fibonacci sequence is generated by adding the previous two terms. By
 starting with 1 and 2, the first 10 terms will be:
 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 
-b\) By considering the terms in the Fibonacci sequence whose values do not exceed four million,
+By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 find the sum of the even-valued terms.
 ```{python, eval=TRUE}
 def fibonacci(limit):
@@ -1716,7 +1748,7 @@ print sum(filter(lambda x: x % 2 == 0, fibonacci(4000000)))
 
 ##Exercise 5 DS
 
-a\) Write a program to count the numbers of characters in the string and store them in a
+a\) Write a program to count the number of characters in the string and store them in a
 dictionary data structure
 ```{python, eval=FALSE}
 name = raw_input("enter a string:")
@@ -1757,7 +1789,7 @@ name = 'sreekanth kolamala'
 print "enter a string:" + name
 print dict(collections.Counter(name))
 ```
-**Explanation:** `collections.Counter` is built-in dict class that counts the frequecies of elements. It also has the method `most_common()` that returns the most common element.
+**Explanation:** `collections.Counter` is built-in dict class that counts the frequencies of elements. It also has the method `most_common()` that returns the most common element.
 
 ####Alternate solution
 ```{python}
@@ -1774,7 +1806,7 @@ dictionary data structure.
 
 I don't understand the question. I don't understand what 'trace a birthday' means. So, I can't give an answer. Sorry. But here is some code to understand split and join methods.
 ```{python}
-print 'split is string method that splits a string by the given pattern'.split(' ')
+print 'split is a string method that splits a string by a given pattern'.split(' ')
 print 'here i am giving, comma as ,the pattern'.split(',')
 print ','.join(['join', 'is', 'opposite', 'of', 'split'])
 print ' '.join(['it', 'joins', 'a', 'list', 'of', 'strings', 'to', 'form', 'one', 'string'])
@@ -1785,8 +1817,7 @@ a\) Write a program combine_lists that combines these lists into a dictionary.
 
 I don't understand what 'these lists' mean. So, can't really answer this.
 
-b\) Write a program to count frequency of characters in a given file. Can you use character
-frequency to tell whether the given file is a Python program file, C program file or a text file?
+b\) Write a program to count frequency of characters in a given file. 
 ```{python, eval=FALSE}
 filename = 'sample.py'  #create a file named 'sample.py' on your local drive
 text_file = open(filename, 'r')
@@ -1798,9 +1829,12 @@ print countFrequencies(fileContent)
 ```
 Output is omitted since it would depend on the contents of file `sample.py`. 
 
-**Explanation:** `open()` is a standard python function for opening files. The first parameter is the name the file. The second is the mode. Modes can be `'r'` for read, `'w'` for write and `'a'` for append. `open()` returns a file descriptor. `readlines()` is method of the descriptor that returns all the lines in the file as a list. Every file we open, we need to close it be calling its `close()` method.
+**Explanation:** `open()` is a standard python function for opening files. The first parameter is the name the file. The second is the mode. Modes can be `'r'` for readonly, `'w'` for (over)write and `'a'` for append. `open()` returns a file descriptor. `readlines()` is method of the descriptor that returns all the lines in the file as a list. Every file we open, we need to close it be calling its `close()` method.
 
-C programs need a semicolon on each statement. Python needs none. And a text file might contain a semicolon buy not as much as a C file.
+Can you use character
+frequency to tell whether the given file is a Python program file, C program file or a text file?
+
+C programs need a semicolon on each statement. Python needs none. And a text file might contain few semicolons but not as much as a C file. So, based on the number of semicolons in a file, we can guess if it's a C or Python or text file. Ofcourse this method is not completely foolproof. One can always create a file that contradicts the above premise.
 
 ##Exercise 7 Files
 
@@ -1812,7 +1846,7 @@ for line in reversed(fileContent):
     print line
 text_file.close()
 ```
-Create a file named sample.txt and write some text in it. Output of this program is ommited as it would be the text in that file.
+Create a file named sample.txt and write some text in it. Output of this program is omitted as it would be depend on the text in that file.
 
 ####Alternate solution
 ```{python, eval=FALSE}
@@ -1821,7 +1855,7 @@ with open('sample.txt', 'r') as text_file:
     while fileContent:
         print fileContent.pop()
 ```
-**Explanation:** `with` is keyword that lets us create context managers. Context managers are a clearer way to write code. Notice that in this solution, we didn't close the file. That is done by the context manager. Context managers are not in the syllabus so don't worry if you don't understand them. Just remember that they are neat way to organize code.
+**Explanation:** `with` is a keyword that lets us create context managers. Context managers are a clearer way to write code. Notice that in this solution, we didn't close the file. That is done by the context manager. Context managers are not in the syllabus. So don't worry if you don't understand them. Just remember that they are a neat way to organize code.
 
 b\) Write a program to compute the number of characters, words and lines in a file.
 ```{python}
@@ -1841,7 +1875,7 @@ a\) Write a function ball_collide that takes two balls as parameters and compute
 colliding. Your function should return a Boolean representing whether or not the balls are
 colliding.
 Hint: Represent a ball on a plane as a tuple of (x, y, r), r being the radius
-If (distance between two balls centers) <= (sum of their radii) then (they are colliding)
+If (distance between two balls' centers) <= (sum of their radii) then (they are colliding)
 
 ```{python}
 import math
@@ -1885,8 +1919,11 @@ def mode(numbers):
 numbers = [2,3,5,2,10,25]
 print mean(numbers), median(numbers), mode(numbers)
 ```
-**Explanation:** Median it the middle most elements when all the numbers are in an ascending order.
-Mode is the element that has the most common. So, we count the frequencies of all elements and find the element with the highest frequency. 
+**Explanation:** 
+
+Median is the middle most number when all the numbers are in an ascending order.
+
+The most common number is called the Mode. So, we count the frequencies of all elements and find the element with the highest frequency. 
 
 ####Alternate Solution
 ```{#numCode .python .numberLines}
@@ -1900,7 +1937,7 @@ Line 4 is a really nice example of how powerful python's pattern matching is. An
 
 ##Exercise 9 Functions - Continued
 
-a\) Write a function nearly_equal to test whether two strings are nearly equal. Two strings a and b are nearly equal when a can be generated by a single mutation on b.
+a\) Write a function `nearly_equal` to test whether two strings are nearly equal. Two strings `a` and `b` are nearly equal when `a` can be generated by a single mutation on `b`.
 
 ```{python}
 def nearly_equal(a,b):
@@ -1919,25 +1956,25 @@ print nearly_equal("sree", "srek")
 print nearly_equal("sree", "sek")
 print nearly_equal("sree", "serk")
 ```
-**Explanation:** `zip` is built-in function that takes two or more sequences and returns a sequence of tubles
-that contain the corresponding elements the sequences. Few examples:
+**Explanation:** `zip` is built-in function that takes two or more sequences and returns a sequence of tubles that contain the corresponding elements the sequences. This is very useful when we need to iterate over more than one sequence simultaneously. Few examples:
 ```{python}
 print zip(range(5), range(5,10))
 print zip('abcd', 'efgh', 'hijk')
 ```
 
-b\) Write a function dups to find all duplicates in the list.
+b\) Write a function `dups` to find all duplicates in the list.
 
 ```{python}
 def dups(array):
     import collections
+    #you can also use countFrequencies from ex 5 instead of Counter
     frequencies = collections.Counter(array)
     return [key for key, value in frequencies.items() if value > 1]
 
 print dups([2,3,1,2,5,8,9,8])
 ```
 
-c\) Write a function unique to find all the unique elements of a list.
+c\) Write a function `unique` to find all the unique elements of a list.
 ```{python}
 def unique(array):
     import collections
@@ -1964,7 +2001,7 @@ print unique(numbers)
 
 ## Exercise 10 Functions - Problem Solving
 
-a\) Write a function cumulative_product to compute cumulative product of a list of numbers.
+a\) Write a function `cumulative_product` to compute cumulative product of a list of numbers.
 ```{python}
 def cumulative_product(numbers):
     result = 1
@@ -2022,12 +2059,12 @@ print lcm(3, 5)
 
 **Explanation:** `pop(index)` is a list method that removes and returns the element at `index`. `index` has a default value of `length - 1`. That means `pop()`(without `index`) removes and returns the last element in the list.
 
-Greatest Common Diviser(gcd) of two numbers a,b lies between 1 to a or b which is the maximum. So, we create a list of all the numbers that are from 1 to `max(a, b)` and also divide a,b prefectly. Since gcd is the maximum of all these numbers, we pop the last element. 
+Greatest Common Diviser(gcd) of two numbers a,b lies between 1 to max(a,b). So, we create a list of all the numbers that are from `1` to `max(a, b)` and that also divide `a,b` prefectly. Since gcd is the maximum of all these numbers, we pop the last element. 
 
-Least Common Multiple(lcm) of tow numbers a,b lies between max(a,b) and a*b. So, we create a list of all such numbers and which are also perfectly divided by a,b. Since lcd is the min of all these numbers, we pop() the first element. 
+Least Common Multiple(lcm) of two numbers a,b lies between max(a,b) and a*b. So, we create a list of all such numbers and which are also perfectly divided by a,b. Since lcd is the min of all these numbers, we pop the first element.
 
 ##Exercise 11 Multi-D Lists
-a\) Write a program that defines a matrix and prints
+a\) Write a program that defines a matrix and prints it.
 ```{python}
 matA = [[1,2,3],
         [4,5,6],
@@ -2041,7 +2078,7 @@ print matA
 print matB
 ```
 
-b\) Write a program to perform addition of two square matrices
+b\) Write a program to perform addition of two square matrices.
 ```{python}
 def addMatrix(a,b):
     import operator
@@ -2058,13 +2095,19 @@ matB = [[3,2,1],
 print addMatrix(matA, matB)
 ```
 
-**Explanation:** We discussed about `map` in the Functions section. `map` takes a function and applies it to a list(or lists) to create a new list. But what if instead of a function, we need to a simple operation like addition. We can't pass the operator `+` to map. For these kind of situations, python has built-in functions are behave exactly like operators. `operator.add()` is one such example. It mimics `+` operator. There are others like `operator.mul()`, `operator.sub()`. Even functions that mimic logical operators like `operator.gt()` (for `>`) and `operator.not_()` (for `not`) exist.
+**Explanation:** We discussed about `map` in the Functions section. `map` takes a function and applies it to a list(or lists) to create a new list. But what if instead of a function, we need to a simple operation like addition. We can't pass the operator `+` to map. For these kind of situations, python has built-in functions that behave exactly like operators. `operator.add()` is one such example. It mimics `+` operator. 
+```{python}
+import operator
+print operator.add(2,3)
+```
+There are others like `operator.mul()`, `operator.sub()` etc. Even functions that mimic logical operators like `operator.gt()` (for `>`) and `operator.not_()` (for `not`) exist.
 
 c\) Write a program to perform multiplication of two square matrices
 ```{python}
 def multiply_matrix(mat_a, mat_b):
     a = len(mat_a)
     b = len(mat_b[0])
+    # creating a default array filled with zeroes
     result = [[0 for _ in range(b)] for _ in range(a)]
     for i in range(a):
         for j in range(b):
@@ -2120,10 +2163,8 @@ r = requests.get('https://google.com')
 print r.ok
 print r.status_code
 #print r.text
+#uncomment the above line for content of the site
 ```
-
-c\) Write a simple script that serves a simple HTTPResponse and a simple HTML Page
-
 
 ## Exercise 13 OOP
 ```{python}
@@ -2244,7 +2285,6 @@ print 'enter username:'
 ```
 
 ##Exercise 14 GUI, Graphics
-1\) Write a GUI for an Expression Calculator using tk
 2\) Write a program to implement the following figures using turtle
 ```{python,eval=FALSE}
 import turtle
@@ -2271,7 +2311,7 @@ for _ in range(36):
 
 ## Exercise 15 Testing
 
-a\) Write a test-case to check the function even-numbers which return True on passing a list of all even numbers
+a\) Write a test-case to check the function `even-numbers` which return True on passing a list of all even numbers
 ```{python}
 from unittest import TestCase, main
 
@@ -2293,7 +2333,7 @@ main()
 ```
 Ideally, actual code and test code shouldn't be written in the same file. The test code should be in a separate file. We will use this approach in the next exercise.
 
-b\) Write a test-case to check the function reverse_sting which returns the reversed string
+b\) Write a test-case to check the function `reverse_sting` which returns the reversed string
 
 ```{python, eval=FALSE}
 #write this code in a file named rever.py
@@ -2339,7 +2379,7 @@ main()
 ```
 ##Exercise 16 Advanced
 
-a\) Build any one classical data
+a\) Build any one classical data structure.
 
 ```{python}
 class Queue(object):
