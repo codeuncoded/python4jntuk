@@ -34,15 +34,15 @@ Finally, this book is meant to be quick read. It is not a python encyclopedia. H
 
 #Unit 1 Introduction
 
-##History of Python
+##1.1 History of Python
 Python was created by Guido van Rossum in 1991.
 
-##Need of Python programming
+### Need of Python programming
 C, C++ are powerful langauges. Langauges that can be used to write a variety of software. They give you very minute control of the machine. But, they are very low level. We need to specify every small detail. For example, we have to create and manage memory, object destruction etc, when all we need to do is save a few objects. 
 
 C, C++ syntax makes writing code very lengthly. C, C++ focus on reducing memory, running programs fast etc. Python's focus is to reduce developer time-time taken by the programmer to create software. C's 20 line code would be 5 or less lines long in Python.
 
-##Applications
+### Applications
 Python's concise code makes it real quick to write software. It's high level. Python is used for the real software that we see often in our day-to-day life.
 
 ####Web development
@@ -61,7 +61,7 @@ Our calculators are computers. Not as powerful as our laptops but still are comp
 ####Natural language processing
 Did you try giving voice commands to your smart phone? Isn't it cool? The phone listens and finds out what you are talking out. It does this even if an accent is present. This field  is called natural language processing. Python has cool librabies for this too.
 
-##Setup - Intalling Python
+##1.2 Setup - Intalling Python
 Download Python from here: `https://www.python.org/downloads/`
 
 JNTUK does not specific which version to download. Python has two main versions. Python 2 and Python 3. Download Python 2. At the time of writing this book(July 2017), the latest verision was 2.7.13.
@@ -75,14 +75,14 @@ Keep pressing next till the installation is complete. This should be very easily
 <!-- ![Install Python](./python download_LI.jpg) -->
 Congrats! You now have Python installed on your machine.
 
-##Using the Python interpreter
+### Using the Python interpreter
 Click on windows start and find Python. In windows 7 and above, you could just type in Python.
 
 Click on **python(command line)**. A black screen will appear. This is called the **python interpreter**.
 
 This is where we will run all our Python code. We will open the python interpreter each time we need to do some coding, so become comfortable opening it.
 
-##(Optional IPython installation)
+### (Optional IPython installation)
 All Python code in this book can be done on the python interpreter we just installed. However, IPython is a better tool than the Python interpreter. I highly recommend that you install IPython as well. If you do install it, use IPython whenever I say Python interpreter.
 
 Installation steps:
@@ -96,7 +96,7 @@ Now install `ipython` using `pip`. `pip` is utility command to install Python mo
 pip install ipython
 ```
 
-##Using IPython:
+### Using IPython:
 Open the windows command prompt again like in the previous step(windows key  + r, type 'cmd', enter). Type
 ```{bash, eval=FALSE}
 ipython
@@ -104,8 +104,8 @@ ipython
 Remember, you can use either the Python interpreter or IPython.
 
 
-##REPL
-Open the **python interpreter** and type in the following, one line at a time:
+##1.3 REPL
+Open the **python interpreter**(if you installed IPython, open that instead of this) and type in the following, one line at a time:
 ```{python, eval=FALSE}
 2 + 3
 45 + 21.1
@@ -125,7 +125,7 @@ print 'sree' in 'sreekanth'
 Don't worry what this expression does. For now, just remember you can type **any python expression**.
 
 
-##Running Python scripts
+### Running Python scripts
 Save the previous code listing into a file and name it script.py and run that file using the command:
 ```{python, eval=FALSE}
 run script.py
@@ -133,7 +133,7 @@ run script.py
 
 All Python files should end with '.py'. You can give them any name(following the rules of variable naming).
 
-##Variables and Assignment
+##1.4 Variables and Assignment
 In programming, we often need to save some number, some information somewhere so that we can use it later. Variables are used to save such infomation.
 ```{python}
 age = 32
@@ -168,7 +168,7 @@ Here, we are assigning the variable `age`, the previously saved `age` and 10 mor
 If you are familar with C or java, you would noticed that there is no variable declaration like `int age = 32;`. In Python, you don't need to declare variables before assigning some infomation. You just use them. Also, the semicolon `;` is optional in Python. 
 
 
-##Keywords
+##1.5 Keywords
 Each langauge has a set of words that are reserved. They can't be used as variable names. The complete list is given here as referance. You don't need to know them by heart. This is just for your reference.
 
 | | | |
@@ -200,7 +200,7 @@ The rest of unit will make more sense in Unit-2 and hence is covered in Unit-2.
 \newpage
 
 #Unit 2 Types, Operators and Expressions
-##Types
+##2.1 Types
 Based on what operations we can do on them, variables are grouped into so called **Data types**.
 Python has 5 data types - `Numbers, Strings, Lists, Tuple, Dictionary`. In this unit, we will discuss `Numbers` and `Strings`. We will see the other 3 in the next unit.
 
@@ -246,13 +246,13 @@ flag = False
 print flag
 ```
 
-##Input-Output
+##2.2 Input-Output
 It's not always the case that variables are assigned in code. Often times, an input from the user is used.
 ```{python, eval=FALSE}
 # Input
 a = raw_input("enter a number:")
 ```
-`raw_input()` always takes the input as string. Even if we type numbers, they would be taken as string. So, if we really want to input numbers, we need to convert them. We use the built-in python functions `int()` and `float()` for this.
+`raw_input()` always takes the input as string. Even if we type numbers, they would be taken as string. So, if we want to input numbers, we need to convert them. We use built-in functions `int()` and `float()` for this.
 ```{python, eval=FALSE}
 a = raw_input("enter a number:")
 print a
@@ -283,7 +283,7 @@ print 23
 print 'some-sting', 23, 45.5
 ```
 
-## Operators
+##2.3 Operators
 Variables are assigned values using the `=` operator. Variables are written when they are first assigned a value.
 ```{python}
 number = 10
@@ -291,8 +291,7 @@ number = 10
 The variable `number` is assigned `10`. Note that the type of the variable `number` is not declared. This is not required because of the python type inference. Based on the operations we do on the variable, python will automatically guess its type. Isn't that cool?
 ```{python}
 #multiple assignments can be done in the same statement simultaneously.
-a, b = 10,20
-#a is assigned 10 and b is assigned 20.
+a, b = 10,20  #a is assigned 10 and b is assigned 20.
 print a,b
 a,b = b,a
 # 'a' is assigned the value in 'b' and 'b' is assigned the value in 'a' simultaneously. 
@@ -327,7 +326,6 @@ Relational operators include `>, >=, <, <=, ==, !=`. They take 2 operands and re
 | == | 20 == 20 | True
 ||  20 == 40  | False
 | != | 20 != 20 | False
-||  20 != 40  | True
 
 ### Logical Operators
 
@@ -352,7 +350,7 @@ print (condition and False)
 |     False   | True       | False  | True
 |     False  | False       | False  | False
 
-## Control flow
+##2.4 Control flow
 Often times, instead of letting each line execute, we would need to selectively execute some lines. This can be done by `if`, `if-else`, `if-elif-else` blocks.
 
 ### if, if-else, if-elif-else
@@ -398,9 +396,7 @@ if a > b:
 else:
   pass
 ```
-`pass` is a keyword that represents an empty statement. It's is like an empty ; in C. Again, observe the indentation. Line 3 is inside the if block and line 5 is inside the else block.
-
-We can check more than 1 condition using the `if-elif-else` block.
+`pass` is a keyword that represents an empty statement. It's is like an empty ; in C. Again, observe the indentation. Line 3 is inside the if block and line 5 is inside the else block. We can check more than 1 condition using the `if-elif-else` block.
 
 **syntax**
 ```{python, eval=FALSE}
@@ -412,6 +408,7 @@ else:
   stmts_3
 ```
 The following table gives which statements are executed based on the values of if conditions.
+
 | condition_1       | condition_2 | stmt executed
 --------------|---------|------
 |    True  | _      | stmts_1
@@ -421,7 +418,7 @@ The following table gives which statements are executed based on the values of i
 ### Terary operator
 Terary operator is a shorter form of an if-else statement.
 
-*syntax:*
+**Syntax**
 ```{python, eval=FALSE}
 expression-1 if condition else expression-2
 ```
@@ -437,7 +434,7 @@ We will cover the rest of Unit-2 in Unit-3 once we are done with lists.
 
 #Unit 3 Data Structures
 
-##Lists
+##3.1 Lists
 
 Lists are similar to C arrays but more powerful. Lists store multiple values. Unlike C arrays, elements in a list don't have be of the same type. Lists are indexed from 0.
 ```{python}
@@ -546,7 +543,7 @@ print "apple" in fruits
 print "banana" not in fruits
 ```
 
-##Loops
+##3.2 Loops
 Let's write a program to print numbers from 0 to 4.
 ```{python}
 print 0
@@ -640,7 +637,7 @@ Notice that this program prints `0` and exits the `for` loop. When `i=1`, the `i
 
 In summary, when a `continue` is hit, only the rest of the for interation is skipped. Whereas, when a `break` is hit, the `for` loop is exited.
 
-## Comprehensions
+##3.3 Comprehensions
 Comprehensions are a quick way to create data. Often, data has a pattern. Like a series of integers, a series of squares etc. In other languages, such data is created using for loop. In python, comprehensions are used.
 
 *Syntax:*
@@ -668,7 +665,7 @@ vowels = [x for x in 'sreekanth' if x in 'aeoui']
 print vowels
 ```
 
-##Sets
+##3.4 Sets
 Sets are like lists but duplicates are not allowed.
 
 *syntax*
@@ -692,7 +689,7 @@ print setA.union(setB)
 print setA.intersection(setB)
 ```
 
-##Dictionaries
+##3.5 Dictionaries
 Dictionaries(commmonly shortened to dict) are *{key,value}* pair data structures. Each element in a dict is a pair of key and value. Keys have to be uquine. Keys can be thought as indices with names. Dicts are similar to Java hashmaps. Let's create a dict and play around.
 ```{python}
 wordFrequency = {'a':1, 'b':5, 'c':10, 'e':15}
@@ -725,6 +722,9 @@ Notice that we used the membership operator `in` to find out if a key is present
 \newpage
 
 #Unit 4 Functions
+
+##4.1 Defining Functions
+
 Functions are small pieces of code that we can reuse by calling them instead of writing code multiple times. 
 
 *Syntax:*
@@ -743,6 +743,8 @@ def add(a,b):
   print c
 ```
 We define a function by using the keyword `def`. Notice that all the stmts after the first statement are indented. This is python's way to say that these statements are part of the function defination and not in the global context. Not indenting would throw an error. 
+
+##4.2 Calling Functions
 
 `a,b` are called parameters. They are assigned values when this function is called. We can call this function like this:
 ```{python, eval=FALSE}
@@ -868,7 +870,7 @@ max(20)
 max() #this will throw an error
 ```
 
-## Scope of Variables in a Function
+##4.3 Scope of Variables in a Function
 Variables declared(appear for the first time in code) inside a function are known as **local variables**. Local variables are not accessible outside the function.
 ```{python, error=TRUE}
 def some_function():
@@ -920,7 +922,7 @@ def outer_fun():
 In the code example, a function is defined within other function. This is possible in python. The inner_fun() is said to be in the enclosing context of the outer_function(). The variable `fun_var` is not inner_fun() but is also not in the global context. It is in the outer_fun(). To use variables defined in the enclosing context, we use the keyword nonlocal.
 -->
 
-## Import statements
+##4.4 Import statements
 Often times, instead of writing code ourselves, we could use code written by others. This code is available in the form of libraries. We need to declare them before using them by writing an import statement. There are 2 ways of doing this:
 
 *Syntax:*
@@ -953,7 +955,7 @@ print m.sqrt(25)
 ```
 Finally, we can also import code written by us in the same way. An example is given in the unit on testing.
 
-## Python packages and pip
+##4.5 Python packages and pip
 
 Python comes a rich library for doing pretty much anything. These libraries are available in the form of modules. Some of the modules are pre-installed with python, but some are not. We can simply import a module to check if a module is present or not. 
 ```{python, error=TRUE}
@@ -990,6 +992,8 @@ There is another module installation in lab programs exercise 12. Do have a look
 \newpage
 
 #Unit 5 Object Oriented Programming OOP
+
+##5.1 Classes, 'self variable', Methods, Constructor method
 
 Consider writing code for a box. A box has 3 properties-height, width, breadth. We can use variables like `box_height`, `box_width`, `box_breadth` to represent them. But doing this makes 3 seperate variables that seem to have no relation. Instead, we could create a *class* that holds these variables. Classes are a neat way to organize code.
 ```{#numCode .python .numberLines}
@@ -1069,7 +1073,7 @@ Classes can have instance variables and methods.  Each object will have its own 
 
 All class methods have first parameter as self. An instance variable height is referred as `self.height` within the class defination and as `box.height`, `box` been an object, outside the class defination.
 
-## Magic methods
+##5.2 Magic methods
 The beauty of python is in its magic methods. Let's define a class to represent a family.
 ```{python}
 class Family(object):
@@ -1108,7 +1112,7 @@ As you can see in the output, when we printed `family`, instead of printing obje
 
 An excellent guide for magic methods(don't forget to check the table towards the end of the article): http://minhhh.github.io/posts/a-guide-to-pythons-magic-methods
 
-## Inheritance
+##5.3 Inheritance
 
 Let's create a special kind of family: south indian family.
 
@@ -1157,7 +1161,7 @@ class C(A,B):
 ```
 
 
-## Overriding
+##5.4 Overriding Methods
 Inheritance lets us use base class' methods in the derived class. That's very useful. However, sometimes, we might need a more specialized method instead of the default method.
 ```{python, error=TRUE}
 class Animal(object):
@@ -1183,7 +1187,7 @@ dog.attack_visitor()
 animal.attack_visitor() #error: remember attack_visitor() is not defined in Animal.
 ```
 
-## Polymorphism
+##5.5 Polymorphism
 \indent Lets code up a class `Doctor` that heals the animal when it is sick. To keep this simple, lets assume that the doctor checks for the animal's bp(blood pressure) and the sound that the animal makes.
 ```{python}
 class Doctor(object):
@@ -1230,7 +1234,7 @@ doctor.heal(cat)
 
 
 
-## Datahiding
+##5.6 Datahiding
 Languages like C++, Java have public or private class variables. Python has none of them. All class variables are public. However, python programmers follow a naming convention to differentiate between public and private variables. __All variables that start with an underscore are deemed as private and should not be touched by outside code__.
 
 ```{python}
@@ -1244,7 +1248,7 @@ print example.public_variable
 print example._private_variable #works, but never do this
 ```
 
-##Exception Handling
+##5.7 Exception Handling
 
 ###Difference between an error and Exception
 
@@ -1368,7 +1372,7 @@ while True:
 ```
 However this is bad practice and should never be done. The reason being: this would mask exceptions which the programmer not intented to. Like the above will run infinetely even if you press ctrl+z as that would also be caught as bad input. Something we as a programmer not intended to handle.
 
-##Raising Exceptions
+###Raising Exceptions
 ```{python, error=TRUE}
 class Queue(object):
     def __init__(self):
@@ -1387,7 +1391,11 @@ queue.enqueue(1)
 print queue.deque()
 print queue.deque()
 ```
-Notice in the output, the message we coded was printed. We can also raise a more specific exception(like `IndexError`) instead of the generic superclass `Exception`. Or we could just create our own exception class. Let's create a exception called EmptyQueueError.
+Notice in the output, the message we coded was printed. 
+
+### User Defined Exceptions
+
+We can also raise a more specific exception(like `IndexError`) instead of the generic superclass `Exception`. Or we could just create our own exception class. Let's create a exception called EmptyQueueError.
 
 
 ```{python, error=TRUE}
@@ -1418,7 +1426,7 @@ Notice that instead of object, we are subclassing `Exception`. So that we can ge
 
 #Unit 6 Testing
 
-##Why is testing required?
+##6.1 Why is testing required?
 Consider the following program to print whether a number is even or not
 ```{python}
 def even_or_odd(num):
@@ -1459,7 +1467,8 @@ In staticly typed langauages like C and java, this error would have been a compi
 
 Luckily, Testing in python is easy.
 
-##Unit Testing in Python: Writing and running Tests
+##6.2 Unit Testing in Python: Writing and running Tests
+
 Testing individual functions or classes is called **Unit Testing**. Testing how well two modules work with each other is called **Intregation Testing**. Unit testing is in our syllabus.
 Let's say we want to test the function `reverse_string()`. 
 ```{python}
