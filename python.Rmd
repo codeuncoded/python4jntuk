@@ -2,17 +2,18 @@
 title: "Python for JNTUK Students"
 author: "Sreekanth Kolamala"
 date: "M.tech Computer Science, IIT Kanpur"
+output:
+  pdf_document: default
+  html_document: default
 header-includes:
 - \usepackage{fancyhdr}
 - \pagestyle{fancy}
-# - \fancyhead[CO,CE]{This is fancy header}
 - \fancyfoot[CO,CE]{\copyright \ sreekanth.kolamala@gmail.com}
 - \fancyfoot[LE,RO]{\thepage}
 - \usepackage{marvosym}
 - \usepackage{multicol}
 - \newcommand{\btwocol}{\begin{multicols}{2}}
 - \newcommand{\etwocol}{\end{multicols}}
-output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -22,7 +23,7 @@ knitr::opts_chunk$set(comment = "Out:")
 ```
 
 #How to read this book
-This is a *tiny, tiny* book. It was meant to be tiny. It's about 50 pages. Without lab exercises, it's 34 pages. Why? They say, a picture is worth a thousand words. Similarly, an example is worth a page of explanation.
+This is a *tiny, tiny* book. It was meant to be tiny. It's 50 pages. Without lab exercises, it's 33 pages. Why? They say, a picture is worth a thousand words. Similarly, an example is worth a page of explanation.
 
 The best way to *teach* is **by example**. That is what this book does. The explanation is kept purposefully concise as examples do the talking. 
 If, at times, you feel the explanation is not enough, be patient and complete the examples. I assure you as you go along, things will be clearer. Although the lab examples are in a seperate section, they form a good repertoire of examples. So don't skip them. 
@@ -355,13 +356,23 @@ print (condition and False)
 Often times, instead of letting each line execute, we would need to selectively execute some lines. This can be done by `if`, `if-else`, `if-elif-else` blocks.
 
 ### if, if-else, if-elif-else
+**Syntax**
 ```{#numCode .python .numberLines}
-a,b = 3,2
-if a > b:
-  print "a is greater than b" #Notice this print stmt is indented 
-  #this means that the print stmt is within the if block
+if condition:
+  stmt
+  stmt
+  stmt
 ```
-The `if` block is executed only if the condition is `True`. In the above code, line 3,4 are executed only if condition `a > b` is `True`. One key point: **Python seperates blocks based on their indentation.** Line 3,4 are within the `if` block. Unlike other langauges, python doesn't use curly brackets{} for creating blocks. More examples:
+Line 2 to 4 is the `if` block. The `if` block is executed only if the condition is `True`. One key point: **Python seperates blocks based on their indentation.** Line 2,3,4 are within the `if` block. Unlike other langauges, python doesn't use curly brackets{} for creating blocks. More examples:
+```{python, eval=FALSE}
+a = int(raw_input('enter a number:'))
+if a % 2 == 0:
+  print 'given number is even'
+```
+```{python, echo=FALSE}
+print 'enter a number:3'
+```
+We can also use a `if-else` block. The `else` block is executed if the `if` condition fails.
 ```{python}
 a,b = 3,2
 if a < b:
@@ -400,23 +411,12 @@ elif condition_2:
 else:
   stmts_3
 ```
-
+The following table gives which statements are executed based on the values of if conditions.
 | condition_1       | condition_2 | stmt executed
 --------------|---------|------
 |    True  | _      | stmts_1
 |     False  | True      | stmts_2
 | False  | False | stmts_3
-
-
-```{python}
-if False:
-  print 'this will not print'
-elif True:
-  print 'this will be printed'
-else:
-  print 'this will not too'
-```
-
 
 ### Terary operator
 Terary operator is a shorter form of an if-else statement.
@@ -431,7 +431,7 @@ number = 24
 result = "odd" if number % 2 != 0 else "even"
 print result
 ```
-We will cover the rest of unit-2 in unit-3 once we are done with lists.
+We will cover the rest of Unit-2 in Unit-3 once we are done with lists.
 
 \newpage
 
@@ -1417,6 +1417,8 @@ Notice that instead of object, we are subclassing `Exception`. So that we can ge
 \newpage
 
 #Unit 6 Testing
+
+##Why is testing required?
 Consider the following program to print whether a number is even or not
 ```{python}
 def even_or_odd(num):
@@ -1457,6 +1459,8 @@ In staticly typed langauages like C and java, this error would have been a compi
 
 Luckily, Testing in python is easy.
 
+##Unit Testing in Python: Writing and running Tests
+Testing individual functions or classes is called **Unit Testing**. Testing how well two modules work with each other is called **Intregation Testing**. Unit testing is in our syllabus.
 Let's say we want to test the function `reverse_string()`. 
 ```{python}
 def reverse_string(sentence):
