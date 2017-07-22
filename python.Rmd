@@ -2451,3 +2451,8 @@ best_value, best_items = knapsack(items, 8)
 print 'best value is', best_value
 print 'best items are', best_items
 ```
+
+#Copyright
+
+This book is free for your use. You can share it with anyone as along as you don't modify it. Feel free to share it with your friends or colleagues. Do send your feedback to sreekanth.kolamala@gmail.com
+
